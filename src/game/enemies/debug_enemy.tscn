@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://tgcyp6gpnxip"]
+
+[ext_resource type="Script" uid="uid://7e63ryy8u1a6" path="res://game/enemies/debug_enemy.gd" id="1_7ow6v"]
+[ext_resource type="PackedScene" uid="uid://b63va5oryp3q1" path="res://game/enemies/movement_component.tscn" id="1_y28og"]
+[ext_resource type="Texture2D" uid="uid://dix8o26ddrdwb" path="res://assets/DEBUG/debug_enemy.png" id="3_1emua"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ow6v"]
+
+[node name="DebugEnemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_7ow6v")
+
+[node name="MovementComponent" parent="." instance=ExtResource("1_y28og")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_1emua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7ow6v")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

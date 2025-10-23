@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3362oo3fh1m7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm6dc"]
+albedo_color = Color(0.096075304, 0.20057638, 0.045724783, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_irnjd"]
+material = SubResource("StandardMaterial3D_nm6dc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohras"]
+albedo_color = Color(0.31764707, 1, 0.54901963, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k4kl4"]
+material = SubResource("StandardMaterial3D_ohras")
+size = Vector3(2, 1, 2)
+
+[node name="Tiles" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_irnjd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_k4kl4")

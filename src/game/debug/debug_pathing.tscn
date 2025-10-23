@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://btp7hnqxcg8sn"]
+
+[ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/pathing/path_node.tscn" id="2_oeym1"]
+[ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/level/level_manager.tscn" id="3_gsljs"]
+[ext_resource type="PackedScene" uid="uid://tgcyp6gpnxip" path="res://game/enemies/debug_enemy.tscn" id="4_gsljs"]
+
+[sub_resource type="Environment" id="Environment_m20e2"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y7ob1"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_oeym1"]
+vertices = PackedVector2Array(51.34375, 24.820313, 203.27344, 22.171875, 203.71875, 38.390625, 75.17969, 43.367188, 53.828125, 97.046875, 74.13281, 99.36719, 61.242188, 102.97656)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(44, 102, 59, 114, 84, 107, 85, 53, 214, 48, 213, 12, 41, 15)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeym1"]
+size = Vector2(217, 120)
+
+[node name="DebugPathing" type="Node2D"]
+
+[node name="PathNode3" parent="." node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_oeym1")]
+position = Vector2(59, 103)
+next_path_node = NodePath(".")
+exit_node = true
+
+[node name="PathNode2" parent="." node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_oeym1")]
+position = Vector2(54, 30)
+next_path_node = NodePath("../PathNode3")
+
+[node name="PathNode" parent="." node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_oeym1")]
+position = Vector2(126, 35)
+next_path_node = NodePath("../PathNode2")
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node") instance=ExtResource("3_gsljs")]
+first_path_node = NodePath("../PathNode")
+
+[node name="DebugEnemy" parent="." instance=ExtResource("4_gsljs")]
+position = Vector2(192, 33)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m20e2")
+camera_attributes = SubResource("CameraAttributesPractical_y7ob1")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_oeym1")
+
+[node name="Area2D" type="Area2D" parent="NavigationRegion2D"]
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Area2D"]
+position = Vector2(135, 73)
+shape = SubResource("RectangleShape2D_oeym1")
