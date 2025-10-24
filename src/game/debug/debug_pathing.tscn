@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/pathing/path_node.tscn" id="2_oeym1"]
 [ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/level/level_manager.tscn" id="3_gsljs"]
-[ext_resource type="PackedScene" uid="uid://tgcyp6gpnxip" path="res://game/enemies/debug_enemy.tscn" id="4_gsljs"]
+[ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/level/enemy_spawner.tscn" id="3_oeym1"]
 
 [sub_resource type="Environment" id="Environment_m20e2"]
 
@@ -31,11 +31,17 @@ next_path_node = NodePath("../PathNode3")
 position = Vector2(126, 35)
 next_path_node = NodePath("../PathNode2")
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node") instance=ExtResource("3_gsljs")]
-first_path_node = NodePath("../PathNode")
+[node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
 
-[node name="DebugEnemy" parent="." instance=ExtResource("4_gsljs")]
-position = Vector2(192, 33)
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner") instance=ExtResource("3_gsljs")]
+player_worms = 20
+first_path_node = NodePath("../PathNode")
+enemy_spawner = NodePath("../EnemySpawner")
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("level_manager", "spawner_path_node") instance=ExtResource("3_oeym1")]
+level_manager = NodePath("../LevelManager")
+base_spawn_time = 0.3
+spawner_path_node = NodePath("../PathNode")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_m20e2")

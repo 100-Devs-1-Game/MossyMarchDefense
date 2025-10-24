@@ -13,6 +13,8 @@ func on_body_entered(body):
 		return
 	
 	if exit_node:
+		var level_manager = get_tree().get_first_node_in_group("level_manager")
+		level_manager.remove_worms()
 		# TODO: Health and score
 		body.queue_free()
 		return

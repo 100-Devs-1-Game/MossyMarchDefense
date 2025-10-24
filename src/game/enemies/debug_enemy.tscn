@@ -10,6 +10,7 @@
 script = ExtResource("1_7ow6v")
 
 [node name="MovementComponent" parent="." instance=ExtResource("1_y28og")]
+max_movement_speed = 15.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_1emua")
