@@ -1,10 +1,9 @@
 extends Node2D
 
-enum EnemyType {Frog, Bird, Snail}
 
 @onready var movement_component = $MovementComponent
 @onready var navigation_agent_2d = $NavigationAgent2D
-@onready var enemy_type : EnemyType = EnemyType.Frog
+@onready var enemy_type : GlobalEnums.EnemyType = GlobalEnums.EnemyType.Frog
 
 func _ready():
 	var level_manager = get_tree().get_first_node_in_group("level_manager")

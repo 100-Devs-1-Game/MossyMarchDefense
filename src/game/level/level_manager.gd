@@ -8,6 +8,7 @@ var enemies_on_screen := 0
 @export var player_worms : int
 @export var first_path_node : Node2D
 @export var enemy_spawner : Node
+@export var player_money : int
 
 func get_first_path_node():
 	return first_path_node
