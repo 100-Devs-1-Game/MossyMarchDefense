@@ -1,27 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://btp7hnqxcg8sn"]
+[gd_scene load_steps=9 format=3 uid="uid://btp7hnqxcg8sn"]
 
 [ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/pathing/path_node.tscn" id="2_oeym1"]
 [ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/level/level_manager.tscn" id="3_gsljs"]
 [ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/level/enemy_spawner.tscn" id="3_oeym1"]
+[ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/towers/debug_tower.tscn" id="4_c0637"]
 
 [sub_resource type="Environment" id="Environment_m20e2"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y7ob1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oeym1"]
-vertices = PackedVector2Array(51.34375, 24.820313, 203.27344, 22.171875, 203.71875, 38.390625, 75.17969, 43.367188, 53.828125, 97.046875, 74.13281, 99.36719, 61.242188, 102.97656)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5, 6)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(44, 102, 59, 114, 84, 107, 85, 53, 214, 48, 213, 12, 41, 15)])
+vertices = PackedVector2Array(51.09375, 24.820313, 205.4375, 22.179688, 204.50781, 39.921875, 78, 38.921875, 51.898438, 106, 78, 81.92969, 72.92969, 106, 213.67969, 105.0625, 215.27344, 82.921875)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5, 6), PackedInt32Array(7, 6, 5, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(42, 116, 73, 116, 223, 115, 226, 73, 88, 72, 88, 49, 214, 50, 216, 12, 41, 15)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeym1"]
 size = Vector2(217, 120)
 
 [node name="DebugPathing" type="Node2D"]
 
-[node name="PathNode3" parent="." node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_oeym1")]
-position = Vector2(59, 103)
+[node name="PathNode4" parent="." node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_oeym1")]
+position = Vector2(204, 101)
 next_path_node = NodePath(".")
 exit_node = true
+
+[node name="PathNode3" parent="." node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_oeym1")]
+position = Vector2(59, 103)
+next_path_node = NodePath("../PathNode4")
 
 [node name="PathNode2" parent="." node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_oeym1")]
 position = Vector2(54, 30)
@@ -54,5 +59,14 @@ navigation_polygon = SubResource("NavigationPolygon_oeym1")
 position = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Area2D"]
-position = Vector2(135, 73)
+position = Vector2(140, 73)
 shape = SubResource("RectangleShape2D_oeym1")
+
+[node name="debug_tower" parent="." instance=ExtResource("4_c0637")]
+position = Vector2(32, 67)
+
+[node name="debug_tower2" parent="." instance=ExtResource("4_c0637")]
+position = Vector2(94, 68)
+
+[node name="debug_tower3" parent="." instance=ExtResource("4_c0637")]
+position = Vector2(128, 127)
