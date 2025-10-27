@@ -31,6 +31,7 @@ func shoot():
 	instance.dir = global_rotation
 	instance.spawnPos = marker.global_position 
 	instance.spawnRot = rotation
+	instance.base_damage = bulletDamage
 	get_tree().current_scene.add_child.call_deferred(instance)
 
 func _enter_tower_range(body):

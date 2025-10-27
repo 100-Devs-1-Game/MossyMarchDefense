@@ -16,7 +16,7 @@ func on_body_entered(body):
 		var level_manager = get_tree().get_first_node_in_group("level_manager")
 		level_manager.remove_worms()
 		# TODO: Health and score
-		body.queue_free()
+		body.kill_enemy()
 		return
 	
 	body.movement_component.update_target_location(body.navigation_agent_2d, next_path_node.global_position)
