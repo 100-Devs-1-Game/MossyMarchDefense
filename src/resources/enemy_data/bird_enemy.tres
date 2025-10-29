@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://b885o8batobdq"]
+
+[ext_resource type="Texture2D" uid="uid://bu4oudvdc6hcv" path="res://assets/DEBUG/debug_bird.png" id="1_6adm7"]
+[ext_resource type="Script" uid="uid://kk83cijskx3q" path="res://resources/enemy_data/enemy.gd" id="1_rxqta"]
+
+[resource]
+script = ExtResource("1_rxqta")
+enemy_type = 1
+movement_speed = 40.0
+enemy_sprite = ExtResource("1_6adm7")
+metadata/_custom_type_script = "uid://kk83cijskx3q"
