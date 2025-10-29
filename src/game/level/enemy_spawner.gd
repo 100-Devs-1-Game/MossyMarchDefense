@@ -1,7 +1,8 @@
 extends Node
 
+
 var enemy_queue : Array[String] 
-var spawning_enemies := true
+var spawning_enemies := false
 var enemy = preload("res://game/enemies/debug_enemy.tscn")
 
 
@@ -21,7 +22,6 @@ var enemy_dictionary = {
 
 func _ready():
 	spawn_timer.timeout.connect(on_spawn_timer_timeout)
-	new_round()
 	
 	
 func spawn_next_enemy():
@@ -39,8 +39,9 @@ func spawn_next_enemy():
 	else:
 		spawn_timer.start()
 
-func new_round():
-	var wave = wave_set[level_manager.current_wave - 1]
+func start_wave():
+	spawning_enemies = true
+	var wave = wave_set[level_manager.current_wave - 1].duplicate()
 	enemy_queue = wave.enemy_queue
 	spawn_timer.wait_time = wave.enemy_spawn_timer
 	spawn_timer.start()
@@ -48,4 +49,3 @@ func new_round():
 func on_spawn_timer_timeout():
 	if spawning_enemies:
 		spawn_next_enemy()
-		
