@@ -8,6 +8,7 @@ extends Node2D
 
 
 var enemy_type : GlobalEnums.EnemyType
+var payout : int
 var level_manager
 
 func _ready():
@@ -22,7 +23,9 @@ func load_enemy_stats(enemy_stats : EnemyData):
 	enemy_type = enemy_stats.enemy_type
 	movement_component.max_movement_speed = enemy_stats.movement_speed
 	sprite_2d.texture = enemy_stats.enemy_sprite
+	payout = enemy_stats.enemy_payout
 
 func kill_enemy():
 	level_manager.adjust_enemies(-1)
+	level_manager.pay_player(payout)
 	self.queue_free()

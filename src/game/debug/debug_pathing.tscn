@@ -82,3 +82,24 @@ offset_left = 209.0
 offset_top = 168.0
 offset_right = 458.0
 offset_bottom = 276.0
+
+[node name="Worms" type="Label" parent="."]
+offset_left = 301.0
+offset_top = 39.0
+offset_right = 363.0
+offset_bottom = 88.0
+text = "WORMS: "
+
+[node name="PlayerMoney" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 62.0
+offset_right = 344.0
+offset_bottom = 85.0
+text = "$"
+
+[node name="WaveCounter" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 93.0
+offset_right = 349.0
+offset_bottom = 116.0
+text = "WAVE"
