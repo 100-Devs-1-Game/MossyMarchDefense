@@ -8,4 +8,5 @@ script = ExtResource("1_mo0j5")
 enemy_type = 2
 movement_speed = 20.0
 enemy_sprite = ExtResource("1_3aj2t")
+use_debug = true
 metadata/_custom_type_script = "uid://kk83cijskx3q"

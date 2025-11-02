@@ -1,0 +1,49 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://bbuq2ktiyjn32"]
+
+[ext_resource type="Texture2D" uid="uid://b8mx6uf8nrwk7" path="res://assets/Animations/BirdWalking/bord_away1.png" id="1_v0a44"]
+[ext_resource type="Texture2D" uid="uid://dskv230y1m14f" path="res://assets/Animations/BirdWalking/bord_away2.png" id="2_vemtn"]
+[ext_resource type="Texture2D" uid="uid://brgrhcvrndd71" path="res://assets/Animations/BirdWalking/bord1.png" id="3_oyk16"]
+[ext_resource type="Texture2D" uid="uid://b1fkj3hoemfoc" path="res://assets/Animations/BirdWalking/bord2.png" id="4_0yyn1"]
+[ext_resource type="Texture2D" uid="uid://djcgml2tn047t" path="res://assets/Animations/BirdWalking/bord_toward1.png" id="5_0rvdw"]
+[ext_resource type="Texture2D" uid="uid://3wq4g3mkxb0r" path="res://assets/Animations/BirdWalking/bord_toward2.png" id="6_0s2uf"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v0a44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vemtn")
+}],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oyk16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0yyn1")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0rvdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0s2uf")
+}],
+"loop": true,
+"name": &"walk_towards",
+"speed": 5.0
+}]

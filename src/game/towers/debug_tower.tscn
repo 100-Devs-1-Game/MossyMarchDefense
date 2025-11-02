@@ -10,6 +10,7 @@ size = Vector2(13, 18)
 radius = 52.0
 
 [node name="debug_tower" type="StaticBody2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_5m2eg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
