@@ -18,7 +18,7 @@ func _ready():
 	
 	movement_component.update_target_location(navigation_agent_2d, level_manager.get_first_path_node().global_position)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	movement_component.move_to_target(self, navigation_agent_2d)
 	play_animation()
 

@@ -7,6 +7,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_bc8x5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ow6v"]
+radius = 3.6666667
 
 [node name="DebugEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_mask = 2

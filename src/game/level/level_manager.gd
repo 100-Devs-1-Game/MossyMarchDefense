@@ -12,19 +12,34 @@ var enemies_on_screen := 0
 @export var enemy_spawner : Node
 @export var player_money : int
 @export var wave_start_button : Button
+@export var player_health: Label
 
 # DEBUG LIKELY (will be better later)
 # Anything to do with these text labels is DEBUG, WILL BE IMRPOVED LATER
-@onready var worms = $"../Worms"
-@onready var player_money_label = $"../PlayerMoney"
-@onready var wave_counter = $"../WaveCounter"
+#I swapped em to export so we can move them around without having to rewrite🥚
+@export var worms: Label
+@export var player_money_label: Label
+@export var wave_counter: Label
 
+#defines and sets health for the player so we can alter it here🥚
+@export var starting_hp: int = 30
+var current_hp: int = starting_hp
 
 func _ready():
 	wave_start_button.pressed.connect(on_wave_start_button_pressed)
-	
 	worms.text = "WORMS: " + str(player_worms)
 	player_money_label.text = "$" + str(player_money)
+	
+	if first_path_node: #if first node available
+		#connect to it's damage_taken signal, and call damage_player on recieve
+		first_path_node.damage_taken.connect(damage_player)
+
+func _process(_delta: float) -> void:
+	_refresh_ui()
+
+func _refresh_ui() -> void:
+	if player_health:
+		player_health.text = "HP:" + str(current_hp) + "/" + str(starting_hp)
 
 func get_first_path_node():
 	return first_path_node
@@ -48,7 +63,8 @@ func adjust_enemies(modifier : int):
 func start_wave():
 	wave_counter.text = "WAVE " + str(current_wave)
 	between_waves = false
-	wave_start_button.visible = false
+	wave_start_button.disabled = true #i swapped it to disable
+	wave_start_button.text = "Wave in progress" #mb if it interferes with things🥚
 	enemy_spawner.start_wave()
 
 func end_wave():
@@ -58,11 +74,18 @@ func end_wave():
 		win_game()
 	else:
 		between_waves = true
-		wave_start_button.visible = true
+		wave_start_button.disabled = false
+		wave_start_button.text = "Next Wave"
 
 func pay_player(payout: int):
 	player_money += payout
 	player_money_label.text = "$" + str(player_money)
+
+func damage_player(amount: int) -> void:
+	current_hp -= amount
+	if current_hp <= 0: #if hp is or below 0, gameover
+		current_hp = 0
+		lose_game()
 
 # TODO: Obviously this aint the final functions for winning nor losing
 func win_game():

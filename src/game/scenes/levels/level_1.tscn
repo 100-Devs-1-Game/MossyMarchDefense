@@ -1,0 +1,360 @@
+[gd_scene load_steps=19 format=3 uid="uid://du7map0fgin22"]
+
+[ext_resource type="Script" uid="uid://kqia4beo8rdk" path="res://game/scenes/levels/pathhandler.gd" id="1_mxxve"]
+[ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/pathing/path_node.tscn" id="2_82bkl"]
+[ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/level/enemy_spawner.tscn" id="3_naiax"]
+[ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/level/level_manager.tscn" id="4_63j5y"]
+[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="4_naiax"]
+[ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/towers/debug_tower.tscn" id="6_63j5y"]
+
+[sub_resource type="Gradient" id="Gradient_mxxve"]
+colors = PackedColorArray(0.21978644, 0.5826238, 0, 1, 0.1903801, 0.5143894, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5gvcb"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1k2pe"]
+noise = SubResource("FastNoiseLite_5gvcb")
+color_ramp = SubResource("Gradient_mxxve")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1k2pe"]
+vertices = PackedVector2Array(445.92188, 530.09375, 1330, 522.09375, 1330, 579.1172, 377.03125, 590.8672, 378.03906, 329.8828, 447.90625, 288.89844, 121.0625, 285.90625, 49.960938, 333.8672, 49.03125, 64, 119.9375, 110.10156, 697.22656, 64, 641, 104.89844, 703.22656, 321.17188, 641, 382.8125, 892.0703, 378.17188, 837, 318.82813, 894.0703, 112.25, 837, 62.921875, 1216, 60.070313, 1063.8828, 108, 1216, 108)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(9, 8, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 13, 12, 15), PackedInt32Array(16, 14, 15, 17), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(18, 20, 19)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1064, 118, 904, 122, 902, 388, 631, 393, 631, 115, 130, 120, 131, 276, 458, 279, 456, 520, 1340, 512, 1340, 589, 367, 601, 368, 340, 40, 344, 39, 54, 707, 54, 713, 311, 827, 309, 827, 53, 1226, 50, 1226, 118)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gvcb"]
+size = Vector2(1154, 650)
+
+[sub_resource type="Resource" id="Resource_63j5y"]
+script = ExtResource("4_naiax")
+enemy_queue = Array[String](["bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird"])
+enemy_spawn_timer = 1.4
+metadata/_custom_type_script = "uid://5t10kxtq3ygk"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_naiax"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.71992487, 0.73521674, 1.1551381e-06, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63j5y"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.88804847, 0.902335, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnkwr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qa6m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxit8"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.56338006, 0.19531083, 0.24482927, 1)
+border_width_left = 8
+border_width_top = 2
+border_width_right = 8
+border_width_bottom = 2
+border_color = Color(0.47840893, 0.1588434, 0.20017853, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvaum"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0.39215687)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Level 1" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="grass" type="TextureRect" parent="Background"]
+z_index = -3
+offset_left = -252.0
+offset_top = -155.0
+offset_right = 1408.0
+offset_bottom = 808.0
+texture = SubResource("NoiseTexture2D_1k2pe")
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
+
+[node name="Path" type="Node2D" parent="."]
+script = ExtResource("1_mxxve")
+nav_polygon = SubResource("NavigationPolygon_1k2pe")
+polygon_z_index = -2
+path_color = Color(0.8778953, 0.67546505, 0.40634537, 1)
+
+[node name="PathPoints" type="Node2D" parent="Path"]
+
+[node name="PathNode" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(1186, 85)
+next_path_node = NodePath("../PathNode2")
+
+[node name="PathNode2" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(857, 88)
+next_path_node = NodePath("../PathNode3")
+
+[node name="PathNode3" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(868, 357)
+next_path_node = NodePath("../PathNode4")
+
+[node name="PathNode4" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(663, 356)
+next_path_node = NodePath("../PathNode5")
+
+[node name="PathNode5" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(670, 76)
+next_path_node = NodePath("../PathNode6")
+
+[node name="PathNode6" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(73, 91)
+next_path_node = NodePath("../PathNode7")
+
+[node name="PathNode7" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(82, 319)
+next_path_node = NodePath("../PathNode8")
+
+[node name="PathNode8" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(425, 311)
+next_path_node = NodePath("../PathNode9")
+
+[node name="PathNode9" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(412, 573)
+next_path_node = NodePath("../PathNode10")
+
+[node name="PathNode10" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(1304, 548)
+next_path_node = NodePath(".")
+exit_node = true
+
+[node name="PlaceableRegion" type="Area2D" parent="Path" groups=["PlacableRegion"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PlaceableRegion"]
+position = Vector2(579, 328)
+shape = SubResource("RectangleShape2D_5gvcb")
+debug_color = Color(1.1551381e-06, 0.6399762, 0.36140433, 0.41960785)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Path" groups=["EnemyPath"]]
+navigation_polygon = SubResource("NavigationPolygon_1k2pe")
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("level_manager", "spawner_path_node") instance=ExtResource("3_naiax")]
+level_manager = NodePath("../LevelManager")
+base_spawn_time = 0.3
+spawner_path_node = NodePath("../Path/PathPoints/PathNode")
+wave_set = Array[ExtResource("4_naiax")]([SubResource("Resource_63j5y")])
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "player_health", "worms", "player_money_label", "wave_counter") instance=ExtResource("4_63j5y")]
+first_path_node = NodePath("../Path/PathPoints/PathNode")
+enemy_spawner = NodePath("../EnemySpawner")
+wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
+player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
+worms = NodePath("../UI/Control/Panel/VBoxContainer/Worms")
+player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
+wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = -263.0
+offset_right = 281.0
+offset_bottom = -38.0
+grow_vertical = 0
+
+[node name="NextWave" type="Button" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_63j5y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
+text = "Next Wave"
+
+[node name="Shop" type="Button" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_63j5y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
+text = "Tower Shop"
+
+[node name="Shop2" type="Button" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_63j5y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
+text = "Place Towers"
+
+[node name="Pause" type="Button" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_63j5y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
+text = "Pause Game"
+
+[node name="HPPanel" type="Panel" parent="UI/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 41.325)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cxit8")
+
+[node name="PlayerHP" type="Label" parent="UI/Control/VBoxContainer/HPPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 33
+text = "HP: 30/30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -77.0
+offset_bottom = 78.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gvaum")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Worms" type="Label" parent="UI/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "WORMS: 0"
+horizontal_alignment = 1
+
+[node name="PlayerMoney" type="Label" parent="UI/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "$0"
+horizontal_alignment = 1
+
+[node name="WaveCounter" type="Label" parent="UI/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "WAVE 1"
+horizontal_alignment = 1
+
+[node name="debug_tower" parent="UI/Control" instance=ExtResource("6_63j5y")]
+position = Vector2(763, 113)
+
+[node name="debug_tower2" parent="UI/Control" instance=ExtResource("6_63j5y")]
+position = Vector2(763, 261)
+
+[node name="debug_tower3" parent="UI/Control" instance=ExtResource("6_63j5y")]
+position = Vector2(158, 195)
+
+[node name="debug_tower4" parent="UI/Control" instance=ExtResource("6_63j5y")]
+position = Vector2(482, 483)

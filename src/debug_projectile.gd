@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 2
+@export var speed = 5
 
 var base_damage = 1
 var dir : float

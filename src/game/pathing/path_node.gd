@@ -4,9 +4,14 @@ extends Node2D
 @export var exit_node : bool = false
 @onready var area_2d = $Area2D
 
+signal damage_taken
+
 func _ready():
 	area_2d.body_entered.connect(on_body_entered)
 	
+	#if this is the exit node automatically sets itself as the next
+	if exit_node:
+		next_path_node = self
 	
 func on_body_entered(body):
 	if not body in get_tree().get_nodes_in_group("enemy"):
@@ -17,6 +22,7 @@ func on_body_entered(body):
 		level_manager.remove_worms()
 		# TODO: Health and score
 		body.kill_enemy()
+		damage_taken.emit() #when damage dealt, emit a signal to let listeners know
 		return
 	
 	body.movement_component.update_target_location(body.navigation_agent_2d, next_path_node.global_position)
