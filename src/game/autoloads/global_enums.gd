@@ -1,3 +1,3 @@
 extends Node
 
-enum EnemyType {Frog, Bird, Snail}
+enum EnemyType {Frog, Bird, Snail, Worm}

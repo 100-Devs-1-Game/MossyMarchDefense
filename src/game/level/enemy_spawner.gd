@@ -8,7 +8,8 @@ var enemy = preload("res://game/enemies/debug_enemy.tscn")
 var enemy_dictionary = {
 	"snail": preload("res://resources/enemy_data/snail_enemy.tres"),
 	"frog": preload("res://resources/enemy_data/frog_enemy.tres"),
-	"bird": preload("res://resources/enemy_data/bird_enemy.tres")
+	"bird": preload("res://resources/enemy_data/bird_enemy.tres"),
+	"worm": preload("res://resources/enemy_data/worm_friend.tres")
 }
 
 @export var level_manager : Node

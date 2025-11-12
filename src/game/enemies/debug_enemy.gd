@@ -6,6 +6,8 @@ extends Node2D
 @onready var health_component = $HealthComponent
 @onready var sprite_2d = $Sprite2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var collision_shape_2d = $CollisionShape2D
+@onready var area_2d = $Area2D
 
 
 var enemy_type : GlobalEnums.EnemyType
@@ -16,7 +18,9 @@ var using_debug_sprite := false
 func _ready():
 	level_manager = get_tree().get_first_node_in_group("level_manager")
 	
-	movement_component.update_target_location(navigation_agent_2d, level_manager.get_first_path_node().global_position)
+	movement_component.update_target_location(navigation_agent_2d, level_manager.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
+	
+	area_2d.body_entered.connect(on_body_entered)
 	
 func _physics_process(_delta):
 	movement_component.move_to_target(self, navigation_agent_2d)
@@ -33,8 +37,9 @@ func load_enemy_stats(enemy_stats : EnemyData):
 	payout = enemy_stats.enemy_payout
 
 func kill_enemy():
-	level_manager.adjust_enemies(-1)
-	level_manager.pay_player(payout)
+	if not enemy_type == GlobalEnums.EnemyType.Worm:
+		level_manager.adjust_enemies(-1)
+		level_manager.pay_player(payout)
 	self.queue_free()
 
 func play_animation():
@@ -61,3 +66,7 @@ func play_animation():
 			animated_sprite_2d.play(&"walk_towards")
 		else:
 			animated_sprite_2d.play(&"walk_back")
+			
+func on_body_entered(body):
+	if body.is_in_group("enemy") and body.enemy_type == GlobalEnums.EnemyType.Worm and enemy_type != GlobalEnums.EnemyType.Worm:
+		body.queue_free()

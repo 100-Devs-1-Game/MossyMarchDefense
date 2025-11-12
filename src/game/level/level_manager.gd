@@ -20,12 +20,15 @@ var enemies_on_screen := 0
 @export var worms: Label
 @export var player_money_label: Label
 @export var wave_counter: Label
+@export var worm_spawn_node: Node # This is just set to 2nd node for now for testing
+@export var worm_path_node: Node # Again debug
 
 #defines and sets health for the player so we can alter it here🥚
 @export var starting_hp: int = 30
 var current_hp: int = starting_hp
 
 func _ready():
+	debug_spawn_worms()
 	wave_start_button.pressed.connect(on_wave_start_button_pressed)
 	worms.text = "WORMS: " + str(player_worms)
 	player_money_label.text = "$" + str(player_money)
@@ -41,7 +44,9 @@ func _refresh_ui() -> void:
 	if player_health:
 		player_health.text = "HP:" + str(current_hp) + "/" + str(starting_hp)
 
-func get_first_path_node():
+func get_first_path_node(worm: bool):
+	if worm:
+		return worm_path_node
 	return first_path_node
 
 func remove_worms():
@@ -54,6 +59,12 @@ func remove_worms():
 		
 	adjust_enemies(-1)
 
+func add_worms():
+	player_worms += 1
+	
+	worms.text = "WORMS: " + str(player_worms)
+	
+	
 func adjust_enemies(modifier : int):
 	enemies_on_screen += modifier
 	
@@ -61,6 +72,7 @@ func adjust_enemies(modifier : int):
 		end_wave()
 
 func start_wave():
+	
 	wave_counter.text = "WAVE " + str(current_wave)
 	between_waves = false
 	wave_start_button.disabled = true #i swapped it to disable
@@ -93,6 +105,14 @@ func win_game():
 
 func lose_game():
 	get_tree().quit()
+	
+func debug_spawn_worms():
+	var worm = enemy_spawner.enemy
+	var worm_instance = worm.instantiate()
+	var enemies_group = get_tree().get_first_node_in_group("enemies_group")
+	enemies_group.add_child(worm_instance)
+	worm_instance.load_enemy_stats(enemy_spawner.enemy_dictionary["worm"])
+	worm_instance.global_position = worm_spawn_node.global_position
 
 func on_wave_start_button_pressed():
 	if between_waves:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://tgcyp6gpnxip"]
+[gd_scene load_steps=7 format=3 uid="uid://tgcyp6gpnxip"]
 
 [ext_resource type="Script" uid="uid://7e63ryy8u1a6" path="res://game/enemies/debug_enemy.gd" id="1_7ow6v"]
 [ext_resource type="PackedScene" uid="uid://b63va5oryp3q1" path="res://game/enemies/movement_component.tscn" id="1_y28og"]
@@ -9,7 +9,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ow6v"]
 radius = 3.6666667
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1emua"]
+radius = 3.681787
+
 [node name="DebugEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 5
 collision_mask = 2
 script = ExtResource("1_7ow6v")
 
@@ -30,3 +34,10 @@ scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_7ow6v")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1emua")

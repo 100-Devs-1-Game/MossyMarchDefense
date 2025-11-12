@@ -19,10 +19,13 @@ func on_body_entered(body):
 	
 	if exit_node:
 		var level_manager = get_tree().get_first_node_in_group("level_manager")
-		level_manager.remove_worms()
-		# TODO: Health and score
+		if body.enemy_type == GlobalEnums.EnemyType.Worm:
+			level_manager.add_worms()
+		else:
+			level_manager.remove_worms()
+			damage_taken.emit() # TODO: Health and score #when damage dealt, emit a signal to let listeners know
+			
 		body.kill_enemy()
-		damage_taken.emit() #when damage dealt, emit a signal to let listeners know
 		return
 	
 	body.movement_component.update_target_location(body.navigation_agent_2d, next_path_node.global_position)

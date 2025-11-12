@@ -43,7 +43,7 @@ next_path_node = NodePath("../PathNode2")
 
 [node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "worms", "player_money_label", "wave_counter") instance=ExtResource("3_gsljs")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "worms", "player_money_label", "wave_counter", "worm_spawn_node", "worm_path_node") instance=ExtResource("3_gsljs")]
 player_worms = 20
 first_path_node = NodePath("../PathNode")
 enemy_spawner = NodePath("../EnemySpawner")
@@ -51,6 +51,8 @@ wave_start_button = NodePath("../WaveStart")
 worms = NodePath("../Worms")
 player_money_label = NodePath("../PlayerMoney")
 wave_counter = NodePath("../WaveCounter")
+worm_spawn_node = NodePath("../PathNode2")
+worm_path_node = NodePath("../PathNode3")
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("level_manager", "spawner_path_node") instance=ExtResource("3_oeym1")]
 level_manager = NodePath("../LevelManager")

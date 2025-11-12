@@ -35,7 +35,7 @@ func shoot():
 	get_tree().current_scene.add_child.call_deferred(instance)
 
 func _enter_tower_range(body):
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") and body.enemy_type != GlobalEnums.EnemyType.Worm:
 		currTargets.append(body)
 		if currTarget == null:
 			currTarget = body
