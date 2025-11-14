@@ -1,12 +1,57 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://do6wgm75d1axm"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=9 format=3 uid="uid://do6wgm75d1axm"]
 
-[ext_resource type="Texture2D" uid="uid://drikc04cw5k1n" path="res://assets/DEBUG/debug_snail.png" id="1_3aj2t"]
 [ext_resource type="Script" uid="uid://kk83cijskx3q" path="res://resources/enemy_data/enemy.gd" id="1_mo0j5"]
+[ext_resource type="Texture2D" uid="uid://de1b5vcuscoxi" path="res://assets/Animations/SnailWalking/snail_away1.png" id="2_5st6k"]
+[ext_resource type="Texture2D" uid="uid://crcu54lx2x4of" path="res://assets/Animations/SnailWalking/snail_away2.png" id="3_cap44"]
+[ext_resource type="Texture2D" uid="uid://d4s3olc4qvvp" path="res://assets/Animations/SnailWalking/snail1.png" id="4_rbbpi"]
+[ext_resource type="Texture2D" uid="uid://dydu3bk34s4k6" path="res://assets/Animations/SnailWalking/snail2.png" id="5_do3my"]
+[ext_resource type="Texture2D" uid="uid://dywxokc2hn2e5" path="res://assets/Animations/SnailWalking/snail_towards1.png" id="6_36pfg"]
+[ext_resource type="Texture2D" uid="uid://cql1uu6egjoq8" path="res://assets/Animations/SnailWalking/snail_towards2.png" id="7_ldsvg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8u3l"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5st6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cap44")
+}],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rbbpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_do3my")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_36pfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ldsvg")
+}],
+"loop": true,
+"name": &"walk_towards",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_mo0j5")
 enemy_type = 2
 movement_speed = 20.0
-enemy_sprite = ExtResource("1_3aj2t")
-use_debug = true
+sprite_frames = SubResource("SpriteFrames_i8u3l")
 metadata/_custom_type_script = "uid://kk83cijskx3q"

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_42tur")
-enemy_queue = Array[String](["frog", "frog", "frog", "frog", "frog", "frog", "frog", "frog"])
+enemy_queue = Array[String](["snail", "snail", "snail", "snail"])
 enemy_spawn_timer = 0.3
 metadata/_custom_type_script = "uid://5t10kxtq3ygk"

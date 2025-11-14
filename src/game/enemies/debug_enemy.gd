@@ -4,7 +4,6 @@ extends Node2D
 @onready var movement_component = $MovementComponent
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var health_component = $HealthComponent
-@onready var sprite_2d = $Sprite2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var area_2d = $Area2D
@@ -13,7 +12,6 @@ extends Node2D
 var enemy_type : GlobalEnums.EnemyType
 var payout : int
 var level_manager
-var using_debug_sprite := false
 
 func _ready():
 	level_manager = get_tree().get_first_node_in_group("level_manager")
@@ -29,11 +27,7 @@ func _physics_process(_delta):
 func load_enemy_stats(enemy_stats : EnemyData):
 	enemy_type = enemy_stats.enemy_type
 	movement_component.max_movement_speed = enemy_stats.movement_speed
-	if enemy_stats.use_debug == true:
-		sprite_2d.texture = enemy_stats.enemy_sprite
-		using_debug_sprite = true
-	else:
-		animated_sprite_2d.sprite_frames = enemy_stats.sprite_frames
+	animated_sprite_2d.sprite_frames = enemy_stats.sprite_frames
 	payout = enemy_stats.enemy_payout
 
 func kill_enemy():
@@ -44,9 +38,6 @@ func kill_enemy():
 
 func play_animation():
 	# Ugly if statement block incoming!!! ("Uh Oh!" <--- that's you after reading this)
-	
-	if using_debug_sprite:
-		return
 	
 	var current_velocity = movement_component.velocity
 	

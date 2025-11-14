@@ -26,9 +26,6 @@ max_movement_speed = 15.0
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_bc8x5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_7ow6v")
