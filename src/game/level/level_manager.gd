@@ -29,6 +29,7 @@ var current_hp: int = starting_hp
 
 func _ready():
 	debug_spawn_worms()
+	
 	wave_start_button.pressed.connect(on_wave_start_button_pressed)
 	worms.text = "WORMS: " + str(player_worms)
 	player_money_label.text = "$" + str(player_money)
@@ -107,6 +108,10 @@ func lose_game():
 	get_tree().quit()
 	
 func debug_spawn_worms():
+	#only show in debug scene, when this is set
+	if worm_spawn_node == null:
+		return
+
 	var worm = enemy_spawner.enemy
 	var worm_instance = worm.instantiate()
 	var enemies_group = get_tree().get_first_node_in_group("enemies_group")
