@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://deldoejppigim"]
+
+[ext_resource type="Script" uid="uid://eaakqr071w6s" path="res://game/enemies/health_bar.gd" id="1_fjsny"]
+
+[sub_resource type="Gradient" id="Gradient_fjsny"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.49364084, 0.5760999, 0.61063695, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qxrim"]
+gradient = SubResource("Gradient_fjsny")
+width = 16
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_emn54"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.8424192, 0.39851096, 0.27929965, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p3fc1"]
+gradient = SubResource("Gradient_emn54")
+width = 16
+height = 4
+
+[node name="HealthBar" type="Sprite2D"]
+texture = SubResource("GradientTexture2D_qxrim")
+script = ExtResource("1_fjsny")
+
+[node name="Fill" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_p3fc1")
