@@ -11,7 +11,7 @@ func _ready():
 	global_position = spawnPos
 	global_rotation = spawnRot
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = Vector2(0,-speed).rotated(dir)
 	var collision = move_and_collide(velocity)
 	if collision:

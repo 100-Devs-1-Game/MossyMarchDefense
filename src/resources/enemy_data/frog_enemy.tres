@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=10 format=3 uid="uid://c0usk1rf7c8fe"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=9 format=3 uid="uid://c0usk1rf7c8fe"]
 
-[ext_resource type="Texture2D" uid="uid://cbwub041nkdos" path="res://assets/DEBUG/debug_frog.png" id="1_41845"]
 [ext_resource type="Script" uid="uid://kk83cijskx3q" path="res://resources/enemy_data/enemy.gd" id="2_tpogw"]
 [ext_resource type="Texture2D" uid="uid://b0rvy4fkp447k" path="res://assets/Animations/FrogWalking/frog_away1.png" id="3_u5x2e"]
 [ext_resource type="Texture2D" uid="uid://cs8polfiqj518" path="res://assets/Animations/FrogWalking/frog_away2.png" id="4_0o0bl"]
@@ -53,6 +52,5 @@ animations = [{
 [resource]
 script = ExtResource("2_tpogw")
 movement_speed = 30.0
-enemy_sprite = ExtResource("1_41845")
 sprite_frames = SubResource("SpriteFrames_0ri6d")
 metadata/_custom_type_script = "uid://kk83cijskx3q"

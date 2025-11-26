@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfq7t4gt3n0r2"]
+
+[ext_resource type="PackedScene" uid="uid://dveghwoyhw5i1" path="res://game/towers/tower_placement.tscn" id="1_wo32r"]
+[ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/towers/tower_marker.tscn" id="2_bebh6"]
+[ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/towers/debug_tower.tscn" id="2_u3624"]
+
+[node name="DebugTowerPlacement" type="Node2D"]
+
+[node name="TowerPlacement" parent="." instance=ExtResource("1_wo32r")]
+debug = true
+
+[node name="TowerMarker" parent="." instance=ExtResource("2_bebh6")]
+position = Vector2(174, 290)
+
+[node name="debug_tower" parent="." instance=ExtResource("2_u3624")]
+position = Vector2(435, 231)
+
+[node name="TowerMarker2" parent="." instance=ExtResource("2_bebh6")]
+position = Vector2(323, 464)
+
+[node name="TowerMarker3" parent="." instance=ExtResource("2_bebh6")]
+position = Vector2(732, 223)
+
+[node name="TowerMarker4" parent="." instance=ExtResource("2_bebh6")]
+position = Vector2(666, 427)

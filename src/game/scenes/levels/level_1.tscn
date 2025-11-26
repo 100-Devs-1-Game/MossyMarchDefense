@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://du7map0fgin22"]
+[gd_scene load_steps=20 format=3 uid="uid://du7map0fgin22"]
 
 [ext_resource type="Script" uid="uid://kqia4beo8rdk" path="res://game/scenes/levels/pathhandler.gd" id="1_mxxve"]
 [ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/pathing/path_node.tscn" id="2_82bkl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/level/level_manager.tscn" id="4_63j5y"]
 [ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="4_naiax"]
 [ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/towers/debug_tower.tscn" id="6_63j5y"]
+[ext_resource type="PackedScene" uid="uid://dveghwoyhw5i1" path="res://game/towers/tower_placement.tscn" id="6_gvaum"]
 
 [sub_resource type="Gradient" id="Gradient_mxxve"]
 colors = PackedColorArray(0.21978644, 0.5826238, 0, 1, 0.1903801, 0.5143894, 0, 1)
@@ -210,14 +211,17 @@ base_spawn_time = 0.3
 spawner_path_node = NodePath("../Path/PathPoints/PathNode")
 wave_set = Array[ExtResource("4_naiax")]([SubResource("Resource_63j5y")])
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "player_health", "worms", "player_money_label", "wave_counter") instance=ExtResource("4_63j5y")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "place_towers_button", "player_health", "worms", "player_money_label", "wave_counter") instance=ExtResource("4_63j5y")]
 first_path_node = NodePath("../Path/PathPoints/PathNode")
 enemy_spawner = NodePath("../EnemySpawner")
 wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
+place_towers_button = NodePath("../UI/Control/VBoxContainer/PlaceTowers")
 player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
 worms = NodePath("../UI/Control/Panel/VBoxContainer/Worms")
 player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
 wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
+
+[node name="TowerPlacement" parent="." instance=ExtResource("6_gvaum")]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -264,7 +268,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
 text = "Tower Shop"
 
-[node name="Shop2" type="Button" parent="UI/Control/VBoxContainer"]
+[node name="PlaceTowers" type="Button" parent="UI/Control/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)

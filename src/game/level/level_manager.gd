@@ -12,6 +12,7 @@ var enemies_on_screen := 0
 @export var enemy_spawner : Node
 @export var player_money : int
 @export var wave_start_button : Button
+@export var place_towers_button : Button
 @export var player_health: Label
 
 # DEBUG LIKELY (will be better later)
@@ -31,6 +32,7 @@ func _ready():
 	debug_spawn_worms()
 	
 	wave_start_button.pressed.connect(on_wave_start_button_pressed)
+	place_towers_button.pressed.connect(on_place_towers_button_pressed)
 	worms.text = "WORMS: " + str(player_worms)
 	player_money_label.text = "$" + str(player_money)
 	
@@ -122,3 +124,6 @@ func debug_spawn_worms():
 func on_wave_start_button_pressed():
 	if between_waves:
 		start_wave()
+		
+func on_place_towers_button_pressed():
+	$"../TowerPlacement".start()
