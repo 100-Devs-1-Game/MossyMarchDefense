@@ -8,7 +8,9 @@ extends Node2D
 @export var path_color: Color
 
 func _ready() -> void:
-	draw_path()
+	#path visuals is included in background asset, no need to draw again
+	#draw_path()
+	pass
 
 func draw_path() -> void:
 	if nav_polygon == null: #if no polygons, don't continue

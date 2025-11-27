@@ -1,24 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://ht2s7wyyb24a"]
 
 [ext_resource type="Script" uid="uid://bucr4bpnvq2ww" path="res://game/towers/debug_tower.gd" id="1_5m2eg"]
-[ext_resource type="Texture2D" uid="uid://dbipg4p6urhs0" path="res://assets/DEBUG/debug_tower.png" id="1_edwwu"]
+[ext_resource type="Texture2D" uid="uid://sy3gqfrcapv5" path="res://assets/Towers/Flower Pot/flower_pot1.png" id="2_5m2eg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_asv8d"]
-size = Vector2(13, 18)
+size = Vector2(113, 95)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sc58m"]
-radius = 52.0
+radius = 240.0
 
 [node name="debug_tower" type="StaticBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_5m2eg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, 0)
+position = Vector2(-0.16666667, 24.5)
 shape = SubResource("RectangleShape2D_asv8d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_edwwu")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_5m2eg")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -9)
