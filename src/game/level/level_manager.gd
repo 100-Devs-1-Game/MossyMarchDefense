@@ -25,6 +25,8 @@ var enemies_on_screen := 0
 @export var worm_path_node: Node # Again debug
 
 #defines and sets health for the player so we can alter it here🥚
+
+# TODO: Do we need hp? Lose con is if all worms are eaten idk how we'd fit hp in here
 @export var starting_hp: int = 30
 var current_hp: int = starting_hp
 

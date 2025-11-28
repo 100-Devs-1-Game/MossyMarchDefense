@@ -13,8 +13,8 @@ func _ready():
 
 func _process(delta):
 	if currTarget != null:
-		look_at(currTarget.global_position)
-		rotation += PI/2
+		#look_at(currTarget.global_position)
+		#rotation += PI/2
 		shootTimer -= delta
 		if shootTimer <= 0.0:
 			shoot()

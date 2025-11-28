@@ -20,7 +20,7 @@ size = Vector2(1920, 1080)
 
 [sub_resource type="Resource" id="Resource_63j5y"]
 script = ExtResource("4_naiax")
-enemy_queue = Array[String](["bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird"])
+enemy_queue = Array[String](["bird", "frog", "snail", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird"])
 enemy_spawn_timer = 1.4
 metadata/_custom_type_script = "uid://5t10kxtq3ygk"
 

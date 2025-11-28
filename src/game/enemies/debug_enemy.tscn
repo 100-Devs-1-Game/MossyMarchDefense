@@ -14,6 +14,7 @@ radius = 3.6666667
 radius = 3.681787
 
 [node name="DebugEnemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.09, 0.09)
 collision_layer = 5
 collision_mask = 2
 script = ExtResource("1_7ow6v")
@@ -28,11 +29,9 @@ health_bar = NodePath("../HealthBar")
 position = Vector2(0, -24)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_bc8x5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_7ow6v")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
