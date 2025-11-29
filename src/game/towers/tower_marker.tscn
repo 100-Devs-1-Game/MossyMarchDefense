@@ -1,14 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr1hj35781yes"]
+[gd_scene load_steps=2 format=3 uid="uid://cr1hj35781yes"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q08bt"]
 radius = 32.0
-
-[sub_resource type="Gradient" id="Gradient_517pa"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_p80fb"]
-gradient = SubResource("Gradient_517pa")
-width = 16
-height = 16
 
 [node name="TowerMarker" type="StaticBody2D"]
 collision_layer = 128
@@ -16,6 +9,3 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_q08bt")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_p80fb")

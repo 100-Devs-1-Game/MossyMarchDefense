@@ -1,40 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://hgdtyuo44bet"]
+[gd_scene load_steps=6 format=3 uid="uid://hgdtyuo44bet"]
 
+[ext_resource type="Script" uid="uid://c5f7o4flc3maj" path="res://game/towers/tower_shop.gd" id="1_pie42"]
 [ext_resource type="PackedScene" uid="uid://dveghwoyhw5i1" path="res://game/towers/tower_placement.tscn" id="1_sfydj"]
-[ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/towers/tower_marker.tscn" id="2_b8ilx"]
-[ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/towers/debug_tower.tscn" id="3_v4j5p"]
 [ext_resource type="Texture2D" uid="uid://sy3gqfrcapv5" path="res://assets/Towers/Flower Pot/flower_pot1.png" id="4_rx5uu"]
 [ext_resource type="Script" uid="uid://c4pb6655ohwjf" path="res://game/towers/drag_to_place.gd" id="5_pie42"]
 [ext_resource type="Texture2D" uid="uid://dxpj4ilbctyno" path="res://assets/Towers/Watering Can/watering_can1.png" id="6_35s2q"]
 
 [node name="TowerShop" type="Node2D"]
+script = ExtResource("1_pie42")
 
 [node name="TowerPlacement" parent="." instance=ExtResource("1_sfydj")]
 visible = false
 
-[node name="TowerMarker" parent="." instance=ExtResource("2_b8ilx")]
-position = Vector2(174, 290)
-
-[node name="debug_tower" parent="." instance=ExtResource("3_v4j5p")]
-position = Vector2(456, 289)
-scale = Vector2(1, 1)
-
-[node name="TowerMarker2" parent="." instance=ExtResource("2_b8ilx")]
-position = Vector2(323, 464)
-
-[node name="TowerMarker3" parent="." instance=ExtResource("2_b8ilx")]
-position = Vector2(732, 223)
-
-[node name="TowerMarker4" parent="." instance=ExtResource("2_b8ilx")]
-position = Vector2(666, 427)
-
 [node name="Plant" type="Sprite2D" parent="."]
-position = Vector2(1374.9999, 108.99999)
+position = Vector2(111.75, 126.55)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_rx5uu")
 script = ExtResource("5_pie42")
 
 [node name="WateringCan" type="Sprite2D" parent="."]
-position = Vector2(1380, 288)
+position = Vector2(277.75, 144.55)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_35s2q")

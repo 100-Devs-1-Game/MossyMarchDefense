@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://sy3gqfrcapv5" path="res://assets/Towers/Flower Pot/flower_pot1.png" id="2_nsiep"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vyb1f"]
-radius = 128.0
+radius = 32.0
 
 [node name="TowerPlacement" type="Node2D"]
 script = ExtResource("1_vyb1f")
@@ -13,7 +13,7 @@ script = ExtResource("1_vyb1f")
 [node name="SnapTo" type="Node2D" parent="."]
 
 [node name="TowerRange" type="Sprite2D" parent="SnapTo"]
-scale = Vector2(2.56, 2.56)
+scale = Vector2(5.12, 5.12)
 texture = ExtResource("2_1hgh3")
 
 [node name="TowerGhost" type="Sprite2D" parent="SnapTo"]

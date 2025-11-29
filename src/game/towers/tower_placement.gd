@@ -2,25 +2,22 @@ extends Node2D
 
 @onready var tower = load("res://game/towers/debug_tower.tscn")
 
-@export var debug : bool = false
+@export var tower_parent : Node2D
 
 var is_snapping = false
-var snap_global_position
+var snap_body
 
 func _ready() -> void:
 	$Area2D.body_entered.connect(enter_snap_range)
 	$Area2D.body_exited.connect(exit_snap_range)
-	
-	$"../Plant".on_dragged.connect(_on_plant_on_dragged)
-	
-	if !debug:
-		stop()
+		
+	stop()
 
 func _process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 	
 	if is_snapping:
-		$SnapTo.global_position = snap_global_position
+		$SnapTo.global_position = snap_body.global_position
 	else:
 		$SnapTo.position = Vector2.ZERO
 		
@@ -29,9 +26,11 @@ func _input(event):
 		if !event.is_pressed():
 			if is_snapping:
 				var tower_instance = tower.instantiate()
-				tower_instance.global_position = snap_global_position
 				tower_instance.scale = Vector2.ONE
-				get_tree().current_scene.add_child.call_deferred(tower_instance)
+				tower_instance.global_position = snap_body.global_position
+				tower_parent.add_child.call_deferred(tower_instance)
+				#disable collision
+				snap_body.process_mode = Node.PROCESS_MODE_DISABLED
 			stop()
 	
 func start() -> void:
@@ -48,7 +47,7 @@ func stop() -> void:
 	
 func enter_snap_range(body):
 	is_snapping = true
-	snap_global_position = body.global_position
+	snap_body = body
 
 func exit_snap_range(_body):
 	is_snapping = false
