@@ -43,11 +43,12 @@ next_path_node = NodePath("../PathNode2")
 
 [node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "worms", "player_money_label", "wave_counter", "worm_spawn_node", "worm_path_node") instance=ExtResource("3_gsljs")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "worms", "player_money_label", "wave_counter", "worm_spawn_node", "worm_path_node") instance=ExtResource("3_gsljs")]
 player_worms = 20
 first_path_node = NodePath("../PathNode")
 enemy_spawner = NodePath("../EnemySpawner")
 wave_start_button = NodePath("../WaveStart")
+pause_button = NodePath("../Pause")
 worms = NodePath("../Worms")
 player_money_label = NodePath("../PlayerMoney")
 wave_counter = NodePath("../WaveCounter")
@@ -77,18 +78,30 @@ shape = SubResource("RectangleShape2D_oeym1")
 
 [node name="debug_tower" parent="." instance=ExtResource("4_c0637")]
 position = Vector2(294, 313)
+scale = Vector2(1, 1)
 
 [node name="debug_tower2" parent="." instance=ExtResource("4_c0637")]
 position = Vector2(167, 173)
+scale = Vector2(1, 1)
 
 [node name="debug_tower3" parent="." instance=ExtResource("4_c0637")]
 position = Vector2(700, 459)
+scale = Vector2(1, 1)
 
 [node name="WaveStart" parent="." instance=ExtResource("7_y7ob1")]
 offset_left = 921.0
 offset_top = 319.0
 offset_right = 1170.0
 offset_bottom = 427.0
+
+[node name="Pause" parent="." instance=ExtResource("7_y7ob1")]
+offset_left = 923.0
+offset_top = 430.0
+offset_right = 1172.0
+offset_bottom = 538.0
+
+[node name="TextEdit" parent="Pause" index="0"]
+text = "PAUSE"
 
 [node name="Worms" type="Label" parent="."]
 offset_left = 1030.0
@@ -110,3 +123,5 @@ offset_top = 147.0
 offset_right = 1078.0
 offset_bottom = 170.0
 text = "WAVE"
+
+[editable path="Pause"]
