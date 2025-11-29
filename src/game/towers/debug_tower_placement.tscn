@@ -13,7 +13,8 @@ debug = true
 position = Vector2(174, 290)
 
 [node name="debug_tower" parent="." instance=ExtResource("2_u3624")]
-position = Vector2(435, 231)
+position = Vector2(453, 229)
+scale = Vector2(1, 1)
 
 [node name="TowerMarker2" parent="." instance=ExtResource("2_bebh6")]
 position = Vector2(323, 464)

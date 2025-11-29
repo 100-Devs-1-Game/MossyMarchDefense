@@ -11,6 +11,8 @@ func _ready() -> void:
 	$Area2D.body_entered.connect(enter_snap_range)
 	$Area2D.body_exited.connect(exit_snap_range)
 	
+	$"../Plant".on_dragged.connect(_on_plant_on_dragged)
+	
 	if !debug:
 		stop()
 
@@ -18,14 +20,19 @@ func _process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 	
 	if is_snapping:
-		$TowerRange.global_position = snap_global_position
-		
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			var tower_instance = tower.instantiate()
-			tower_instance.global_position = snap_global_position
-			get_tree().current_scene.add_child.call_deferred(tower_instance)
+		$SnapTo.global_position = snap_global_position
 	else:
-		$TowerRange.position = Vector2.ZERO
+		$SnapTo.position = Vector2.ZERO
+		
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if !event.is_pressed():
+			if is_snapping:
+				var tower_instance = tower.instantiate()
+				tower_instance.global_position = snap_global_position
+				tower_instance.scale = Vector2.ONE
+				get_tree().current_scene.add_child.call_deferred(tower_instance)
+			stop()
 	
 func start() -> void:
 	visible = true
@@ -45,3 +52,6 @@ func enter_snap_range(body):
 
 func exit_snap_range(_body):
 	is_snapping = false
+
+func _on_plant_on_dragged(mouse_offset: Vector2) -> void:
+	start()
