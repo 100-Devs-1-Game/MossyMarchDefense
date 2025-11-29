@@ -8,6 +8,8 @@ radius = 2.0
 
 [node name="debug_projectile" type="CharacterBody2D"]
 scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_06r2i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

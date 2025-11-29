@@ -13,8 +13,6 @@ func _ready():
 
 func _process(delta):
 	if currTarget != null:
-		#look_at(currTarget.global_position)
-		#rotation += PI/2
 		shootTimer -= delta
 		if shootTimer <= 0.0:
 			shoot()
@@ -26,11 +24,15 @@ func _process(delta):
 func shoot():
 	if currTarget == null:
 		return
-	var marker = $Marker2D
+		
+	var spawn_position = $Marker2D.global_position
+	var look_direction = spawn_position.angle_to_point(currTarget.global_position)
+	look_direction += PI/2
+	
 	var instance = bullet.instantiate()
-	instance.dir = global_rotation
-	instance.spawnPos = marker.global_position 
-	instance.spawnRot = rotation
+	instance.dir = look_direction
+	instance.spawnPos = spawn_position
+	instance.spawnRot = look_direction
 	instance.base_damage = bulletDamage
 	get_tree().current_scene.add_child.call_deferred(instance)
 

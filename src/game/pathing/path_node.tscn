@@ -9,6 +9,8 @@ radius = 9.999999
 script = ExtResource("1_ubi0c")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.1, 0.1)
