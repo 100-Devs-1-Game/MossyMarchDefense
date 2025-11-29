@@ -248,11 +248,11 @@ base_spawn_time = 0.3
 spawner_path_node = NodePath("../Path/PathPoints/PathNode")
 wave_set = Array[ExtResource("4_naiax")]([SubResource("Resource_63j5y")])
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "place_towers_button", "player_health", "worms", "player_money_label", "wave_counter") instance=ExtResource("4_63j5y")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "player_health", "worms", "player_money_label", "wave_counter") instance=ExtResource("4_63j5y")]
 first_path_node = NodePath("../Path/PathPoints/PathNode")
 enemy_spawner = NodePath("../EnemySpawner")
 wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
-place_towers_button = NodePath("../UI/Control/VBoxContainer/PlaceTowers")
+pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
 player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
 worms = NodePath("../UI/Control/Panel/VBoxContainer/Worms")
 player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
@@ -290,30 +290,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
 theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
 text = "Next Wave"
-
-[node name="Shop" type="Button" parent="UI/Control/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_naiax")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_63j5y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
-text = "Tower Shop"
-
-[node name="PlaceTowers" type="Button" parent="UI/Control/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_naiax")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_63j5y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
-text = "Place Towers"
 
 [node name="Pause" type="Button" parent="UI/Control/VBoxContainer"]
 layout_mode = 2
