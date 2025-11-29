@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c07vc0vxmn7jd"
-path="res://.godot/imported/lvl_1_overlay.jpg-ed3cc04fcd830f3ea72efbc2d452f7a2.ctex"
+uid="uid://43ltk5hye7ki"
+path="res://.godot/imported/lvl_1_overlay.png-0db17b2d47c04a0e0badcc1cb5ff0b00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background/Level 1/lvl_1_overlay.jpg"
-dest_files=["res://.godot/imported/lvl_1_overlay.jpg-ed3cc04fcd830f3ea72efbc2d452f7a2.ctex"]
+source_file="res://assets/Background/Level 1/lvl_1_overlay.png"
+dest_files=["res://.godot/imported/lvl_1_overlay.png-0db17b2d47c04a0e0badcc1cb5ff0b00.ctex"]
 
 [params]
 
