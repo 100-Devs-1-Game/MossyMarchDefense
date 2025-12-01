@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @onready var bullet = load("res://game/towers/debug_projectile.tscn")
-var bulletDamage = 1
+var bulletDamage = 10000
 var currTargets = []
 var currTarget = null
 var shootInterval = 1.5

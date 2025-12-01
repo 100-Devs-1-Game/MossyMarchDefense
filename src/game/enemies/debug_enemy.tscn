@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://tgcyp6gpnxip"]
+[gd_scene load_steps=9 format=3 uid="uid://tgcyp6gpnxip"]
 
 [ext_resource type="Script" uid="uid://7e63ryy8u1a6" path="res://game/enemies/debug_enemy.gd" id="1_7ow6v"]
 [ext_resource type="PackedScene" uid="uid://b63va5oryp3q1" path="res://game/enemies/movement_component.tscn" id="1_y28og"]
+[ext_resource type="PackedScene" uid="uid://c57niq1ophbeq" path="res://game/items/acorn.tscn" id="2_a5ir6"]
 [ext_resource type="PackedScene" uid="uid://cbqaacuahs3s" path="res://game/enemies/health_component.tscn" id="3_bc8x5"]
 [ext_resource type="PackedScene" uid="uid://deldoejppigim" path="res://game/enemies/health_bar.tscn" id="4_bc8x5"]
 
@@ -18,6 +19,7 @@ scale = Vector2(0.09, 0.09)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_7ow6v")
+coin = ExtResource("2_a5ir6")
 
 [node name="MovementComponent" parent="." instance=ExtResource("1_y28og")]
 max_movement_speed = 15.0

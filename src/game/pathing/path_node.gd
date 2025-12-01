@@ -28,4 +28,5 @@ func on_body_entered(body):
 		body.kill_enemy()
 		return
 	
+
 	body.movement_component.update_target_location(body.navigation_agent_2d, next_path_node.global_position)

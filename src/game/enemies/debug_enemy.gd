@@ -8,6 +8,8 @@ extends Node2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var area_2d = $Area2D
 
+@export var coin: PackedScene
+
 
 var enemy_type : GlobalEnums.EnemyType
 var payout : int
@@ -33,7 +35,9 @@ func load_enemy_stats(enemy_stats : EnemyData):
 func kill_enemy():
 	if not enemy_type == GlobalEnums.EnemyType.Worm:
 		level_manager.adjust_enemies(-1)
-		level_manager.pay_player(payout)
+		var coin_instance = coin.instantiate()
+		level_manager.add_child(coin_instance)
+		coin_instance.global_position = self.global_position
 	self.queue_free()
 
 func play_animation():
