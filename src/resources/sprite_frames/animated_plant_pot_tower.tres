@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://4yj6kcey8aom"]
+
+[ext_resource type="Texture2D" uid="uid://sy3gqfrcapv5" path="res://assets/Towers/Flower Pot/flower_pot1.png" id="1_q48k6"]
+[ext_resource type="Texture2D" uid="uid://ccegtxqye2d88" path="res://assets/Towers/Flower Pot/flower_pot2.png" id="2_f02r2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q48k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f02r2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

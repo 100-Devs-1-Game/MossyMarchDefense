@@ -1,6 +1,9 @@
 extends StaticBody2D
 
 @onready var bullet = load("res://game/towers/debug_projectile.tscn")
+
+@export var tower_data : TowerData
+
 var bulletDamage = 10000
 var currTargets = []
 var currTarget = null
@@ -8,8 +11,13 @@ var shootInterval = 1.5
 var shootTimer = 0.0
 
 func _ready():
-	$Area2D.body_entered.connect(_enter_tower_range)
-	$Area2D.body_exited.connect(_exit_tower_range)
+	if tower_data:
+		$DetectionArea/CollisionShape2D.shape.radius = tower_data.detection_radius
+		$TowerSprite.sprite_frames = tower_data.sprite_frames
+		$TowerSprite.play()
+	
+	$DetectionArea.body_entered.connect(_enter_tower_range)
+	$DetectionArea.body_exited.connect(_exit_tower_range)
 
 func _process(delta):
 	if currTarget != null:
@@ -25,7 +33,7 @@ func shoot():
 	if currTarget == null:
 		return
 		
-	var spawn_position = $Marker2D.global_position
+	var spawn_position = $AttackSource.global_position
 	var look_direction = spawn_position.angle_to_point(currTarget.global_position)
 	look_direction += PI/2
 	

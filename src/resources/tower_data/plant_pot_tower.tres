@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=5 format=3 uid="uid://dcup1vmth6tfr"]
+
+[ext_resource type="Script" uid="uid://b27e20uk00133" path="res://resources/tower_data/tower.gd" id="1_jk0bk"]
+[ext_resource type="Texture2D" uid="uid://sy3gqfrcapv5" path="res://assets/Towers/Flower Pot/flower_pot1.png" id="2_2qska"]
+[ext_resource type="Texture2D" uid="uid://ccegtxqye2d88" path="res://assets/Towers/Flower Pot/flower_pot2.png" id="3_hs4ua"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jk0bk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2qska")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hs4ua")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_jk0bk")
+detection_radius = 512.0
+sprite = ExtResource("2_2qska")
+sprite_frames = SubResource("SpriteFrames_jk0bk")
+cost = 2
+metadata/_custom_type_script = "uid://b27e20uk00133"

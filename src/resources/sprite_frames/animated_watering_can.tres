@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://100p4xh05nkn"]
+
+[ext_resource type="Texture2D" uid="uid://dxpj4ilbctyno" path="res://assets/Towers/Watering Can/watering_can1.png" id="1_b35dh"]
+[ext_resource type="Texture2D" uid="uid://bn35qi3mptivm" path="res://assets/Towers/Watering Can/watering_can2.png" id="2_wpgks"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b35dh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wpgks")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

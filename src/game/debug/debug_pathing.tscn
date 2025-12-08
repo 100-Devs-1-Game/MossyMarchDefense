@@ -78,15 +78,12 @@ shape = SubResource("RectangleShape2D_oeym1")
 
 [node name="debug_tower" parent="." instance=ExtResource("4_c0637")]
 position = Vector2(294, 313)
-scale = Vector2(1, 1)
 
 [node name="debug_tower2" parent="." instance=ExtResource("4_c0637")]
 position = Vector2(167, 173)
-scale = Vector2(1, 1)
 
 [node name="debug_tower3" parent="." instance=ExtResource("4_c0637")]
 position = Vector2(700, 459)
-scale = Vector2(1, 1)
 
 [node name="WaveStart" parent="." instance=ExtResource("7_y7ob1")]
 offset_left = 921.0

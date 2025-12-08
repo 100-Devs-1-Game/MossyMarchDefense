@@ -4,8 +4,14 @@ extends Node2D
 
 @export var tower_parent : Node2D
 
-var is_snapping = false
-var snap_body
+var is_snapping : bool = false
+var dragged_tower_type : GlobalEnums.TowerType
+var snap_body : Node2D
+
+var tower_dictionary = {
+	GlobalEnums.TowerType.PlantPot: preload("res://resources/tower_data/plant_pot_tower.tres"),
+	GlobalEnums.TowerType.WateringCan: preload("res://resources/tower_data/watering_can_tower.tres"),
+}
 
 func _ready() -> void:
 	$Area2D.body_entered.connect(enter_snap_range)
@@ -26,6 +32,7 @@ func _input(event):
 		if !event.is_pressed():
 			if is_snapping:
 				var tower_instance = tower.instantiate()
+				tower_instance.tower_data = tower_dictionary[dragged_tower_type]
 				tower_instance.scale = Vector2.ONE
 				tower_instance.global_position = snap_body.global_position
 				tower_parent.add_child.call_deferred(tower_instance)
@@ -52,5 +59,11 @@ func enter_snap_range(body):
 func exit_snap_range(_body):
 	is_snapping = false
 
-func _on_plant_on_dragged(mouse_offset: Vector2) -> void:
+func on_tower_dragged(tower_type : GlobalEnums.TowerType) -> void:
+	dragged_tower_type = tower_type
+	
+	var tower_data = tower_dictionary[tower_type]
+	$SnapTo/TowerGhost.texture = tower_data.sprite
+	$SnapTo/TowerRange.scale = tower_data.detection_radius / 100.0 * Vector2.ONE
+	
 	start()
