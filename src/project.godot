@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mossy March"
-run/main_scene="uid://btp7hnqxcg8sn"
+run/main_scene="uid://b3v1k7r8vxso3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
