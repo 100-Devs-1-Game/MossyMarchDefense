@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ht2s7wyyb24a"]
 
-[ext_resource type="Script" uid="uid://bucr4bpnvq2ww" path="res://game/towers/debug_tower.gd" id="1_5m2eg"]
+[ext_resource type="Script" uid="uid://bucr4bpnvq2ww" path="res://game/towers/base_tower.gd" id="1_5m2eg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_asv8d"]
 size = Vector2(113, 95)
