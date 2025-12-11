@@ -5,18 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://c57niq1ophbeq" path="res://game/items/acorn.tscn" id="2_a5ir6"]
 [ext_resource type="PackedScene" uid="uid://cbqaacuahs3s" path="res://game/enemies/health_component.tscn" id="3_bc8x5"]
 [ext_resource type="PackedScene" uid="uid://deldoejppigim" path="res://game/enemies/health_bar.tscn" id="4_bc8x5"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bc8x5"]
+[ext_resource type="SpriteFrames" uid="uid://bbuq2ktiyjn32" path="res://resources/sprite_frames/animated_bird.tres" id="6_2ydjv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ow6v"]
 radius = 3.6666667
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1emua"]
-radius = 3.681787
+radius = 155.55556
 
 [node name="DebugEnemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.09, 0.09)
-collision_layer = 4
+collision_layer = 13
 collision_mask = 2
 script = ExtResource("1_7ow6v")
 coin = ExtResource("2_a5ir6")
@@ -31,7 +30,8 @@ health_bar = NodePath("../HealthBar")
 position = Vector2(0, -24)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_bc8x5")
+sprite_frames = ExtResource("6_2ydjv")
+animation = &"walk_back"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7ow6v")
@@ -40,7 +40,7 @@ shape = SubResource("CircleShape2D_7ow6v")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(3, 3)
-collision_mask = 4
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_1emua")

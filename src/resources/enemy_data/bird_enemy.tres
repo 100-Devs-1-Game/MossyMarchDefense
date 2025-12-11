@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_rxqta")
 enemy_type = 1
-movement_speed = 40.0
+movement_speed = 100.0
 sprite_frames = ExtResource("3_owuds")
 metadata/_custom_type_script = "uid://kk83cijskx3q"

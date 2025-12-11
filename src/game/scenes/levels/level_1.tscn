@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://du7map0fgin22"]
+[gd_scene load_steps=23 format=3 uid="uid://du7map0fgin22"]
 
 [ext_resource type="Script" uid="uid://dnphc0vbthn2b" path="res://game/scenes/levels/level_1_background.gd" id="1_jg07a"]
 [ext_resource type="Script" uid="uid://kqia4beo8rdk" path="res://game/scenes/levels/pathhandler.gd" id="1_mxxve"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="4_naiax"]
 [ext_resource type="PackedScene" uid="uid://hgdtyuo44bet" path="res://game/towers/tower_shop.tscn" id="6_awp6h"]
 [ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/towers/tower_marker.tscn" id="7_jg07a"]
+[ext_resource type="PackedScene" uid="uid://oykmyp40ux3u" path="res://game/enemies/worm.tscn" id="13_nse3i"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1k2pe"]
 vertices = PackedVector2Array(1454.6328, 12.1015625, 1463.3281, 145.20313, 693.53906, 160.20313, 534.77344, 21.890625, 523.77344, 502.28125, 716.52344, 657.8906, 2.6015625, 651.09375, 154.1875, 491.71875, -12.3984375, 279.95313, 147.20313, 141.38281, -377.64844, 161.60156, -373.35156, 281.9375)
@@ -250,15 +251,15 @@ base_spawn_time = 0.3
 spawner_path_node = NodePath("../Path/PathPoints/PathNode")
 wave_set = Array[ExtResource("4_naiax")]([SubResource("Resource_63j5y")])
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "player_health", "worms", "player_money_label", "wave_counter") instance=ExtResource("4_63j5y")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "player_health", "player_money_label", "wave_counter", "worm_path_node") instance=ExtResource("4_63j5y")]
 first_path_node = NodePath("../Path/PathPoints/PathNode")
 enemy_spawner = NodePath("../EnemySpawner")
 wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
 pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
 player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
-worms = NodePath("../UI/Control/Panel/VBoxContainer/Worms")
 player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
 wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
+worm_path_node = NodePath("../Path/PathPoints/PathNode4")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -363,3 +364,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
 text = "WAVE 1"
 horizontal_alignment = 1
+
+[node name="Worm" parent="." groups=["worm"] instance=ExtResource("13_nse3i")]
+position = Vector2(713, 804.99994)

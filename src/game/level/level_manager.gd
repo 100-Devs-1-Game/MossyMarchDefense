@@ -18,7 +18,6 @@ var enemies_on_screen := 0
 # DEBUG LIKELY (will be better later)
 # Anything to do with these text labels is DEBUG, WILL BE IMRPOVED LATER
 #I swapped em to export so we can move them around without having to rewrite🥚
-@export var worms: Label
 @export var player_money_label: Label
 @export var wave_counter: Label
 @export var worm_spawn_node: Node # This is just set to 2nd node for now for testing
@@ -36,7 +35,6 @@ func _ready():
 	wave_start_button.pressed.connect(on_wave_start_button_pressed)
 	pause_button.pressed.connect(on_pause_button_pressed)
 	
-	worms.text = "WORMS: " + str(player_worms)
 	player_money_label.text = "$" + str(player_money)
 	
 	if first_path_node: #if first node available
@@ -55,20 +53,6 @@ func get_first_path_node(worm: bool):
 		return worm_path_node
 	return first_path_node
 
-func remove_worms():
-	player_worms -= 1
-	
-	worms.text = "WORMS: " + str(player_worms)
-	
-	if player_worms == 0:
-		lose_game()
-		
-	adjust_enemies(-1)
-
-func add_worms():
-	player_worms += 1
-	
-	worms.text = "WORMS: " + str(player_worms)
 	
 	
 func adjust_enemies(modifier : int):

@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 
 @onready var movement_component = $MovementComponent
@@ -7,28 +7,23 @@ extends Node2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var area_2d = $Area2D
+@onready var invuln_timer = $InvulnTimer
 
-@export var coin: PackedScene
-
-
-var enemy_type : GlobalEnums.EnemyType
+var enemy_type := GlobalEnums.EnemyType.Worm
 var payout : int
 var level_manager
-var targeting_worm := false
-var worm_target : CharacterBody2D
+var invuln := false
 
 func _ready():
 	level_manager = get_tree().get_first_node_in_group("level_manager")
 	
 	movement_component.update_target_location(navigation_agent_2d, level_manager.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
-	area_2d.body_entered.connect(on_body_entered)
+	invuln_timer.timeout.connect(on_invuln_timeout)
 	
 func _physics_process(_delta):
-	if targeting_worm:
-		movement_component.update_target_location(navigation_agent_2d, worm_target.global_position)
-	
-	movement_component.move_to_target(self, navigation_agent_2d)
-	play_animation()
+	if not level_manager.between_waves:
+		movement_component.move_to_target(self, navigation_agent_2d)
+		play_animation()
 
 func load_enemy_stats(enemy_stats : EnemyData):
 	enemy_type = enemy_stats.enemy_type
@@ -36,17 +31,9 @@ func load_enemy_stats(enemy_stats : EnemyData):
 	animated_sprite_2d.sprite_frames = enemy_stats.sprite_frames
 	payout = enemy_stats.enemy_payout
 
-func kill_enemy():
-	if not enemy_type == GlobalEnums.EnemyType.Worm:
-		level_manager.adjust_enemies(-1)
-		var coin_instance = coin.instantiate()
-		level_manager.add_child(coin_instance)
-		coin_instance.global_position = self.global_position
-	self.queue_free()
 
-func change_target_to_worm(body):
-	targeting_worm = true
-	worm_target = body
+func kill_enemy():
+	level_manager.lose_game()
 
 func play_animation():
 	# Ugly if statement block incoming!!! ("Uh Oh!" <--- that's you after reading this)
@@ -69,10 +56,12 @@ func play_animation():
 			animated_sprite_2d.play(&"walk_towards")
 		else:
 			animated_sprite_2d.play(&"walk_back")
-
-func on_body_entered(body):
-	if body.is_in_group("worm") and not body.invuln:
-		print("ow!")
-		body.health_component.get_hit(1)
-		body.enter_invuln()
-		change_target_to_worm(body)
+			
+func enter_invuln():
+	print("owie!")
+	invuln = true
+	invuln_timer.start()
+	
+		
+func on_invuln_timeout():
+	invuln = false

@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://oykmyp40ux3u"]
+
+[ext_resource type="Script" uid="uid://o7mosvoq7np6" path="res://game/enemies/worm.gd" id="1_rpgii"]
+[ext_resource type="PackedScene" uid="uid://b63va5oryp3q1" path="res://game/enemies/movement_component.tscn" id="3_50v1h"]
+[ext_resource type="PackedScene" uid="uid://cbqaacuahs3s" path="res://game/enemies/health_component.tscn" id="4_r7o68"]
+[ext_resource type="Texture2D" uid="uid://brk0loh21rijf" path="res://assets/Animations/Caterpillar/caterpillar_away1.png" id="5_ggcx8"]
+[ext_resource type="PackedScene" uid="uid://deldoejppigim" path="res://game/enemies/health_bar.tscn" id="5_itkr7"]
+[ext_resource type="Texture2D" uid="uid://iavbwusbpotp" path="res://assets/Animations/Caterpillar/caterpillar_away2.png" id="6_xvjae"]
+[ext_resource type="Texture2D" uid="uid://dwgat7ijd4d2p" path="res://assets/Animations/Caterpillar/caterpillar1.png" id="7_sofjt"]
+[ext_resource type="Texture2D" uid="uid://bt7v2kjtbgevy" path="res://assets/Animations/Caterpillar/caterpillar2.png" id="8_fd674"]
+[ext_resource type="Texture2D" uid="uid://cmden6ccdclc8" path="res://assets/Animations/Caterpillar/caterpillar_toward1.png" id="9_bkw4s"]
+[ext_resource type="Texture2D" uid="uid://clmjkhftjxu14" path="res://assets/Animations/Caterpillar/caterpillar_towards2.png" id="10_pjqn2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4omh"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ggcx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xvjae")
+}],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_sofjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fd674")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_bkw4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pjqn2")
+}],
+"loop": true,
+"name": &"walk_towards",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ow6v"]
+radius = 691.1254
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1emua"]
+radius = 225.92592
+
+[node name="Worm" type="CharacterBody2D"]
+scale = Vector2(0.09, 0.09)
+collision_layer = 257
+collision_mask = 2
+script = ExtResource("1_rpgii")
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_50v1h")]
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("4_r7o68")]
+health_bar = NodePath("../HealthBar")
+
+[node name="HealthBar" parent="." instance=ExtResource("5_itkr7")]
+position = Vector2(0, -24)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t4omh")
+animation = &"walk_side"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7ow6v")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=["worm"]]
+scale = Vector2(3, 3)
+collision_layer = 257
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_1emua")
+
+[node name="InvulnTimer" type="Timer" parent="."]
+wait_time = 0.1

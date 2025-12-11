@@ -1,7 +1,7 @@
 extends Node
 
 @export var health_bar: HealthBar
-@export var base_health: int = 3
+@export var base_health: int = 10
 
 var current_health := base_health
 

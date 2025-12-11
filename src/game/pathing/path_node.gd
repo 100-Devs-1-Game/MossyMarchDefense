@@ -20,7 +20,7 @@ func on_body_entered(body):
 	if exit_node:
 		var level_manager = get_tree().get_first_node_in_group("level_manager")
 		if body.enemy_type == GlobalEnums.EnemyType.Worm:
-			level_manager.add_worms()
+			level_manager.win_game()
 		else:
 			level_manager.remove_worms()
 			damage_taken.emit() # TODO: Health and score #when damage dealt, emit a signal to let listeners know
