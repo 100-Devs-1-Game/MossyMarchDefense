@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://btp7hnqxcg8sn"]
 
-[ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/pathing/path_node.tscn" id="2_oeym1"]
-[ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/level/level_manager.tscn" id="3_gsljs"]
-[ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/level/enemy_spawner.tscn" id="3_oeym1"]
-[ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/towers/debug_tower.tscn" id="4_c0637"]
+[ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/levels/level_components/pathing/path_node.tscn" id="2_oeym1"]
+[ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/levels/level_components/level_manager.tscn" id="3_gsljs"]
+[ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/levels/level_components/enemy_spawner.tscn" id="3_oeym1"]
+[ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/levels/level_components/towers/debug_tower.tscn" id="4_c0637"]
 [ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="4_m20e2"]
 [ext_resource type="Resource" uid="uid://cp0m4fvr7el0l" path="res://resources/wave_data/debug_wave.tres" id="5_y7ob1"]
 [ext_resource type="Resource" uid="uid://d1ymdojc624f7" path="res://resources/wave_data/debug_wave2.tres" id="6_x30bg"]
@@ -43,13 +43,12 @@ next_path_node = NodePath("../PathNode2")
 
 [node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "worms", "player_money_label", "wave_counter", "worm_spawn_node", "worm_path_node") instance=ExtResource("3_gsljs")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "player_money_label", "wave_counter", "worm_spawn_node", "worm_path_node") instance=ExtResource("3_gsljs")]
 player_worms = 20
 first_path_node = NodePath("../PathNode")
 enemy_spawner = NodePath("../EnemySpawner")
 wave_start_button = NodePath("../WaveStart")
 pause_button = NodePath("../Pause")
-worms = NodePath("../Worms")
 player_money_label = NodePath("../PlayerMoney")
 wave_counter = NodePath("../WaveCounter")
 worm_spawn_node = NodePath("../PathNode2")

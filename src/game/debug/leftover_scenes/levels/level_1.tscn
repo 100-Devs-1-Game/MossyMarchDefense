@@ -1,0 +1,369 @@
+[gd_scene load_steps=23 format=3 uid="uid://du7map0fgin22"]
+
+[ext_resource type="Script" uid="uid://dnphc0vbthn2b" path="res://game/levels/level_components/bg_animate.gd" id="1_jg07a"]
+[ext_resource type="Texture2D" uid="uid://q2wwfthneknl" path="res://assets/Background/Level 1/lvl_1_base.jpg" id="1_pnkwr"]
+[ext_resource type="Texture2D" uid="uid://43ltk5hye7ki" path="res://assets/Background/Level 1/lvl_1_overlay.png" id="2_8qa6m"]
+[ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/levels/level_components/pathing/path_node.tscn" id="2_82bkl"]
+[ext_resource type="Texture2D" uid="uid://cwyloqpfbm63m" path="res://assets/Background/Level 1/rain_layer1.png" id="3_cjm32"]
+[ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/levels/level_components/enemy_spawner.tscn" id="3_naiax"]
+[ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/levels/level_components/level_manager.tscn" id="4_63j5y"]
+[ext_resource type="Texture2D" uid="uid://bvqcd0fnuuppt" path="res://assets/Background/Level 1/rain_layer2.png" id="4_jg07a"]
+[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="4_naiax"]
+[ext_resource type="PackedScene" uid="uid://hgdtyuo44bet" path="res://game/levels/level_components/towers/tower_shop.tscn" id="6_awp6h"]
+[ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/levels/level_components/towers/tower_marker.tscn" id="7_jg07a"]
+[ext_resource type="Script" uid="uid://kqia4beo8rdk" path="res://game/levels/level_components/pathing/pathhandler.gd" id="8_nse3i"]
+[ext_resource type="PackedScene" uid="uid://oykmyp40ux3u" path="res://game/enemies/worm.tscn" id="13_nse3i"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1k2pe"]
+vertices = PackedVector2Array(1454.6328, 12.1015625, 1463.3281, 145.20313, 693.53906, 160.20313, 534.77344, 21.890625, 523.77344, 502.28125, 716.52344, 657.8906, 2.6015625, 651.09375, 154.1875, 491.71875, -12.3984375, 279.95313, 147.20313, 141.38281, -377.64844, 161.60156, -373.35156, 281.9375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(10, 9, 8, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(704, 170, 727, 668, -7, 661, -22, 290, -383, 292, -388, 152, 157, 131, 164, 482, 514, 492, 525, 12, 1464, 2, 1474, 155)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gvcb"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="Resource" id="Resource_63j5y"]
+script = ExtResource("4_naiax")
+enemy_queue = Array[String](["bird", "frog", "snail", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird"])
+enemy_spawn_timer = 1.4
+metadata/_custom_type_script = "uid://5t10kxtq3ygk"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_naiax"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.71992487, 0.73521674, 1.1551381e-06, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63j5y"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.88804847, 0.902335, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnkwr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qa6m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxit8"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.56338006, 0.19531083, 0.24482927, 1)
+border_width_left = 8
+border_width_top = 2
+border_width_right = 8
+border_width_bottom = 2
+border_color = Color(0.47840893, 0.1588434, 0.20017853, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvaum"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0.39215687)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Level 1" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("1_jg07a")
+
+[node name="base_layer" type="TextureRect" parent="Background"]
+z_index = -3
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_pnkwr")
+
+[node name="overlay_layer" type="TextureRect" parent="Background"]
+z_index = 3
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_8qa6m")
+
+[node name="rain_layer_1" type="TextureRect" parent="Background"]
+z_index = 3
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_cjm32")
+
+[node name="rain_layer_2" type="TextureRect" parent="Background"]
+z_index = 3
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_jg07a")
+
+[node name="TowerShop" parent="." node_paths=PackedStringArray("tower_parent") instance=ExtResource("6_awp6h")]
+z_index = 3
+tower_parent = NodePath("../Towers")
+
+[node name="TowerMarkers" type="Node2D" parent="."]
+
+[node name="TowerMarker" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(125, 276)
+
+[node name="TowerMarker2" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(337, 273)
+
+[node name="TowerMarker3" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(281, 809)
+
+[node name="TowerMarker4" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(663, 441)
+
+[node name="TowerMarker5" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(821, 283)
+
+[node name="TowerMarker6" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(821, 634)
+
+[node name="TowerMarker7" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(802, 967)
+
+[node name="TowerMarker8" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(1009, 955)
+
+[node name="TowerMarker9" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(1221, 799)
+
+[node name="TowerMarker10" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(1243, 474)
+
+[node name="TowerMarker11" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(1212, 139)
+
+[node name="TowerMarker12" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+position = Vector2(1417, 134)
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
+
+[node name="Path" type="Node2D" parent="."]
+script = ExtResource("8_nse3i")
+nav_polygon = SubResource("NavigationPolygon_1k2pe")
+polygon_z_index = -2
+path_color = Color(0.8778953, 0.67546505, 0.40634537, 1)
+
+[node name="PathPoints" type="Node2D" parent="Path"]
+
+[node name="PathNode" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(32, 451)
+next_path_node = NodePath("../PathNode2")
+
+[node name="PathNode2" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(445, 441)
+next_path_node = NodePath("../PathNode3")
+
+[node name="PathNode3" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(471, 798)
+next_path_node = NodePath("../PathNode4")
+
+[node name="PathNode4" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(992, 802)
+next_path_node = NodePath("../PathNode5")
+
+[node name="PathNode5" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+position = Vector2(1002, 320)
+next_path_node = NodePath("../PathNode6")
+
+[node name="PathNode6" parent="Path/PathPoints" instance=ExtResource("2_82bkl")]
+position = Vector2(1749, 314)
+
+[node name="PlaceableRegion" type="Area2D" parent="Path" groups=["PlacableRegion"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PlaceableRegion"]
+position = Vector2(960, 540)
+shape = SubResource("RectangleShape2D_5gvcb")
+debug_color = Color(1.1551381e-06, 0.6399762, 0.36140433, 0.41960785)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Path" groups=["EnemyPath"]]
+position = Vector2(389, 236)
+navigation_polygon = SubResource("NavigationPolygon_1k2pe")
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("level_manager", "spawner_path_node") instance=ExtResource("3_naiax")]
+level_manager = NodePath("../LevelManager")
+base_spawn_time = 0.3
+spawner_path_node = NodePath("../Path/PathPoints/PathNode")
+wave_set = Array[ExtResource("4_naiax")]([SubResource("Resource_63j5y")])
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "player_health", "player_money_label", "wave_counter", "worm_path_node") instance=ExtResource("4_63j5y")]
+first_path_node = NodePath("../Path/PathPoints/PathNode")
+enemy_spawner = NodePath("../EnemySpawner")
+wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
+pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
+player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
+player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
+wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
+worm_path_node = NodePath("../Path/PathPoints/PathNode4")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = -263.0
+offset_right = 281.0
+offset_bottom = -38.0
+grow_vertical = 0
+
+[node name="NextWave" type="Button" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_63j5y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
+text = "Next Wave"
+
+[node name="Pause" type="Button" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_63j5y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_naiax")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pnkwr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8qa6m")
+text = "Pause Game"
+
+[node name="HPPanel" type="Panel" parent="UI/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 41.325)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cxit8")
+
+[node name="PlayerHP" type="Label" parent="UI/Control/VBoxContainer/HPPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 33
+text = "HP: 30/30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -77.0
+offset_bottom = 78.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gvaum")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Worms" type="Label" parent="UI/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "WORMS: 0"
+horizontal_alignment = 1
+
+[node name="PlayerMoney" type="Label" parent="UI/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "$0"
+horizontal_alignment = 1
+
+[node name="WaveCounter" type="Label" parent="UI/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "WAVE 1"
+horizontal_alignment = 1
+
+[node name="Worm" parent="." groups=["worm"] instance=ExtResource("13_nse3i")]
+position = Vector2(713, 804.99994)

@@ -1,0 +1,196 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3v1k7r8vxso3"]
+
+[ext_resource type="Script" uid="uid://kd0s7peornng" path="res://game/ui/ui_list/ui_main_menu.gd" id="1_aekqq"]
+[ext_resource type="Texture2D" uid="uid://3kqvxl8jxs26" path="res://assets/ui/menus/main_menu.jpg" id="2_kfoo5"]
+[ext_resource type="Texture2D" uid="uid://baw7a48oq31s1" path="res://assets/ui/menus/title_banner.jpg" id="3_kfoo5"]
+
+[sub_resource type="Animation" id="Animation_d6kru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_kfoo5"]
+resource_name = "main_menu_fade_in"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d6kru"]
+_data = {
+&"RESET": SubResource("Animation_d6kru"),
+&"main_menu_fade_in": SubResource("Animation_kfoo5")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aekqq")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_kfoo5")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Menu" type="Node2D" parent="Control"]
+
+[node name="HowToPlayButton" type="Button" parent="Control/Menu"]
+offset_left = 878.0
+offset_top = 519.0
+offset_right = 1050.0
+offset_bottom = 597.0
+text = "How to Play"
+
+[node name="Label" type="Label" parent="Control/Menu"]
+anchors_preset = -1
+anchor_right = 0.62100005
+anchor_bottom = 0.29500002
+offset_left = 786.0
+offset_top = 665.0
+offset_right = 1089.0
+offset_bottom = 818.0
+text = "PUT AUDIO CONTROLS HERE
+ALSO FIX THE UI
+CREDITS (ALSO REDO LATER):
+Lead/Artist - Amatrine
+Code - Lexo, JerryBeans, Vienetta, Plant
+Music - Lancer"
+
+[node name="LevelContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -614.0
+offset_top = -229.0
+offset_right = 614.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 8
+
+[node name="Level1Button" type="Button" parent="LevelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Level 1"
+
+[node name="Level2Button" type="Button" parent="LevelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Level 2"
+
+[node name="Level3Button" type="Button" parent="LevelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Level 3"
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("3_kfoo5")
+
+[node name="MenuAnimations" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_d6kru")
+}
+
+[connection signal="pressed" from="LevelContainer/Level1Button" to="." method="on_level_1_pressed"]

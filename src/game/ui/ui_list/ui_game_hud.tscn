@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://behtnp632nowv"]
+
+[ext_resource type="Script" uid="uid://dh0yyfup3qnuw" path="res://game/ui/ui_list/ui_game_hud.gd" id="1_rfypm"]
+[ext_resource type="Texture2D" uid="uid://grbvnc6s7btt" path="res://assets/ui/menus/shop.png" id="2_v7km6"]
+[ext_resource type="Texture2D" uid="uid://cv4cqp1lkwhk" path="res://assets/Animations/acorn/acorn1.png" id="3_7h3t3"]
+[ext_resource type="Texture2D" uid="uid://cf0v3grnf013v" path="res://icon.svg" id="3_gkyig"]
+[ext_resource type="Script" uid="uid://d2yvpa8bao7ik" path="res://game/ui/ui_components/ui_tower_choice.gd" id="4_3a5vc"]
+[ext_resource type="Texture2D" uid="uid://sy3gqfrcapv5" path="res://assets/Towers/Flower Pot/flower_pot1.png" id="5_kg361"]
+[ext_resource type="Texture2D" uid="uid://dxpj4ilbctyno" path="res://assets/Towers/Watering Can/watering_can1.png" id="6_jiane"]
+
+[node name="GameHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rfypm")
+
+[node name="ShopPanel" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 155.0
+offset_top = -143.0
+offset_right = 785.0
+offset_bottom = 357.0
+texture = ExtResource("2_v7km6")
+
+[node name="FlowerClickSpace" type="TextureRect" parent="ShopPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_left = 114.0
+offset_top = 170.0
+offset_right = 234.0
+offset_bottom = 290.0
+texture = ExtResource("3_gkyig")
+script = ExtResource("4_3a5vc")
+tower_icon = ExtResource("5_kg361")
+
+[node name="WaterClickSpace" type="TextureRect" parent="ShopPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_left = 260.0
+offset_top = 170.0
+offset_right = 380.0
+offset_bottom = 290.0
+texture = ExtResource("3_gkyig")
+script = ExtResource("4_3a5vc")
+tower_type = 1
+tower_icon = ExtResource("6_jiane")
+
+[node name="BlobClickSpace" type="TextureRect" parent="ShopPanel"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_left = 414.0
+offset_top = 170.0
+offset_right = 534.0
+offset_bottom = 290.0
+texture = ExtResource("3_gkyig")
+script = ExtResource("4_3a5vc")
+
+[node name="Button" type="Button" parent="ShopPanel"]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 313.0
+offset_right = 525.0
+offset_bottom = 341.0
+text = "asdads"
+
+[node name="Acorn" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 17.0
+offset_right = 165.0
+offset_bottom = 167.0
+texture = ExtResource("3_7h3t3")
+expand_mode = 1
+
+[node name="AcornAmount" type="Label" parent="Acorn"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -58.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "0"

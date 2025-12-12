@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0sttnlpnm00u"]
+
+[ext_resource type="Script" uid="uid://d34tq7f2x35wq" path="res://game/levels/level_components/pathing/path_node.gd" id="1_ubi0c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ubi0c"]
+radius = 9.999999
+
+[node name="PathNode" type="Node2D"]
+script = ExtResource("1_ubi0c")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_ubi0c")
