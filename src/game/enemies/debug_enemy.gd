@@ -23,7 +23,7 @@ func _ready():
 	
 	movement_component.update_target_location(navigation_agent_2d, level_manager.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
 	area_2d.body_entered.connect(on_body_entered)
-	area_2d.body_exited.connect(on_body_entered)
+	area_2d.body_exited.connect(on_body_exited)
 	
 func _physics_process(_delta):
 	play_animation()

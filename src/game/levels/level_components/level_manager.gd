@@ -30,7 +30,9 @@ var enemies_on_screen := 0
 var current_hp: int = starting_hp
 
 func _ready():
-	debug_spawn_worms()
+	# debug_spawn_worms()
+	
+	# start_wave()
 	
 	wave_start_button.pressed.connect(on_wave_start_button_pressed)
 	pause_button.pressed.connect(on_pause_button_pressed)
