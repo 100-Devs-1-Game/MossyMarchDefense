@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var tower = load("res://game/levels/level_components/towers/debug_tower.tscn")
+@onready var tower = load("res://game/levels/level_components/towers/base_tower.tscn")
 
 @export var tower_parent : Node2D
 

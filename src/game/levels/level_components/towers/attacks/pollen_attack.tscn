@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddkvl4mck8qrr"]
+
+[ext_resource type="Script" uid="uid://cagoyo885hvp7" path="res://game/levels/level_components/towers/attacks/pollen_attack.gd" id="1_6dr87"]
+[ext_resource type="Texture2D" uid="uid://cda8hi3wbef6m" path="res://assets/Towers/Flower Pot/pollen_attack.png" id="1_r8o3o"]
+
+[sub_resource type="Curve" id="Curve_fowys"]
+_data = [Vector2(1e-05, 1), 1.2763867, -1.2362702e-07, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_8d8a5"]
+offsets = PackedFloat32Array(0, 0.106299214, 0.22047244, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.5764706, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="pollen_attack" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_6dr87")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 128
+texture = ExtResource("1_r8o3o")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 8.0
+scale_amount_min = 0.03
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_fowys")
+color_ramp = SubResource("Gradient_8d8a5")

@@ -6,8 +6,10 @@
 
 [resource]
 script = ExtResource("1_qkmkf")
+tower_type = 1
 detection_radius = 768.0
 sprite = ExtResource("2_t4ds0")
 sprite_frames = ExtResource("2_oq0vg")
 cost = 3
+attack_interval = 0.5
 metadata/_custom_type_script = "uid://b27e20uk00133"
