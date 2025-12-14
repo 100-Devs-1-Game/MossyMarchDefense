@@ -1,11 +1,88 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr1hj35781yes"]
+[gd_scene load_steps=8 format=3 uid="uid://cr1hj35781yes"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q08bt"]
-radius = 32.0
+[ext_resource type="Script" uid="uid://cntltwsjddlfu" path="res://game/levels/level_components/towers/tower_marker.gd" id="1_q8qhn"]
+[ext_resource type="Shader" uid="uid://dyj6t1rm25d6y" path="res://assets/shaders/radius_highlight.gdshader" id="2_yr3qf"]
 
-[node name="TowerMarker" type="StaticBody2D"]
-collision_layer = 128
-collision_mask = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr3qf"]
+size = Vector2(100, 100)
+
+[sub_resource type="Animation" id="Animation_7w6on"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlacementPreview:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.075, 0.075)]
+}
+
+[sub_resource type="Animation" id="Animation_yr3qf"]
+resource_name = "preview_pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlacementPreview:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.075, 0.075), Vector2(0.085, 0.085), Vector2(0.075, 0.075)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yac1"]
+_data = {
+&"RESET": SubResource("Animation_7w6on"),
+&"preview_pulse": SubResource("Animation_yr3qf")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7w6on"]
+shader = ExtResource("2_yr3qf")
+shader_parameter/ring_radius = 0.48999999277284
+shader_parameter/thickness_scalar = 0.40000000596048
+shader_parameter/color_speed = 1.0
+shader_parameter/aa_size = 0.005
+shader_parameter/main_color = Color(0.42352942, 1, 0.59607846, 1)
+shader_parameter/lerp_color = Color(0.58824646, 1, 0.69008625, 0.35000002)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_q8qhn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_q08bt")
+shape = SubResource("RectangleShape2D_yr3qf")
+
+[node name="PlacementPreview" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0, 0.5)
+position = Vector2(0, -34)
+scale = Vector2(0.075, 0.075)
+
+[node name="PreviewAnim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_7yac1")
+}
+
+[node name="AimRadius" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_7w6on")
+custom_minimum_size = Vector2(100, 100)
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+pivot_offset = Vector2(50, 50)
+mouse_filter = 2
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]

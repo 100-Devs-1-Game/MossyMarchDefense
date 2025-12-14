@@ -1,14 +1,14 @@
-class_name UITowerChoice extends TextureRect
+class_name UITowerChoice extends Panel
 
 @export var tower_type:GlobalEnums.TowerType
 @export var tower_icon:Texture2D = null
 
-func _get_drag_data(_at_position: Vector2) -> Variant:
-	
-	var drag_preview = TextureRect.new()
-	drag_preview.texture = tower_icon
-	drag_preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	drag_preview.size = Vector2(150, 150)
-	set_drag_preview(drag_preview)
-	
-	return tower_type
+@export var scaled_texture:TextureRect = null
+
+var disabled : bool = false
+
+func set_disabled_state(state:bool) -> void:
+	disabled = state
+
+func is_disabled() -> bool:
+	return disabled

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8108bbfdpoup"]
+
+[ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/levels/level_components/towers/tower_marker.tscn" id="1_gpcg6"]
+
+[node name="CanvasLayer" type="Node2D"]
+
+[node name="Area2D" parent="." instance=ExtResource("1_gpcg6")]
+position = Vector2(320, 256)

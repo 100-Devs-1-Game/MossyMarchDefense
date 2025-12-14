@@ -16,7 +16,7 @@ var tower_dictionary = {
 func _ready() -> void:
 	$Area2D.body_entered.connect(enter_snap_range)
 	$Area2D.body_exited.connect(exit_snap_range)
-		
+	
 	stop()
 
 func _process(_delta: float) -> void:

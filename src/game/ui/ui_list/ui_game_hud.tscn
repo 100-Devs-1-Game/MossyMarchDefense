@@ -1,88 +1,332 @@
-[gd_scene load_steps=8 format=3 uid="uid://behtnp632nowv"]
+[gd_scene load_steps=13 format=3 uid="uid://behtnp632nowv"]
 
 [ext_resource type="Script" uid="uid://dh0yyfup3qnuw" path="res://game/ui/ui_list/ui_game_hud.gd" id="1_rfypm"]
 [ext_resource type="Texture2D" uid="uid://grbvnc6s7btt" path="res://assets/ui/menus/shop.png" id="2_v7km6"]
-[ext_resource type="Texture2D" uid="uid://cv4cqp1lkwhk" path="res://assets/Animations/acorn/acorn1.png" id="3_7h3t3"]
-[ext_resource type="Texture2D" uid="uid://cf0v3grnf013v" path="res://icon.svg" id="3_gkyig"]
 [ext_resource type="Script" uid="uid://d2yvpa8bao7ik" path="res://game/ui/ui_components/ui_tower_choice.gd" id="4_3a5vc"]
-[ext_resource type="Texture2D" uid="uid://sy3gqfrcapv5" path="res://assets/Towers/Flower Pot/flower_pot1.png" id="5_kg361"]
-[ext_resource type="Texture2D" uid="uid://dxpj4ilbctyno" path="res://assets/Towers/Watering Can/watering_can1.png" id="6_jiane"]
+[ext_resource type="Texture2D" uid="uid://7ivq7dxi5eh8" path="res://assets/ui/towers/flower_pot_shadowless.png" id="5_jiane"]
+[ext_resource type="Texture2D" uid="uid://cik6m31olyuuk" path="res://assets/ui/towers/water_can_shadowless.png" id="6_jiane"]
+[ext_resource type="Texture2D" uid="uid://c5l6xky41sh7h" path="res://assets/ui/towers/water_drop_shadowless.png" id="7_qp5ji"]
+[ext_resource type="Texture2D" uid="uid://diq2khkydjimv" path="res://assets/ui/towers/acorn_shadowless.png" id="8_qp5ji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jiane"]
+bg_color = Color(1, 1, 0, 0.32500002)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(1, 1, 0, 0)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Animation" id="Animation_qp5ji"]
+resource_name = "hud_spawned_in"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(153, -506), Vector2(153, -110), Vector2(153, -143)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Acorn/AcornAmount:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Acorn:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-154, 0), Vector2(30.000004, -1.5158249e-12), Vector2(12, 7.6293945e-06)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Acorn:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-3.4906585, 0.3490658503988659, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShopPanel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r5t23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(153, -506)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Acorn/AcornAmount:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Acorn:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-154, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Acorn:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShopPanel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mdypi"]
+resource_name = "hide_shop"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(153, -143), Vector2(153, -347)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Acorn/AcornAmount:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Acorn:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12, 7.6293945e-06)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Acorn:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShopPanel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5t23"]
+_data = {
+&"RESET": SubResource("Animation_r5t23"),
+&"hide_shop": SubResource("Animation_mdypi"),
+&"hud_spawned_in": SubResource("Animation_qp5ji")
+}
 
 [node name="GameHUD" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_rfypm")
 
 [node name="ShopPanel" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 155.0
-offset_top = -143.0
-offset_right = 785.0
-offset_bottom = 357.0
+offset_left = 153.0
+offset_top = -506.0
+offset_right = 783.0
+offset_bottom = -6.0
 texture = ExtResource("2_v7km6")
 
-[node name="FlowerClickSpace" type="TextureRect" parent="ShopPanel"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 120)
+[node name="FlowerClickSpace" type="Panel" parent="ShopPanel" node_paths=PackedStringArray("scaled_texture")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 114.0
-offset_top = 170.0
-offset_right = 234.0
-offset_bottom = 290.0
-texture = ExtResource("3_gkyig")
+offset_left = 144.0
+offset_top = 199.0
+offset_right = 224.0
+offset_bottom = 279.0
+pivot_offset = Vector2(40, 40)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jiane")
 script = ExtResource("4_3a5vc")
-tower_icon = ExtResource("5_kg361")
+tower_icon = ExtResource("5_jiane")
+scaled_texture = NodePath("FlowerClickSpaceTex")
 
-[node name="WaterClickSpace" type="TextureRect" parent="ShopPanel"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 120)
+[node name="FlowerClickSpaceTex" type="TextureRect" parent="ShopPanel/FlowerClickSpace"]
+show_behind_parent = true
+custom_minimum_size = Vector2(200.925, 180)
 layout_mode = 0
-offset_left = 260.0
-offset_top = 170.0
-offset_right = 380.0
-offset_bottom = 290.0
-texture = ExtResource("3_gkyig")
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 140.21
+offset_bottom = 115.0
+texture = ExtResource("5_jiane")
+expand_mode = 1
+
+[node name="WaterClickSpaceSpace" type="Panel" parent="ShopPanel" node_paths=PackedStringArray("scaled_texture")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 282.0
+offset_top = 199.0
+offset_right = 362.0
+offset_bottom = 279.0
+pivot_offset = Vector2(40, 40)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jiane")
 script = ExtResource("4_3a5vc")
 tower_type = 1
 tower_icon = ExtResource("6_jiane")
+scaled_texture = NodePath("WaterClickSpaceTex")
 
-[node name="BlobClickSpace" type="TextureRect" parent="ShopPanel"]
-unique_name_in_owner = true
+[node name="WaterClickSpaceTex" type="TextureRect" parent="ShopPanel/WaterClickSpaceSpace"]
+show_behind_parent = true
+custom_minimum_size = Vector2(131.785, 111.075)
+layout_mode = 0
+offset_left = -32.0
+offset_top = -26.0
+offset_right = 114.78
+offset_bottom = 95.66
+texture = ExtResource("6_jiane")
+expand_mode = 1
+
+[node name="BlobClickSpaceSpace" type="Panel" parent="ShopPanel" node_paths=PackedStringArray("scaled_texture")]
 visible = false
-custom_minimum_size = Vector2(120, 120)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 414.0
-offset_top = 170.0
-offset_right = 534.0
-offset_bottom = 290.0
-texture = ExtResource("3_gkyig")
+offset_left = 426.0
+offset_top = 202.0
+offset_right = 531.805
+offset_bottom = 282.0
+pivot_offset = Vector2(40, 40)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jiane")
 script = ExtResource("4_3a5vc")
+tower_icon = ExtResource("7_qp5ji")
+scaled_texture = NodePath("BlobClickSpaceTex")
 
-[node name="Button" type="Button" parent="ShopPanel"]
+[node name="BlobClickSpaceTex" type="TextureRect" parent="ShopPanel/BlobClickSpaceSpace"]
+show_behind_parent = true
+custom_minimum_size = Vector2(145.495, 94.205)
 layout_mode = 0
-offset_left = 471.0
-offset_top = 313.0
-offset_right = 525.0
-offset_bottom = 341.0
-text = "asdads"
+offset_left = -18.0
+offset_top = -20.0
+offset_right = 127.494995
+offset_bottom = 98.935
+texture = ExtResource("7_qp5ji")
+expand_mode = 1
 
 [node name="Acorn" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 0
-offset_left = 15.0
-offset_top = 17.0
-offset_right = 165.0
-offset_bottom = 167.0
-texture = ExtResource("3_7h3t3")
+offset_left = -154.0
+offset_right = -4.0
+offset_bottom = 150.0
+pivot_offset = Vector2(75, 75)
+mouse_filter = 0
+texture = ExtResource("8_qp5ji")
 expand_mode = 1
 
 [node name="AcornAmount" type="Label" parent="Acorn"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -95,3 +339,9 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 48
 text = "0"
+
+[node name="MenuAnims" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_r5t23")
+}

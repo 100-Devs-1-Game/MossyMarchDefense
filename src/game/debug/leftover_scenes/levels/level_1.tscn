@@ -135,67 +135,37 @@ script = ExtResource("1_jg07a")
 z_index = -3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("1_pnkwr")
 
 [node name="overlay_layer" type="TextureRect" parent="Background"]
 z_index = 3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("2_8qa6m")
 
 [node name="rain_layer_1" type="TextureRect" parent="Background"]
 z_index = 3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("3_cjm32")
 
 [node name="rain_layer_2" type="TextureRect" parent="Background"]
 z_index = 3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("4_jg07a")
 
 [node name="TowerShop" parent="." node_paths=PackedStringArray("tower_parent") instance=ExtResource("6_awp6h")]
+visible = false
 z_index = 3
 tower_parent = NodePath("../Towers")
 
-[node name="TowerMarkers" type="Node2D" parent="."]
-
-[node name="TowerMarker" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(125, 276)
-
-[node name="TowerMarker2" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(337, 273)
-
-[node name="TowerMarker3" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(281, 809)
-
-[node name="TowerMarker4" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(663, 441)
-
-[node name="TowerMarker5" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(821, 283)
-
-[node name="TowerMarker6" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(821, 634)
-
-[node name="TowerMarker7" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(802, 967)
-
-[node name="TowerMarker8" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(1009, 955)
-
-[node name="TowerMarker9" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(1221, 799)
-
-[node name="TowerMarker10" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(1243, 474)
-
-[node name="TowerMarker11" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(1212, 139)
-
-[node name="TowerMarker12" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
-position = Vector2(1417, 134)
+[node name="TowerPlacement" parent="TowerShop" index="0"]
+visible = true
 
 [node name="Towers" type="Node2D" parent="."]
 
@@ -235,11 +205,13 @@ next_path_node = NodePath("../PathNode6")
 position = Vector2(1749, 314)
 
 [node name="PlaceableRegion" type="Area2D" parent="Path" groups=["PlacableRegion"]]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PlaceableRegion"]
 position = Vector2(960, 540)
 shape = SubResource("RectangleShape2D_5gvcb")
 debug_color = Color(1.1551381e-06, 0.6399762, 0.36140433, 0.41960785)
+metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Path" groups=["EnemyPath"]]
 position = Vector2(389, 236)
@@ -261,7 +233,58 @@ player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
 wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
 worm_path_node = NodePath("../Path/PathPoints/PathNode4")
 
+[node name="TowerMarkers" type="Node2D" parent="."]
+
+[node name="TowerMarker" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(128, 300)
+
+[node name="TowerMarker3" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(660, 467)
+
+[node name="TowerMarker4" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(821, 306)
+
+[node name="TowerMarker5" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(1205, 160)
+
+[node name="TowerMarker6" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(1415, 154)
+
+[node name="TowerMarker7" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(1241, 491)
+
+[node name="TowerMarker8" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(1220, 817)
+
+[node name="TowerMarker9" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(1012, 978)
+
+[node name="TowerMarker10" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(798, 984)
+
+[node name="TowerMarker11" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(277, 823)
+
+[node name="TowerMarker12" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(821, 656)
+
+[node name="TowerMarker2" parent="TowerMarkers" instance=ExtResource("7_jg07a")]
+z_index = 100
+position = Vector2(333, 300)
+
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
@@ -270,6 +293,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
 layout_mode = 1
@@ -367,3 +391,5 @@ horizontal_alignment = 1
 
 [node name="Worm" parent="." groups=["worm"] instance=ExtResource("13_nse3i")]
 position = Vector2(713, 804.99994)
+
+[editable path="TowerShop"]

@@ -7,5 +7,5 @@ func _ready() -> void:
 	
 	# Will open the main menu, then queue itself free.
 	
-	UI.open_new_layer("MAIN_MENU")
+	UI.open_new_layer(&"MAIN_MENU")
 	self.queue_free()

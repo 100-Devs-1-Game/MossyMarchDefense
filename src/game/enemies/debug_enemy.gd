@@ -35,6 +35,7 @@ func load_enemy_stats(enemy_stats : EnemyData):
 	movement_component.max_movement_speed = enemy_stats.movement_speed
 	animated_sprite_2d.sprite_frames = enemy_stats.sprite_frames
 	payout = enemy_stats.enemy_payout
+	
 
 func kill_enemy():
 	if not enemy_type == GlobalEnums.EnemyType.Worm:
