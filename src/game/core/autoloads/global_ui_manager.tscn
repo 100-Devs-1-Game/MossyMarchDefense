@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs4f1mum2aa7n"]
+
+[ext_resource type="Script" uid="uid://dtiytvma7eq1" path="res://game/core/autoloads/global_ui_manager.gd" id="1_gu2re"]
+
+[node name="UIManager" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_gu2re")
+
+[node name="UIRoot" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
