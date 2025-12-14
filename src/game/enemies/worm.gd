@@ -58,10 +58,8 @@ func play_animation():
 			animated_sprite_2d.play(&"walk_back")
 			
 func enter_invuln():
-	print("owie!")
 	invuln = true
 	invuln_timer.start()
 	
-		
 func on_invuln_timeout():
 	invuln = false
