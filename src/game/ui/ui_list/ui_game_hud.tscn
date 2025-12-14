@@ -230,7 +230,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_rfypm")
-metadata/_edit_use_anchors_ = true
 
 [node name="ShopPanel" type="TextureRect" parent="."]
 unique_name_in_owner = true
