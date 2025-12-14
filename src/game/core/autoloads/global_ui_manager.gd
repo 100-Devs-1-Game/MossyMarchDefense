@@ -7,22 +7,12 @@ const LAYER_PATHS : Dictionary = {
 	"DEBUG_INFO" : "",
 }
 
-var ui_root : Control = null
 var top_layer : UILayer = null
+@onready var ui_root: Control = %UIRoot
 
 func _ready() -> void:
 	layer = 69
-	_add_ui_root()
 	_connect_signals()
-
-func _add_ui_root() -> void:
-	ui_root = Control.new()
-	ui_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	ui_root.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	ui_root.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	ui_root.size = get_viewport().size
-	ui_root.name = "UIRoot"
-	self.add_child(ui_root)
 
 
 func _connect_signals() -> void:

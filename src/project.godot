@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 
 GlobalEnums="*res://game/core/autoloads/global_enums.gd"
 SignalBus="*res://game/core/autoloads/global_signal_bus.gd"
-UI="*res://game/core/autoloads/global_ui_manager.gd"
 Instance="*res://game/core/autoloads/global_game_instance.gd"
+UI="*res://game/core/autoloads/global_ui_manager.tscn"
 
 [debug]
 
