@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://behtnp632nowv"]
+[gd_scene load_steps=19 format=3 uid="uid://behtnp632nowv"]
 
 [ext_resource type="Script" uid="uid://dh0yyfup3qnuw" path="res://game/ui/ui_list/ui_game_hud.gd" id="1_rfypm"]
 [ext_resource type="Texture2D" uid="uid://grbvnc6s7btt" path="res://assets/ui/menus/shop.png" id="2_v7km6"]
@@ -221,6 +221,104 @@ _data = {
 &"hud_spawned_in": SubResource("Animation_qp5ji")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp5ji"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.71992487, 0.73521674, 1.1551381e-06, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5t23"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.88804847, 0.902335, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdypi"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwnpw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vsum"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.56338006, 0.19531083, 0.24482927, 1)
+border_width_left = 8
+border_width_top = 2
+border_width_right = 8
+border_width_bottom = 2
+border_color = Color(0.47840893, 0.1588434, 0.20017853, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdw62"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0.39215687)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [node name="GameHUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -349,3 +447,103 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_r5t23")
 }
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = -263.0
+offset_right = 281.0
+offset_bottom = -38.0
+grow_vertical = 0
+
+[node name="NextWave" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_qp5ji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r5t23")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qp5ji")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mdypi")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pwnpw")
+text = "Next Wave"
+
+[node name="Pause" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_qp5ji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r5t23")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qp5ji")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mdypi")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pwnpw")
+text = "Pause Game"
+
+[node name="HPPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 41.325)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4vsum")
+
+[node name="PlayerHP" type="Label" parent="VBoxContainer/HPPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 33
+text = "HP: 30/30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -77.0
+offset_bottom = 78.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdw62")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Worms" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "WORMS: 0"
+horizontal_alignment = 1
+
+[node name="PlayerMoney" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "$0"
+horizontal_alignment = 1
+
+[node name="WaveCounter" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+text = "WAVE 1"
+horizontal_alignment = 1

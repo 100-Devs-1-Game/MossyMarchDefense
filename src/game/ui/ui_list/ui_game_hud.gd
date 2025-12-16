@@ -5,6 +5,15 @@ extends UILayer
 
 @onready var acorn_amount: Label = %AcornAmount
 
+@onready var next_wave: Button = %NextWave
+@onready var pause: Button = %Pause
+@onready var player_hp: Label = %PlayerHP
+@onready var worms: Label = %Worms
+@onready var player_money: Label = %PlayerMoney
+@onready var wave_counter: Label = %WaveCounter
+
+
+
 var tower_choices : Array[UITowerChoice] = []
 var acorn_raw_count : int = 0
 var display_acorn_count : int = 0
@@ -43,6 +52,13 @@ func _connect_signals() -> void:
 			node.gui_input.connect(_on_gui_input.bind(node))
 			node.mouse_entered.connect(_on_tower_choice_hovered.bind(node))
 			node.mouse_exited.connect(_on_tower_choice_unhovered.bind(node))
+	
+	next_wave.pressed.connect(func(): SignalBus.start_wave_clicked.emit())
+	pause.pressed.connect(func(): SignalBus.pause_wave_clicked.emit())
+	SignalBus.set_current_wave.connect(func(val): wave_counter.text = str(val))
+	SignalBus.set_current_worms.connect(func(val): worms.text = str(val))
+	SignalBus.player_damaged.connect(func(val): player_hp.text = str(val))
+
 
 func _process(delta: float) -> void:
 	if is_dragging_tower() and drag_preview_active():
