@@ -183,7 +183,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
-disabled = true
 text = "Level 2"
 
 [node name="Level3Button" type="Button" parent="LevelContainer"]
@@ -193,7 +192,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
-disabled = true
 text = "Level 3"
 
 [node name="Title" type="TextureRect" parent="."]
@@ -214,3 +212,5 @@ libraries = {
 }
 
 [connection signal="pressed" from="LevelContainer/Level1Button" to="." method="on_level_1_pressed"]
+[connection signal="pressed" from="LevelContainer/Level2Button" to="." method="on_level_2_button_pressed"]
+[connection signal="pressed" from="LevelContainer/Level3Button" to="." method="on_level_3_button_pressed"]

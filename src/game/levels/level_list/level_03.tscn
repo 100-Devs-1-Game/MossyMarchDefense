@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyxdn0vsupg51"]
+
+[ext_resource type="PackedScene" uid="uid://cpd4r77qxay3h" path="res://game/levels/class_level.tscn" id="1_rwme5"]
+[ext_resource type="Texture2D" uid="uid://cijn4jmm14saj" path="res://assets/Background/Level 3/lvl_3_base.jpg" id="2_b6kxb"]
+[ext_resource type="Texture2D" uid="uid://ddkwrh0w34emu" path="res://assets/Background/Level 3/lvl_3_overlay.png" id="3_lvd17"]
+[ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/levels/level_components/pathing/path_node.tscn" id="4_1gvl0"]
+[ext_resource type="PackedScene" uid="uid://oykmyp40ux3u" path="res://game/enemies/worm.tscn" id="5_kmnoo"]
+[ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/levels/level_components/towers/tower_marker.tscn" id="6_lhb77"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ym46w"]
+vertices = PackedVector2Array(363, 944.0703, -35.726563, 946.89844, 6.5234375, 798.1094, 205.75, 801.14844, 363, 586.15625, 214.75781, 434, 1073.9531, 434, 1244.0469, 572.14844, 1245.0469, 385, 1074.9375, 235.95313, 1539.9219, 234.03906, 1391.0703, 385, 1536.9219, 619.1875, 1388.0625, 829.03906, 1821.4297, 830.9531, 1809.5391, 614.1719)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 13, 12, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 788, 196, 791, 205, 424, 1064, 424, 1065, 226, 1550, 224, 1547, 609, 1819, 604, 1832, 841, 1378, 839, 1381, 395, 1255, 395, 1254, 582, 373, 596, 373, 954, -49, 957)])
+
+[node name="Level3" instance=ExtResource("1_rwme5")]
+
+[node name="EnemySpawner" parent="." index="0" node_paths=PackedStringArray("spawner_path_node")]
+spawner_path_node = NodePath("../Path/PathPoints/PathNode")
+
+[node name="LevelManager" parent="." index="1" node_paths=PackedStringArray("first_path_node", "wave_start_button", "pause_button", "player_health", "player_money_label", "wave_counter", "worm_path_node")]
+first_path_node = NodePath("../Path/PathPoints/PathNode2")
+wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
+pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
+player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
+player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
+wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
+worm_path_node = NodePath("../Path/PathPoints/PathNode4")
+
+[node name="base_layer" parent="Background" index="0"]
+texture = ExtResource("2_b6kxb")
+
+[node name="overlay_layer" parent="Background" index="1"]
+texture = ExtResource("3_lvd17")
+
+[node name="rain_layer_1" parent="Background" index="2"]
+visible = false
+
+[node name="rain_layer_2" parent="Background" index="3"]
+visible = false
+
+[node name="PathNode" parent="Path/PathPoints" index="0" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_1gvl0")]
+position = Vector2(11, 865)
+next_path_node = NodePath("../PathNode2")
+
+[node name="PathNode2" parent="Path/PathPoints" index="1" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_1gvl0")]
+position = Vector2(293, 858)
+next_path_node = NodePath("../PathNode3")
+
+[node name="PathNode3" parent="Path/PathPoints" index="2" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_1gvl0")]
+position = Vector2(283, 506)
+next_path_node = NodePath("../PathNode4")
+
+[node name="PathNode4" parent="Path/PathPoints" index="3" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_1gvl0")]
+position = Vector2(1165, 488)
+next_path_node = NodePath("../PathNode5")
+
+[node name="PathNode5" parent="Path/PathPoints" index="4" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_1gvl0")]
+position = Vector2(1165, 313)
+next_path_node = NodePath("../PathNode6")
+
+[node name="PathNode6" parent="Path/PathPoints" index="5" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_1gvl0")]
+position = Vector2(1465, 308)
+next_path_node = NodePath("../PathNode7")
+
+[node name="PathNode7" parent="Path/PathPoints" index="6" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_1gvl0")]
+position = Vector2(1468, 675)
+next_path_node = NodePath("../PathNode8")
+
+[node name="PathNode8" parent="Path/PathPoints" index="7" instance=ExtResource("4_1gvl0")]
+position = Vector2(1719, 686)
+exit_node = true
+
+[node name="NavigationRegion2D" parent="Path" index="1"]
+navigation_polygon = SubResource("NavigationPolygon_ym46w")
+
+[node name="Worm" parent="." index="10" instance=ExtResource("5_kmnoo")]
+position = Vector2(701, 498)
+
+[node name="TowerMarker" parent="." index="11" instance=ExtResource("6_lhb77")]
+position = Vector2(99, 717)
+
+[node name="TowerMarker2" parent="." index="12" instance=ExtResource("6_lhb77")]
+position = Vector2(489, 863)
+
+[node name="TowerMarker3" parent="." index="13" instance=ExtResource("6_lhb77")]
+position = Vector2(487, 682)
+
+[node name="TowerMarker4" parent="." index="14" instance=ExtResource("6_lhb77")]
+position = Vector2(294, 342)
+
+[node name="TowerMarker5" parent="." index="15" instance=ExtResource("6_lhb77")]
+position = Vector2(626, 340)
+
+[node name="TowerMarker6" parent="." index="16" instance=ExtResource("6_lhb77")]
+position = Vector2(951, 343)
+
+[node name="TowerMarker7" parent="." index="17" instance=ExtResource("6_lhb77")]
+position = Vector2(1267, 728)
+
+[node name="TowerMarker8" parent="." index="18" instance=ExtResource("6_lhb77")]
+position = Vector2(1307, 148)
+
+[node name="TowerMarker9" parent="." index="19" instance=ExtResource("6_lhb77")]
+position = Vector2(1658, 380)

@@ -160,12 +160,12 @@ mouse_filter = 2
 texture = ExtResource("4_jg07a")
 
 [node name="TowerShop" parent="." node_paths=PackedStringArray("tower_parent") instance=ExtResource("6_awp6h")]
-visible = false
 z_index = 3
 tower_parent = NodePath("../Towers")
 
-[node name="TowerPlacement" parent="TowerShop" index="0"]
+[node name="TowerPlacement" parent="TowerShop" index="0" node_paths=PackedStringArray("tower_parent")]
 visible = true
+tower_parent = NodePath("../../Towers")
 
 [node name="Towers" type="Node2D" parent="."]
 
