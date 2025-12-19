@@ -17,13 +17,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(2, 380, 380, 371, 385, 
 [node name="EnemySpawner" parent="." index="0" node_paths=PackedStringArray("spawner_path_node")]
 spawner_path_node = NodePath("../Path/PathPoints/PathNode8")
 
-[node name="LevelManager" parent="." index="1" node_paths=PackedStringArray("first_path_node", "wave_start_button", "pause_button", "player_health", "player_money_label", "wave_counter", "worm_path_node")]
+[node name="LevelManager" parent="." index="1" node_paths=PackedStringArray("first_path_node", "worm_path_node")]
 first_path_node = NodePath("../Path/PathPoints/PathNode")
-wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
-pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
-player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
-player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
-wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
 worm_path_node = NodePath("../Path/PathPoints/PathNode3")
 
 [node name="base_layer" parent="Background" index="0"]
@@ -32,12 +27,8 @@ texture = ExtResource("2_6gdii")
 [node name="overlay_layer" parent="Background" index="1"]
 texture = ExtResource("3_wtatt")
 
-[node name="Worm" parent="Enemies" index="0" instance=ExtResource("5_lvi8s")]
+[node name="Worm" parent="Enemies" index="0" groups=["worm"] instance=ExtResource("5_lvi8s")]
 position = Vector2(627.00006, 800)
-
-[node name="TowerPlacement" parent="TowerShop" index="0" node_paths=PackedStringArray("tower_parent")]
-visible = true
-tower_parent = NodePath("../../Towers")
 
 [node name="PathNode" parent="Path/PathPoints" index="0" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_36r3l")]
 position = Vector2(280, 456)
@@ -107,8 +98,4 @@ position = Vector2(1301, 127)
 [node name="TowerMarker11" parent="TowerMarkers" index="10" instance=ExtResource("6_gkpsi")]
 position = Vector2(1603, 318)
 
-[node name="Control" parent="UI" index="0"]
-offset_top = 3.0
-offset_bottom = 3.0
-
-[editable path="TowerShop"]
+[editable path="TowerMarkers/TowerMarker2"]

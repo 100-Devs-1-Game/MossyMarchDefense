@@ -32,12 +32,10 @@ var current_hp: int = starting_hp
 func _ready():
 	# debug_spawn_worms()
 	
-	# start_wave()
+#	wave_start_button.pressed.connect(on_wave_start_button_pressed)
+#	pause_button.pressed.connect(on_pause_button_pressed)
 	
-	wave_start_button.pressed.connect(on_wave_start_button_pressed)
-	pause_button.pressed.connect(on_pause_button_pressed)
-	
-	player_money_label.text = "$" + str(player_money)
+#	player_money_label.text = "$" + str(player_money)
 	
 	if first_path_node: #if first node available
 		#connect to it's damage_taken signal, and call damage_player on recieve

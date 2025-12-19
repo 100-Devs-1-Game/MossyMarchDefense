@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpd4r77qxay3h"]
+[gd_scene load_steps=9 format=3 uid="uid://cpd4r77qxay3h"]
 
 [ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/levels/level_components/enemy_spawner.tscn" id="1_tvk8f"]
 [ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="2_vm5kg"]
 [ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/levels/level_components/level_manager.tscn" id="3_l5jy1"]
 [ext_resource type="Texture2D" uid="uid://cwyloqpfbm63m" path="res://assets/Background/Level 1/rain_layer1.png" id="7_3tymb"]
 [ext_resource type="Texture2D" uid="uid://bvqcd0fnuuppt" path="res://assets/Background/Level 1/rain_layer2.png" id="8_1wgse"]
-[ext_resource type="PackedScene" uid="uid://hgdtyuo44bet" path="res://game/levels/level_components/towers/tower_shop.tscn" id="9_somvx"]
 
 [sub_resource type="Resource" id="Resource_63j5y"]
 script = ExtResource("2_vm5kg")
@@ -31,104 +30,6 @@ func _process(delta: float) -> void:
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stt8m"]
 size = Vector2(1920, 1080)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stt8m"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.71992487, 0.73521674, 1.1551381e-06, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65b1u"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.88804847, 0.902335, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p3r6"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sa4rq"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_youly"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.56338006, 0.19531083, 0.24482927, 1)
-border_width_left = 8
-border_width_top = 2
-border_width_right = 8
-border_width_bottom = 2
-border_color = Color(0.47840893, 0.1588434, 0.20017853, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3hyp"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(1, 1, 1, 0.39215687)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
 
 [node name="Level" type="Node"]
 
@@ -171,10 +72,6 @@ texture = ExtResource("8_1wgse")
 
 [node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
 
-[node name="TowerShop" parent="." node_paths=PackedStringArray("tower_parent") instance=ExtResource("9_somvx")]
-z_index = 3
-tower_parent = NodePath("../Towers")
-
 [node name="Path" type="Node2D" parent="."]
 
 [node name="PathPoints" type="Node2D" parent="Path"]
@@ -191,109 +88,3 @@ debug_color = Color(1.1551381e-06, 0.6399762, 0.36140433, 0.41960785)
 metadata/_edit_lock_ = true
 
 [node name="TowerMarkers" type="Node2D" parent="."]
-
-[node name="UI" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="Control" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 72.0
-offset_top = -263.0
-offset_right = 281.0
-offset_bottom = -38.0
-grow_vertical = 0
-
-[node name="NextWave" type="Button" parent="UI/Control/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_stt8m")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_65b1u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_stt8m")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_8p3r6")
-theme_override_styles/focus = SubResource("StyleBoxFlat_sa4rq")
-text = "Next Wave"
-
-[node name="Pause" type="Button" parent="UI/Control/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_stt8m")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_65b1u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_stt8m")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_8p3r6")
-theme_override_styles/focus = SubResource("StyleBoxFlat_sa4rq")
-text = "Pause Game"
-
-[node name="HPPanel" type="Panel" parent="UI/Control/VBoxContainer"]
-custom_minimum_size = Vector2(0, 41.325)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_youly")
-
-[node name="PlayerHP" type="Label" parent="UI/Control/VBoxContainer/HPPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-theme_override_font_sizes/font_size = 33
-text = "HP: 30/30"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="UI/Control"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = -77.0
-offset_bottom = 78.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_a3hyp")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Worms" type="Label" parent="UI/Control/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-text = "WORMS: 0"
-horizontal_alignment = 1
-
-[node name="PlayerMoney" type="Label" parent="UI/Control/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-text = "$0"
-horizontal_alignment = 1
-
-[node name="WaveCounter" type="Label" parent="UI/Control/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-text = "WAVE 1"
-horizontal_alignment = 1
