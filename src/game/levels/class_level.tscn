@@ -48,22 +48,26 @@ script = SubResource("GDScript_youly")
 z_index = -3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="overlay_layer" type="TextureRect" parent="Background"]
 z_index = 3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="rain_layer_1" type="TextureRect" parent="Background"]
 z_index = 3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("7_3tymb")
 
 [node name="rain_layer_2" type="TextureRect" parent="Background"]
 z_index = 3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("8_1wgse")
 
 [node name="Towers" type="Node2D" parent="."]
