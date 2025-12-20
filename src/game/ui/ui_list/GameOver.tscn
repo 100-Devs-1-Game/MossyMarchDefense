@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceftfjifmpxyt"]
+
+[ext_resource type="Texture2D" uid="uid://xo4y7l347mwu" path="res://assets/ui/menus/game_over.jpg" id="1_suoog"]
+[ext_resource type="Script" uid="uid://gfn1kb6aul6" path="res://game/ui/ui_list/game_over.gd" id="1_v6d2u"]
+
+[node name="GameOver" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v6d2u")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_suoog")
+
+[node name="ButtonContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 680.0
+offset_right = 807.0
+offset_bottom = 720.0
+columns = 2
+
+[node name="MainMenuButton" type="Button" parent="ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="RetryLevelButton" type="Button" parent="ButtonContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Retry Level"

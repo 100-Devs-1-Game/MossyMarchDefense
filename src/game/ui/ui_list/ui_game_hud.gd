@@ -45,6 +45,7 @@ func _connect_signals() -> void:
 	SignalBus.acorns_updated.connect(_on_acorns_updated)
 	SignalBus.tower_placement_hovered.connect(_on_tower_placement_hovered)
 	SignalBus.tower_placement_unhovered.connect(_on_tower_placement_unhovered)
+	SignalBus.close_game_hud.connect(_on_close_game_hud)
 	
 	for node in shop_panel.get_children():
 		if node is UITowerChoice:
@@ -57,7 +58,7 @@ func _connect_signals() -> void:
 	pause.pressed.connect(func(): SignalBus.pause_wave_clicked.emit())
 	SignalBus.set_current_wave.connect(func(val): wave_counter.text = str(val))
 	SignalBus.set_current_worms.connect(func(val): worms.text = str(val))
-	SignalBus.player_damaged.connect(func(val): player_hp.text = str(val))
+	SignalBus.worm_damaged.connect(func(val): player_hp.text = str(val))
 
 
 func _process(delta: float) -> void:
@@ -111,6 +112,7 @@ func _handle_release_click() -> void:
 	
 	if is_dragging_tower():
 		menu_anims.play(&"hide_shop", -1, -1.0, true)
+		
 		
 		if hovered_placement != null and hovered_placement.occupied == false:
 			hovered_placement.tower_placed(dragged_tower.tower_type)
@@ -244,6 +246,9 @@ func _on_tower_choice_unhovered(tower:UITowerChoice) -> void:
 	tower.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 	tower.scale = Vector2(1.0, 1.0)
 	tower.self_modulate.a = 0.0
+
+func _on_close_game_hud() -> void:
+	close_layer.emit(self)
 
 func is_tower_clicked() -> bool:
 	return is_instance_valid(clicked_tower)

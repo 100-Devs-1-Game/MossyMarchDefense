@@ -41,8 +41,8 @@ func spawn_next_enemy():
 
 func start_wave():
 	spawning_enemies = true
-	var wave = wave_set[level_manager.current_wave - 1].duplicate()
-	enemy_queue = wave.enemy_queue
+	var wave = wave_set[level_manager.current_wave - 1]
+	enemy_queue = wave.enemy_queue.duplicate()
 	spawn_timer.wait_time = wave.enemy_spawn_timer
 	spawn_timer.start()
 	

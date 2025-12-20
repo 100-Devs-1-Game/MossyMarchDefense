@@ -6,6 +6,7 @@ var enemy_queue
 var current_wave := 1
 var between_waves := true
 var enemies_on_screen := 0
+var ui_layer: UILayer
 
 @export var player_worms : int
 @export var first_path_node : Node2D
@@ -23,30 +24,25 @@ var enemies_on_screen := 0
 @export var worm_spawn_node: Node # This is just set to 2nd node for now for testing
 @export var worm_path_node: Node # Again debug
 
-#defines and sets health for the player so we can alter it here🥚
-
-# TODO: Do we need hp? Lose con is if all worms are eaten idk how we'd fit hp in here
-@export var starting_hp: int = 30
-var current_hp: int = starting_hp
 
 func _ready():
 	# debug_spawn_worms()
 	
-#	wave_start_button.pressed.connect(on_wave_start_button_pressed)
-#	pause_button.pressed.connect(on_pause_button_pressed)
+	_connect_signals()
 	
-#	player_money_label.text = "$" + str(player_money)
 	
-	if first_path_node: #if first node available
-		#connect to it's damage_taken signal, and call damage_player on recieve
-		first_path_node.damage_taken.connect(damage_player)
+
+func _connect_signals():
+	SignalBus.start_wave_clicked.connect(on_wave_start_button_pressed)
+	SignalBus.pause_wave_clicked.connect(on_pause_button_pressed)
+	SignalBus.retry_level.connect(on_retry_level)
 
 func _process(_delta: float) -> void:
 	_refresh_ui()
 
 func _refresh_ui() -> void:
-	if player_health:
-		player_health.text = "HP:" + str(current_hp) + "/" + str(starting_hp)
+	
+	pass
 
 func get_first_path_node(worm: bool):
 	if worm:
@@ -63,7 +59,7 @@ func adjust_enemies(modifier : int):
 
 func start_wave():
 	
-	wave_counter.text = "WAVE " + str(current_wave)
+#	wave_counter.text = "WAVE " + str(current_wave)
 	between_waves = false
 	wave_start_button.disabled = true #i swapped it to disable
 	wave_start_button.text = "Wave in progress" #mb if it interferes with things🥚
@@ -83,18 +79,15 @@ func pay_player(payout: int):
 	player_money += payout
 	player_money_label.text = "$" + str(player_money)
 
-func damage_player(amount: int) -> void:
-	current_hp -= amount
-	if current_hp <= 0: #if hp is or below 0, gameover
-		current_hp = 0
-		lose_game()
 
 # TODO: Obviously this aint the final functions for winning nor losing
 func win_game():
 	print("You Won!")
 
 func lose_game():
-	get_tree().quit()
+	# TODO: Fade to black
+	SignalBus.close_game_hud.emit()
+	UI.open_new_layer(&"GAME_OVER")
 	
 func debug_spawn_worms():
 	#only show in debug scene, when this is set
@@ -118,3 +111,8 @@ func on_pause_button_pressed():
 		Engine.time_scale = 1
 	else:
 		Engine.time_scale = 0
+
+func on_retry_level():
+	current_wave = 1
+	
+	get_tree().reload_current_scene()

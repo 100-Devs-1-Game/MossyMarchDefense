@@ -4,8 +4,10 @@ const LEVEL_PATHS : Dictionary = {
 	"level_01" : ""
 }
 
+const STARTING_ACORNS = 14
+
 var current_level:Node = null
-var acorns:int = 14
+var acorns:int = STARTING_ACORNS
 
 func _ready() -> void:
 	_connect_signals()
@@ -31,12 +33,19 @@ func get_acorns() -> int:
 
 func set_current_level(new_level:Node) -> void:
 	current_level = new_level
-	_setup_the_acorn_gobbler_3000()
+	
+	if current_level != null:
+		_setup_the_acorn_gobbler_3000()
+	
+
+func reset_current_level() -> void:
+	acorns = STARTING_ACORNS
 
 # This is not the best way at all to handle this. - Phoenix
 # Once level class is created; it needs to not be this crazy stuff I made.
 # Comment out these functions when/if they break your testing.
 func _setup_the_acorn_gobbler_3000() -> void:
+	
 	var the_acorn_gobbler:Node = null
 	if current_level.has_node("LevelManager"):
 		the_acorn_gobbler = current_level.get_node("LevelManager")

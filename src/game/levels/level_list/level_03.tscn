@@ -17,13 +17,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 788, 196, 791, 205,
 [node name="EnemySpawner" parent="." index="0" node_paths=PackedStringArray("spawner_path_node")]
 spawner_path_node = NodePath("../Path/PathPoints/PathNode")
 
-[node name="LevelManager" parent="." index="1" node_paths=PackedStringArray("first_path_node", "wave_start_button", "pause_button", "player_health", "player_money_label", "wave_counter", "worm_path_node")]
+[node name="LevelManager" parent="." index="1" node_paths=PackedStringArray("first_path_node", "worm_path_node")]
 first_path_node = NodePath("../Path/PathPoints/PathNode2")
-wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
-pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
-player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
-player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
-wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
 worm_path_node = NodePath("../Path/PathPoints/PathNode4")
 
 [node name="base_layer" parent="Background" index="0"]
@@ -100,5 +95,5 @@ position = Vector2(1307, 148)
 [node name="TowerMarker9" parent="TowerMarkers" index="8" instance=ExtResource("6_lhb77")]
 position = Vector2(1658, 380)
 
-[node name="Worm" parent="." index="9" instance=ExtResource("5_kmnoo")]
+[node name="Worm" parent="." index="8" groups=["worm"] instance=ExtResource("5_kmnoo")]
 position = Vector2(701, 498)

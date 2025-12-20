@@ -372,4 +372,8 @@ horizontal_alignment = 1
 [node name="Worm" parent="." groups=["worm"] instance=ExtResource("13_nse3i")]
 position = Vector2(713, 804.99994)
 
+[node name="HealthComponent" parent="Worm" index="1"]
+base_health = 1
+
 [editable path="TowerMarkers/TowerMarker3"]
+[editable path="Worm"]

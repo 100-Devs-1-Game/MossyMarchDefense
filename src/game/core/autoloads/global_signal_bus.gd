@@ -6,13 +6,15 @@ signal acorns_updated(new_total:int)
 # Game Signals
 signal acorns_gained(amount:int)
 signal acorns_spent(amount:int)
+signal retry_level
 
 # UI Signals
 signal start_wave_clicked
 signal pause_wave_clicked
 signal set_current_wave(wave_number:int)
 signal set_current_worms(worm_number:int)
-signal player_damaged(new_hp:int)
+signal worm_damaged(new_hp:int)
+signal close_game_hud
 
 # Temporary Signals
 signal tower_placement_hovered(location:TowerMarker)
