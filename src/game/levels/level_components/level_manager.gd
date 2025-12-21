@@ -1,6 +1,8 @@
 extends Node
 
 const NUM_WAVES = 2
+const WORM_SCENE = preload("res://game/enemies/worm.tscn")
+const STARTUP_SCENE = preload("res://game/core/startup.tscn")
 
 var enemy_queue
 var current_wave := 1
@@ -60,13 +62,23 @@ func adjust_enemies(modifier : int):
 func start_wave():
 	
 #	wave_counter.text = "WAVE " + str(current_wave)
+	
+	var worm_group = get_tree().get_first_node_in_group("worm_group")
+	var worm_instance = WORM_SCENE.instantiate()
+	worm_group.add_child(worm_instance)
+	worm_instance.global_position = worm_spawn_node.global_position
+	
 	between_waves = false
 	wave_start_button.disabled = true #i swapped it to disable
 	wave_start_button.text = "Wave in progress" #mb if it interferes with things🥚
 	enemy_spawner.start_wave()
 
 func end_wave():
+	between_waves = true
+	
 	current_wave += 1
+	
+	cleanup_enemies()
 	
 	if current_wave > NUM_WAVES:
 		win_game()
@@ -75,14 +87,15 @@ func end_wave():
 		wave_start_button.disabled = false
 		wave_start_button.text = "Next Wave"
 
-func pay_player(payout: int):
-	player_money += payout
-	player_money_label.text = "$" + str(player_money)
-
+func cleanup_enemies():
+	var enemy_group = get_tree().get_first_node_in_group("enemies_group")
+	
+	for n in enemy_group.get_children():
+		n.queue_free()
 
 # TODO: Obviously this aint the final functions for winning nor losing
 func win_game():
-	print("You Won!")
+	get_tree().change_scene_to_packed(STARTUP_SCENE)
 
 func lose_game():
 	# TODO: Fade to black

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://du7map0fgin22"]
+[gd_scene load_steps=30 format=3 uid="uid://du7map0fgin22"]
 
 [ext_resource type="Script" uid="uid://dnphc0vbthn2b" path="res://game/levels/level_components/bg_animate.gd" id="1_jg07a"]
 [ext_resource type="Texture2D" uid="uid://q2wwfthneknl" path="res://assets/Background/Level 1/lvl_1_base.jpg" id="1_pnkwr"]
@@ -11,7 +11,16 @@
 [ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="4_naiax"]
 [ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/levels/level_components/towers/tower_marker.tscn" id="7_jg07a"]
 [ext_resource type="Script" uid="uid://kqia4beo8rdk" path="res://game/levels/level_components/pathing/pathhandler.gd" id="8_nse3i"]
-[ext_resource type="PackedScene" uid="uid://oykmyp40ux3u" path="res://game/enemies/worm.tscn" id="13_nse3i"]
+[ext_resource type="Resource" uid="uid://dclevx1lyc5qm" path="res://resources/wave_data/wave1.tres" id="10_mlv2r"]
+[ext_resource type="Resource" uid="uid://djkw2c8iqqjo0" path="res://resources/wave_data/wave2.tres" id="11_beyd7"]
+[ext_resource type="Resource" uid="uid://ds1b46xi6tsx4" path="res://resources/wave_data/wave3.tres" id="12_2qn1w"]
+[ext_resource type="Resource" uid="uid://bprgprbss0ed1" path="res://resources/wave_data/wave4.tres" id="13_oex4v"]
+[ext_resource type="Resource" uid="uid://bn7um3d61xlxa" path="res://resources/wave_data/wave5.tres" id="14_3yyup"]
+[ext_resource type="Resource" uid="uid://b30sisxtdt2b1" path="res://resources/wave_data/wave6.tres" id="15_eamed"]
+[ext_resource type="Resource" uid="uid://cf7skq0asx5t2" path="res://resources/wave_data/wave7.tres" id="16_m82l0"]
+[ext_resource type="Resource" uid="uid://bugolccfmcc1h" path="res://resources/wave_data/wave8.tres" id="17_o51ma"]
+[ext_resource type="Resource" uid="uid://dr0jypjit0s14" path="res://resources/wave_data/wave9.tres" id="18_tf2gn"]
+[ext_resource type="Resource" uid="uid://defjrnx15nmc4" path="res://resources/wave_data/wave10.tres" id="19_gqi6j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1k2pe"]
 vertices = PackedVector2Array(1454.6328, 12.1015625, 1463.3281, 145.20313, 693.53906, 160.20313, 534.77344, 21.890625, 523.77344, 502.28125, 716.52344, 657.8906, 2.6015625, 651.09375, 154.1875, 491.71875, -12.3984375, 279.95313, 147.20313, 141.38281, -377.64844, 161.60156, -373.35156, 281.9375)
@@ -20,12 +29,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(704, 170, 727, 668, -7,
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gvcb"]
 size = Vector2(1920, 1080)
-
-[sub_resource type="Resource" id="Resource_63j5y"]
-script = ExtResource("4_naiax")
-enemy_queue = Array[String](["bird", "frog", "snail", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird"])
-enemy_spawn_timer = 1.4
-metadata/_custom_type_script = "uid://5t10kxtq3ygk"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_naiax"]
 content_margin_left = 4.0
@@ -162,6 +165,8 @@ texture = ExtResource("4_jg07a")
 
 [node name="Coins" type="Node2D" parent="."]
 
+[node name="Worm" type="Node2D" parent="." groups=["worm_group"]]
+
 [node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
 
 [node name="Path" type="Node2D" parent="."]
@@ -194,6 +199,7 @@ next_path_node = NodePath("../PathNode6")
 
 [node name="PathNode6" parent="Path/PathPoints" instance=ExtResource("2_82bkl")]
 position = Vector2(1749, 314)
+exit_node = true
 
 [node name="PlaceableRegion" type="Area2D" parent="Path" groups=["PlacableRegion"]]
 metadata/_edit_lock_ = true
@@ -212,9 +218,9 @@ navigation_polygon = SubResource("NavigationPolygon_1k2pe")
 level_manager = NodePath("../LevelManager")
 base_spawn_time = 0.3
 spawner_path_node = NodePath("../Path/PathPoints/PathNode")
-wave_set = Array[ExtResource("4_naiax")]([SubResource("Resource_63j5y")])
+wave_set = Array[ExtResource("4_naiax")]([ExtResource("10_mlv2r"), ExtResource("11_beyd7"), ExtResource("12_2qn1w"), ExtResource("13_oex4v"), ExtResource("14_3yyup"), ExtResource("15_eamed"), ExtResource("16_m82l0"), ExtResource("17_o51ma"), ExtResource("18_tf2gn"), ExtResource("19_gqi6j")])
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "player_health", "player_money_label", "wave_counter", "worm_path_node") instance=ExtResource("4_63j5y")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "player_health", "player_money_label", "wave_counter", "worm_spawn_node", "worm_path_node") instance=ExtResource("4_63j5y")]
 first_path_node = NodePath("../Path/PathPoints/PathNode")
 enemy_spawner = NodePath("../EnemySpawner")
 wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
@@ -222,6 +228,7 @@ pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
 player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
 player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
 wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
+worm_spawn_node = NodePath("../Path/PathPoints/PathNode3")
 worm_path_node = NodePath("../Path/PathPoints/PathNode4")
 
 [node name="TowerMarkers" type="Node2D" parent="."]
@@ -369,11 +376,4 @@ theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
 text = "WAVE 1"
 horizontal_alignment = 1
 
-[node name="Worm" parent="." groups=["worm"] instance=ExtResource("13_nse3i")]
-position = Vector2(713, 804.99994)
-
-[node name="HealthComponent" parent="Worm" index="1"]
-base_health = 1
-
 [editable path="TowerMarkers/TowerMarker3"]
-[editable path="Worm"]

@@ -53,4 +53,5 @@ animations = [{
 script = ExtResource("2_tpogw")
 movement_speed = 30.0
 sprite_frames = SubResource("SpriteFrames_0ri6d")
+enemy_payout = 1
 metadata/_custom_type_script = "uid://kk83cijskx3q"

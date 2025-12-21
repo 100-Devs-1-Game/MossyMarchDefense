@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://ds1b46xi6tsx4"]
+
+[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="1_xrt6b"]
+
+[resource]
+script = ExtResource("1_xrt6b")
+enemy_queue = Array[String](["bird"])
+enemy_spawn_timer = 3.0
+metadata/_custom_type_script = "uid://5t10kxtq3ygk"

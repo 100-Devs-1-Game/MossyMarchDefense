@@ -4,7 +4,7 @@ const LEVEL_PATHS : Dictionary = {
 	"level_01" : ""
 }
 
-const STARTING_ACORNS = 14
+const STARTING_ACORNS = 3
 
 var current_level:Node = null
 var acorns:int = STARTING_ACORNS

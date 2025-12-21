@@ -177,6 +177,8 @@ texture = ExtResource("8_1wgse")
 
 [node name="Coins" type="Node2D" parent="."]
 
+[node name="Worm" type="Node2D" parent="." groups=["worm_group"]]
+
 [node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
 
 [node name="Path" type="Node2D" parent="."]

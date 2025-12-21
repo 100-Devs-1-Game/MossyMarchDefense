@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://qqtme6novuda"
+path="res://.godot/imported/mob-defeat2.ogg-c65e0b8bc8d0a947093394ad702ecb3a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/SFX Archive/mob-defeat2.ogg"
+dest_files=["res://.godot/imported/mob-defeat2.ogg-c65e0b8bc8d0a947093394ad702ecb3a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

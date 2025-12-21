@@ -54,4 +54,5 @@ script = ExtResource("1_mo0j5")
 enemy_type = 2
 movement_speed = 20.0
 sprite_frames = SubResource("SpriteFrames_i8u3l")
+enemy_payout = 1
 metadata/_custom_type_script = "uid://kk83cijskx3q"

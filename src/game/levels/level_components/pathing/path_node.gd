@@ -14,18 +14,16 @@ func _ready():
 		next_path_node = self
 	
 func on_body_entered(body):
-	if not body in get_tree().get_nodes_in_group("enemy"):
+	if not body in get_tree().get_nodes_in_group("enemy") and not body in get_tree().get_nodes_in_group("worm"):
 		return
 	
 	if exit_node:
 		var level_manager = get_tree().get_first_node_in_group("level_manager")
 		if body.enemy_type == GlobalEnums.EnemyType.Worm:
-			level_manager.win_game()
+			level_manager.end_wave()
+			body.queue_free()
 		else:
-			level_manager.remove_worms()
-			damage_taken.emit() # TODO: Health and score #when damage dealt, emit a signal to let listeners know
-			
-		body.kill_enemy()
+			body.kill_enemy()
 		return
 	
 

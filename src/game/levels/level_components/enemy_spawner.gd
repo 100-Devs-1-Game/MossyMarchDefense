@@ -2,6 +2,7 @@ extends Node
 
 
 var enemy_queue : Array[String] 
+var enemy_ind
 var spawning_enemies := false
 var enemy = preload("res://game/enemies/debug_enemy.tscn")
 
@@ -25,7 +26,11 @@ func _ready():
 	
 	
 func spawn_next_enemy():
-	var next_enemy = enemy_queue.pop_front()
+	if level_manager.between_waves:
+		return
+	
+	var next_enemy = enemy_queue[enemy_ind]
+	enemy_ind = (enemy_ind + 1) % enemy_queue.size()
 	var next_enemy_instance = enemy.instantiate()
 	var enemies_group = get_tree().get_first_node_in_group("enemies_group")
 	enemies_group.add_child(next_enemy_instance)
@@ -34,15 +39,13 @@ func spawn_next_enemy():
 	
 	level_manager.adjust_enemies(1)
 	
-	if enemy_queue.is_empty():
-		spawning_enemies = false
-	else:
-		spawn_timer.start()
+	spawn_timer.start()
 
 func start_wave():
 	spawning_enemies = true
 	var wave = wave_set[level_manager.current_wave - 1]
-	enemy_queue = wave.enemy_queue.duplicate()
+	enemy_queue = wave.enemy_queue
+	enemy_ind = 0
 	spawn_timer.wait_time = wave.enemy_spawn_timer
 	spawn_timer.start()
 	

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://cf7skq0asx5t2"]
+
+[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="1_dfia2"]
+
+[resource]
+script = ExtResource("1_dfia2")
+enemy_queue = Array[String](["frog", "frog", "bird", "frog", "frog", "snail"])
+enemy_spawn_timer = 2.7
+metadata/_custom_type_script = "uid://5t10kxtq3ygk"
