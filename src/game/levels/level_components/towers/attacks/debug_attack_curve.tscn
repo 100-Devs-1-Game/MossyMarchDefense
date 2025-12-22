@@ -7,13 +7,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_pd578"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 505, 129, 38.24875, 65.56928, -38.24875, -65.56928, 434, 3, -1.3482139, -81.8512, 1.3482139, 81.8512, 359, 67, 0, 0, 0, 0, 360, 209)
+"points": PackedVector2Array(0, 0, 0, 0, 505, 128, 35.75, 0, -35.75, 0, 433.5, 21, 0, -25, 0, 0, 362, 71, 0, 0, 0, 0, 362, 1151)
 }
 point_count = 4
 
 [node name="DebugAttackCurve" type="Node2D"]
 script = ExtResource("1_83tio")
-speed = 300.0
+speed = 100.0
 
 [node name="Tower" type="Sprite2D" parent="."]
 position = Vector2(580, 154)
@@ -24,7 +24,7 @@ texture = ExtResource("2_mcyy5")
 position = Vector2(-749.99994, -259.99997)
 
 [node name="Enemy" type="Sprite2D" parent="."]
-position = Vector2(300, 200)
+position = Vector2(362, 71)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_08mvn")
 
@@ -32,13 +32,12 @@ texture = ExtResource("3_08mvn")
 curve = SubResource("Curve2D_pd578")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(505, 129)
-rotation = -2.0674486
+position = Vector2(362.00003, 570.89545)
+rotation = 1.5707964
+progress = 728.2907
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-24.51621, -1.8070853)
 rotation = 4.712389
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_83tio")
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true

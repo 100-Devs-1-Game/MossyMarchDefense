@@ -8,24 +8,23 @@ extends Path2D
 var progress : float = 0.0
 
 func initialise(marker : Node2D, enemy : Node2D) -> void:
-	curve.clear_points()
+	curve = Curve2D.new()
 	
-	var in_curve = Vector2(0, -100)
-	var out_curve = Vector2(0, 100)
+	var attack_position = marker.global_position
+	var enemy_position = enemy.global_position
 	
-	var start_position = marker.global_position
-	var end_position = enemy.global_position
+	var mid_x = (attack_position.x + enemy_position.x) / 2.0
+	var top_y = min(attack_position.y, enemy_position.y) - 50
 	
-	var mid_position_x = (start_position.x + end_position.x) / 2.0
-	var mid_position_y = min(start_position.y, end_position.y) - 50
-	var mid_position = Vector2(mid_position_x, mid_position_y)
+	var mid_position = Vector2(mid_x, top_y)
 	
-	var start_to_mid_angle = (mid_position - start_position).angle()
+	var curve_mod_x = (attack_position.x - enemy_position.x) / 4.0
+	var curve_mod_y = abs(top_y - enemy_position.y) / 2.0
 	
-	curve.add_point(start_position)
-	curve.add_point(mid_position, in_curve.rotated(start_to_mid_angle), out_curve.rotated(start_to_mid_angle))
-	curve.add_point(end_position, in_curve, out_curve)
-	curve.add_point(end_position + Vector2.DOWN * 100)
+	curve.add_point(attack_position)
+	curve.add_point(mid_position, curve_mod_x * Vector2.RIGHT, curve_mod_x * Vector2.LEFT)
+	curve.add_point(enemy_position, curve_mod_y * Vector2.UP)
+	curve.add_point(enemy_position + Vector2.DOWN * 1080)
 	
 func _ready() -> void:
 	area.body_entered.connect(on_body_entered)
