@@ -12,6 +12,8 @@ func _ready():
 	menu_anim.play(&"main_menu_fade_in")
 
 func load_level(level):
+	AudioManager.play_sfx(GlobalEnums.SFXTitle.UIConfirm)
+	
 	_disable_buttons()
 	get_tree().change_scene_to_packed(level)
 	
@@ -24,6 +26,9 @@ func load_level(level):
 	
 	# Called by ANY UI Layer at any time, to close itself.
 	close_layer.emit(self)
+
+func play_menu_theme():
+	AudioManager.play_music(GlobalEnums.MusicTitle.MainMenu)
 
 func on_level_1_pressed():
 	load_level(LEVEL_1)
