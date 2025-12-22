@@ -47,7 +47,7 @@ func kill_enemy():
 	if not enemy_type == GlobalEnums.EnemyType.Worm:
 		level_manager.adjust_enemies(-1)
 		var coin_instance = coin.instantiate()
-		level_manager.add_child(coin_instance)
+		level_manager.add_child.call_deferred(coin_instance)
 		coin_instance.global_position = self.global_position
 	self.queue_free()
 

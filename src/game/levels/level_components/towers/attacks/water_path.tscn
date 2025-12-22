@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://d17a1e45e00ld"]
+
+[ext_resource type="Texture2D" uid="uid://bghfs6gy7uoot" path="res://assets/Towers/Watering Can/watering_can_ammo_single.png" id="1_cj02v"]
+[ext_resource type="Script" uid="uid://w7jhrmnsfpsq" path="res://game/levels/level_components/towers/attacks/water_path.gd" id="1_seh75"]
+
+[sub_resource type="Curve2D" id="Curve2D_pd578"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 505, 129, 0.15441561, -93.12092, -0.15441561, 93.12092, 359, 67, 0, 0, 0, 0, 360, 209)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seh75"]
+size = Vector2(124.16931, 268.5735)
+
+[node name="WaterPath" type="Path2D"]
+curve = SubResource("Curve2D_pd578")
+script = ExtResource("1_seh75")
+speed = 128.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(505, 129)
+rotation = -2.3253858
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D"]
+rotation = 4.712389
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cj02v")
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D/Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Sprite2D/Area2D"]
+position = Vector2(2.1782227, 0.21777344)
+shape = SubResource("RectangleShape2D_seh75")

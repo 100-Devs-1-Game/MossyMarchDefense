@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpadtofm4y3ed"]
+
+[ext_resource type="Script" uid="uid://bc5t2n3iqhu3x" path="res://game/levels/level_components/towers/attacks/water_attack.gd" id="1_1ljuj"]
+
+[node name="WaterAttack" type="Node2D"]
+script = ExtResource("1_1ljuj")

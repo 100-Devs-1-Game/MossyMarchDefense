@@ -7,13 +7,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_pd578"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 505, 129, 0.15441561, -93.12092, -0.15441561, 93.12092, 359, 67, 0, 0, 0, 0, 360, 209)
+"points": PackedVector2Array(0, 0, 0, 0, 505, 129, 38.24875, 65.56928, -38.24875, -65.56928, 434, 3, -1.3482139, -81.8512, 1.3482139, 81.8512, 359, 67, 0, 0, 0, 0, 360, 209)
 }
-point_count = 3
+point_count = 4
 
 [node name="DebugAttackCurve" type="Node2D"]
 script = ExtResource("1_83tio")
-speed = 200.0
+speed = 300.0
 
 [node name="Tower" type="Sprite2D" parent="."]
 position = Vector2(580, 154)
@@ -33,7 +33,7 @@ curve = SubResource("Curve2D_pd578")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(505, 129)
-rotation = -2.3253858
+rotation = -2.0674486
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 rotation = 4.712389

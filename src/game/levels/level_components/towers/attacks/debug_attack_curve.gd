@@ -15,10 +15,12 @@ func _ready() -> void:
 	path_timer.timeout.connect(on_timer_timeout)
 
 func _process(delta: float) -> void:
-	progress += delta * speed
-	progress = fmod(progress, path.curve.get_baked_length())
+	var length = path.curve.get_baked_length()
 	
-	var progress_ratio = progress / path.curve.get_baked_length()
+	progress += delta * speed
+	progress = fmod(progress, length)
+	
+	var progress_ratio = progress / length
 	
 	path_follow.progress_ratio = ease(progress_ratio, 0.75)
 	
