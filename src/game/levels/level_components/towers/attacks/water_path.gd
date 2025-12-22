@@ -2,8 +2,10 @@ extends Path2D
 
 @export var speed : float = 0.5
 
-@onready var area : Area2D = $PathFollow2D/Sprite2D/Area2D
-@onready var path_follow : PathFollow2D = $PathFollow2D
+@onready var area : Area2D = $PathFollowMain/Sprite2D/Area2D
+@onready var path_follow : PathFollow2D = $PathFollowMain
+@onready var path_follow_visual_1 : PathFollow2D = $PathFollowVisual1
+@onready var path_follow_visual_2 : PathFollow2D = $PathFollowVisual2
 
 var progress : float = 0.0
 
@@ -37,8 +39,12 @@ func _process(delta: float) -> void:
 		queue_free()
 	
 	var progress_ratio = progress / length
+	var progress_ratio_visual_1 = (progress - 15) / length
+	var progress_ratio_visual_2 = (progress - 30) / length
 	
 	path_follow.progress_ratio = ease(progress_ratio, 0.75)
+	path_follow_visual_1.progress_ratio = ease(progress_ratio_visual_1, 0.8)
+	path_follow_visual_2.progress_ratio = ease(progress_ratio_visual_2, 0.85)
 
 func on_body_entered(other: Node2D):
 	if other.is_in_group("enemy"):

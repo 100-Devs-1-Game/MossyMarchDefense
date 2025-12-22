@@ -17,17 +17,49 @@ curve = SubResource("Curve2D_pd578")
 script = ExtResource("1_seh75")
 speed = 128.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="."]
+[node name="PathFollowMain" type="PathFollow2D" parent="."]
 position = Vector2(505, 129)
 rotation = -2.3253858
 
-[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="PathFollowMain"]
 rotation = 4.712389
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_cj02v")
 
-[node name="Area2D" type="Area2D" parent="PathFollow2D/Sprite2D"]
+[node name="Area2D" type="Area2D" parent="PathFollowMain/Sprite2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Sprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollowMain/Sprite2D/Area2D"]
 position = Vector2(2.1782227, 0.21777344)
 shape = SubResource("RectangleShape2D_seh75")
+
+[node name="PathFollowVisual1" type="PathFollow2D" parent="."]
+position = Vector2(505, 129)
+rotation = -2.3253858
+
+[node name="Drop1" type="Sprite2D" parent="PathFollowVisual1"]
+position = Vector2(-19.179708, 20.399479)
+rotation = 4.792674
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("1_cj02v")
+
+[node name="Drop2" type="Sprite2D" parent="PathFollowVisual1"]
+position = Vector2(-20.268787, -14.939097)
+rotation = 4.2586036
+scale = Vector2(0.065921545, 0.070505865)
+texture = ExtResource("1_cj02v")
+
+[node name="PathFollowVisual2" type="PathFollow2D" parent="."]
+position = Vector2(505, 129)
+rotation = -2.3253858
+
+[node name="Drop1" type="Sprite2D" parent="PathFollowVisual2"]
+position = Vector2(-36.534286, 8.200355)
+rotation = 4.871214
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_cj02v")
+
+[node name="Drop2" type="Sprite2D" parent="PathFollowVisual2"]
+position = Vector2(-45.494736, -7.087239)
+rotation = 4.4505897
+scale = Vector2(0.03, 0.032)
+texture = ExtResource("1_cj02v")
