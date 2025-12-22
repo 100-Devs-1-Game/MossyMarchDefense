@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://r7jiltk2ioum"]
+
+[ext_resource type="Script" uid="uid://cwtxv6a27sw6h" path="res://game/levels/level_components/towers/attacks/debug_attack_curve.gd" id="1_83tio"]
+[ext_resource type="Texture2D" uid="uid://cik6m31olyuuk" path="res://assets/ui/towers/water_can_shadowless.png" id="2_mcyy5"]
+[ext_resource type="Texture2D" uid="uid://d4s3olc4qvvp" path="res://assets/Animations/SnailWalking/snail1.png" id="3_08mvn"]
+[ext_resource type="Texture2D" uid="uid://bghfs6gy7uoot" path="res://assets/Towers/Watering Can/watering_can_ammo_single.png" id="4_83tio"]
+
+[sub_resource type="Curve2D" id="Curve2D_pd578"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 505, 129, 0.15441561, -93.12092, -0.15441561, 93.12092, 359, 67, 0, 0, 0, 0, 360, 209)
+}
+point_count = 3
+
+[node name="DebugAttackCurve" type="Node2D"]
+script = ExtResource("1_83tio")
+speed = 200.0
+
+[node name="Tower" type="Sprite2D" parent="."]
+position = Vector2(580, 154)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_mcyy5")
+
+[node name="Marker2D" type="Marker2D" parent="Tower"]
+position = Vector2(-749.99994, -259.99997)
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(300, 200)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_08mvn")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_pd578")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(505, 129)
+rotation = -2.3253858
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+rotation = 4.712389
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_83tio")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
