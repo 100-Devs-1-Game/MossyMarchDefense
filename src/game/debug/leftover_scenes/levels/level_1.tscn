@@ -226,6 +226,7 @@ enemy_spawner = NodePath("../EnemySpawner")
 wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
 pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
 player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
+level_theme = 1
 player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
 wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
 worm_spawn_node = NodePath("../Path/PathPoints/PathNode3")

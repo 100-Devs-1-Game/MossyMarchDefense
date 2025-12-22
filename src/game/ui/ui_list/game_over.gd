@@ -11,6 +11,7 @@ const STARTUP_SCENE = preload("res://game/core/startup.tscn")
 func _ready():
 	main_menu_button.pressed.connect(on_main_menu_pressed)
 	retry_level_button.pressed.connect(on_retry_level_pressed)
+	AudioManager.play_sfx(GlobalEnums.SFXTitle.LevelFail)
 	
 func on_main_menu_pressed():
 	

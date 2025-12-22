@@ -30,6 +30,7 @@ wave_set = Array[ExtResource("2_36r3l")]([ExtResource("3_36r3l"), ExtResource("4
 
 [node name="LevelManager" parent="." index="1" node_paths=PackedStringArray("first_path_node", "worm_spawn_node", "worm_path_node")]
 first_path_node = NodePath("../Path/PathPoints/PathNode")
+level_theme = 2
 worm_spawn_node = NodePath("../Path/PathPoints/PathNode2")
 worm_path_node = NodePath("../Path/PathPoints/PathNode3")
 

@@ -49,6 +49,7 @@ func kill_enemy():
 		var coin_instance = coin.instantiate()
 		level_manager.add_child(coin_instance)
 		coin_instance.global_position = self.global_position
+		AudioManager.play_sfx(GlobalEnums.SFXTitle.MobDefeat)
 	self.queue_free()
 
 func change_target_to_worm(body):

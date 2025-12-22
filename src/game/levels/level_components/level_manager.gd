@@ -17,6 +17,7 @@ var ui_layer: UILayer
 @export var wave_start_button : Button
 @export var pause_button : Button
 @export var player_health: Label
+@export var level_theme : GlobalEnums.MusicTitle
 
 # DEBUG LIKELY (will be better later)
 # Anything to do with these text labels is DEBUG, WILL BE IMRPOVED LATER
@@ -31,7 +32,8 @@ func _ready():
 	# debug_spawn_worms()
 	
 	_connect_signals()
-	
+	AudioManager.play_music(level_theme)
+	AudioManager.apply_reverb(true)
 	
 
 func _connect_signals():
@@ -60,6 +62,7 @@ func adjust_enemies(modifier : int):
 		end_wave()
 
 func start_wave():
+	AudioManager.play_sfx(GlobalEnums.SFXTitle.WaveStart)
 	
 #	wave_counter.text = "WAVE " + str(current_wave)
 	
@@ -115,14 +118,18 @@ func debug_spawn_worms():
 	worm_instance.global_position = worm_spawn_node.global_position
 
 func on_wave_start_button_pressed():
-	if between_waves:
+	if between_waves: 
+		
+		AudioManager.apply_reverb(false)
 		start_wave()
 		
 func on_pause_button_pressed():
 	var time_scale = Engine.time_scale
 	if time_scale <= 0:
+		AudioManager.apply_reverb(false)
 		Engine.time_scale = 1
 	else:
+		AudioManager.apply_reverb(true)
 		Engine.time_scale = 0
 
 func on_retry_level():

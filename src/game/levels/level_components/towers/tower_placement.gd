@@ -31,6 +31,7 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if !event.is_pressed():
 			if is_snapping:
+				AudioManager.play_sfx(GlobalEnums.SFXTitle.TowerPlace)
 				var tower_instance = tower.instantiate()
 				tower_instance.tower_data = tower_dictionary[dragged_tower_type]
 				tower_instance.scale = Vector2.ONE
