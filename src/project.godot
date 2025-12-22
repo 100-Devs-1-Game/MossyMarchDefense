@@ -13,6 +13,9 @@ config_version=5
 config/name="Mossy March"
 run/main_scene="uid://faslw1qqymqc"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -51,3 +54,7 @@ ui_right_click={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(98, 12),"global_position":Vector2(102, 49),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.2784314, 0.40392157, 0.39215687, 1)

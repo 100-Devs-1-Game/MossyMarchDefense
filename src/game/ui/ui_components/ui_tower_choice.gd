@@ -1,9 +1,8 @@
-class_name UITowerChoice extends Panel
+class_name UITowerChoice extends TextureRect
 
 @export var tower_type:GlobalEnums.TowerType
 @export var tower_icon:Texture2D = null
 
-@export var scaled_texture:TextureRect = null
 
 var disabled : bool = false
 

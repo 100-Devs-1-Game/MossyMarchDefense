@@ -106,5 +106,3 @@ position = Vector2(1301, 127)
 
 [node name="TowerMarker11" parent="TowerMarkers" index="10" instance=ExtResource("6_gkpsi")]
 position = Vector2(1603, 318)
-
-[editable path="TowerMarkers/TowerMarker2"]

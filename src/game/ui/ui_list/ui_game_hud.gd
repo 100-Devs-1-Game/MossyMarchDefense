@@ -1,7 +1,10 @@
 extends UILayer
 
 @onready var menu_anims: AnimationPlayer = %MenuAnims
-@onready var shop_panel: TextureRect = %ShopPanel
+@onready var towers_node: Control = %TowerChoices
+@onready var flower_cost: Label = %FlowerCost
+@onready var can_cost: Label = %CanCost
+@onready var water_cost: Label = %WaterCost
 
 @onready var acorn_amount: Label = %AcornAmount
 
@@ -38,6 +41,9 @@ func _ready() -> void:
 	acorn_raw_count = Instance.get_acorns()
 	acorn_amount.text = str(acorn_raw_count)
 	display_acorn_count = acorn_raw_count
+	flower_cost.text = str(RES_DATA.get_cost_from_enum(GlobalEnums.TowerType.PlantPot))
+	can_cost.text = str(RES_DATA.get_cost_from_enum(GlobalEnums.TowerType.WateringCan))
+	water_cost.text = str(RES_DATA.get_cost_from_enum(GlobalEnums.TowerType.PlantPot))
 	_connect_signals()
 	menu_anims.play(&"hud_spawned_in")
 
@@ -47,7 +53,7 @@ func _connect_signals() -> void:
 	SignalBus.tower_placement_unhovered.connect(_on_tower_placement_unhovered)
 	SignalBus.close_game_hud.connect(_on_close_game_hud)
 	
-	for node in shop_panel.get_children():
+	for node in towers_node.get_children():
 		if node is UITowerChoice:
 			tower_choices.append(node)
 			node.gui_input.connect(_on_gui_input.bind(node))
@@ -164,10 +170,10 @@ func _update_selectable_towers() -> void:
 	for tower in tower_choices:
 		if RES_DATA.get_cost_from_enum(tower.tower_type) > Instance.get_acorns():
 			tower.set_disabled_state(true)
-			tower.scaled_texture.modulate = Color(0.0, 0.0, 0.0, 0.502)
+			tower.self_modulate = Color(1.0, 1.0, 1.0, 0.5)
 		else:
 			tower.set_disabled_state(false)
-			tower.scaled_texture.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			tower.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _start_count_animation(old_value: int, new_value: int, change: int) -> void:
 	if tween and tween.is_running():
@@ -237,15 +243,16 @@ func _shake_tower(target_tower: UITowerChoice) -> void:
 
 func _on_tower_choice_hovered(tower:UITowerChoice) -> void:
 	if tower.is_disabled():
-		tower.self_modulate = Color(1.0, 0.0, 0.0, 0.2)
+		tower.self_modulate = Color(1.0, 0.0, 0.0, 1.0)
 	else:
 		tower.scale = Vector2(1.1, 1.1)
-		tower.self_modulate.a = 1.0
 
 func _on_tower_choice_unhovered(tower:UITowerChoice) -> void:
-	tower.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
-	tower.scale = Vector2(1.0, 1.0)
-	tower.self_modulate.a = 0.0
+	if tower.is_disabled():
+		tower.self_modulate = Color(1.0, 1.0, 1.0, 0.5)
+	else:
+		tower.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
+		tower.scale = Vector2(1.0, 1.0)
 
 func _on_close_game_hud() -> void:
 	close_layer.emit(self)
