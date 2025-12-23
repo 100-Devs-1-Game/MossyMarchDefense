@@ -18,6 +18,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dji88qqnwv08j"
+
 [autoload]
 
 GlobalEnums="*res://game/core/autoloads/global_enums.gd"

@@ -48,6 +48,7 @@ func start_wave():
 	enemy_ind = 0
 	spawn_timer.wait_time = wave.enemy_spawn_timer
 	spawn_timer.start()
+	spawn_next_enemy()
 	
 func on_spawn_timer_timeout():
 	if spawning_enemies:

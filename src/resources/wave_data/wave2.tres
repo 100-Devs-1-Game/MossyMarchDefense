@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_4u6ip")
 enemy_queue = Array[String](["frog"])
-enemy_spawn_timer = 3.0
+enemy_spawn_timer = 10.0
 metadata/_custom_type_script = "uid://5t10kxtq3ygk"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3v1k7r8vxso3"]
+[gd_scene load_steps=8 format=3 uid="uid://b3v1k7r8vxso3"]
 
 [ext_resource type="Script" uid="uid://kd0s7peornng" path="res://game/ui/ui_list/ui_main_menu.gd" id="1_aekqq"]
 [ext_resource type="Texture2D" uid="uid://3kqvxl8jxs26" path="res://assets/ui/menus/main_menu.jpg" id="2_kfoo5"]
+[ext_resource type="PackedScene" uid="uid://cg8vkmg6whglf" path="res://game/ui/ui_components/volume_slider.tscn" id="3_d6kru"]
 [ext_resource type="Texture2D" uid="uid://baw7a48oq31s1" path="res://assets/ui/menus/title_banner.jpg" id="3_kfoo5"]
 
 [sub_resource type="Animation" id="Animation_d6kru"]
@@ -166,12 +167,36 @@ Lead/Artist - Amatrine
 Code - Lexo, JerryBeans, Vienetta, Plant
 Music - Lancer"
 
+[node name="MusicSlider" parent="Control" instance=ExtResource("3_d6kru")]
+layout_mode = 0
+offset_left = 1430.0
+offset_top = 757.0
+offset_right = 1616.0
+offset_bottom = 796.0
+max_value = 1.0
+step = 0.001
+bus_name = "Music"
+label_text = "Music Volume"
+
+[node name="SFXSlider" parent="Control" instance=ExtResource("3_d6kru")]
+layout_mode = 0
+offset_left = 1430.0
+offset_top = 809.0
+offset_right = 1616.0
+offset_bottom = 848.0
+max_value = 1.0
+step = 0.001
+bus_name = "SFX"
+label_text = "Effects Volume"
+
 [node name="LevelContainer" type="GridContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = -0.008854167
+anchor_top = -0.019444445
+anchor_right = 0.99114585
+anchor_bottom = 0.98055553
 offset_left = 346.0
 offset_top = 311.0
 offset_right = -346.0
