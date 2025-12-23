@@ -4,7 +4,8 @@ class_name RES_DATA
 
 const res_paths : Dictionary = { 
 	"plant_pot" : "res://resources/tower_data/plant_pot_tower.tres",
-	"watering_can" : "res://resources/tower_data/watering_can_tower.tres"
+	"watering_can" : "res://resources/tower_data/watering_can_tower.tres",
+	"bubble" : "res://resources/tower_data/bubble_tower.tres"
 }
 
 static func get_tower_data_duplicate_by_key(tower_key:String) -> TowerData:
@@ -146,6 +147,8 @@ static func _get_key_from_type(tower_type:GlobalEnums.TowerType) -> String:
 			return "plant_pot"
 		GlobalEnums.TowerType.WateringCan:
 			return "watering_can"
+		GlobalEnums.TowerType.Bubble:
+			return "bubble"
 		_:
 			printerr("Not a valid TowerType: " + str(tower_type))
 			return ""

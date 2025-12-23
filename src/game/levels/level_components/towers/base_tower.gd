@@ -9,6 +9,7 @@ var attack : Node2D
 var attack_dictionary = {
 	GlobalEnums.TowerType.PlantPot: preload("res://game/levels/level_components/towers/attacks/pollen_attack.tscn"),
 	GlobalEnums.TowerType.WateringCan: preload("res://game/levels/level_components/towers/attacks/water_attack.tscn"),
+	GlobalEnums.TowerType.Bubble: preload("res://game/levels/level_components/towers/attacks/water_attack.tscn")
 }
 
 func _ready():

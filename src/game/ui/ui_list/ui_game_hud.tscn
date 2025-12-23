@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://behtnp632nowv"]
+[gd_scene load_steps=21 format=3 uid="uid://behtnp632nowv"]
 
 [ext_resource type="Script" uid="uid://dh0yyfup3qnuw" path="res://game/ui/ui_list/ui_game_hud.gd" id="1_rfypm"]
 [ext_resource type="Script" uid="uid://d2yvpa8bao7ik" path="res://game/ui/ui_components/ui_tower_choice.gd" id="4_3a5vc"]
 [ext_resource type="Texture2D" uid="uid://7ivq7dxi5eh8" path="res://assets/ui/towers/flower_pot_shadowless.png" id="5_jiane"]
 [ext_resource type="Texture2D" uid="uid://cik6m31olyuuk" path="res://assets/ui/towers/water_can_shadowless.png" id="6_jiane"]
 [ext_resource type="Texture2D" uid="uid://bq0v03ydibs4y" path="res://assets/ui/game_hud/shop_shadow.png" id="6_pwnpw"]
+[ext_resource type="Texture2D" uid="uid://bsuf5j05uqp7a" path="res://assets/Towers/Bubble/bubble1.png" id="8_mdypi"]
 [ext_resource type="Texture2D" uid="uid://bgckx83le7xxk" path="res://assets/ui/game_hud/flowerpot_icon.png" id="8_pwnpw"]
 [ext_resource type="Texture2D" uid="uid://b3wksxm4kqcg2" path="res://assets/ui/game_hud/watercan_icon.png" id="9_4vsum"]
 [ext_resource type="Texture2D" uid="uid://c56dg03qsjytn" path="res://assets/ui/game_hud/waterdrop_icon.png" id="10_wdw62"]
@@ -392,7 +393,8 @@ texture = ExtResource("10_wdw62")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("4_3a5vc")
-tower_icon = ExtResource("5_jiane")
+tower_type = 2
+tower_icon = ExtResource("8_mdypi")
 
 [node name="WaterCost" type="Label" parent="TowerChoices/WaterDrop"]
 unique_name_in_owner = true
@@ -536,6 +538,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1710.0
 offset_bottom = -793.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 texture = ExtResource("11_0ud5n")
 expand_mode = 1
