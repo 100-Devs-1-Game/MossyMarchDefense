@@ -10,20 +10,14 @@ var between_waves := true
 var enemies_on_screen := 0
 var ui_layer: UILayer
 
-@export var player_worms : int
 @export var first_path_node : Node2D
 @export var enemy_spawner : Node
-@export var player_money : int
-@export var wave_start_button : Button
-@export var pause_button : Button
 @export var player_health: Label
 @export var level_theme : GlobalEnums.MusicTitle
 
 # DEBUG LIKELY (will be better later)
 # Anything to do with these text labels is DEBUG, WILL BE IMRPOVED LATER
 #I swapped em to export so we can move them around without having to rewrite🥚
-@export var player_money_label: Label
-@export var wave_counter: Label
 @export var worm_spawn_node: Node # This is just set to 2nd node for now for testing
 @export var worm_path_node: Node # Again debug
 
@@ -72,8 +66,6 @@ func start_wave():
 	worm_instance.global_position = worm_spawn_node.global_position
 	
 	between_waves = false
-	wave_start_button.disabled = true #i swapped it to disable
-	wave_start_button.text = "Wave in progress" #mb if it interferes with things🥚
 	enemy_spawner.start_wave()
 
 func end_wave():
@@ -87,8 +79,6 @@ func end_wave():
 		win_game()
 	else:
 		between_waves = true
-		wave_start_button.disabled = false
-		wave_start_button.text = "Next Wave"
 
 func cleanup_enemies():
 	var enemy_group = get_tree().get_first_node_in_group("enemies_group")
