@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://b3v1k7r8vxso3"]
+[gd_scene load_steps=26 format=3 uid="uid://b3v1k7r8vxso3"]
 
 [ext_resource type="Script" uid="uid://kd0s7peornng" path="res://game/ui/ui_list/ui_main_menu.gd" id="1_aekqq"]
 [ext_resource type="Texture2D" uid="uid://3kqvxl8jxs26" path="res://assets/ui/menus/main_menu.jpg" id="2_kfoo5"]
 [ext_resource type="Texture2D" uid="uid://cdv3i15h11ne0" path="res://assets/ui/menus/level_1_icon.png" id="3_1ls3u"]
 [ext_resource type="PackedScene" uid="uid://cg8vkmg6whglf" path="res://game/ui/ui_components/volume_slider.tscn" id="3_d6kru"]
 [ext_resource type="Texture2D" uid="uid://baw7a48oq31s1" path="res://assets/ui/menus/title_banner.jpg" id="3_kfoo5"]
+[ext_resource type="Script" uid="uid://bg5i8y8crj78p" path="res://game/ui/ui_components/uic_extra_button.gd" id="4_hti6p"]
 [ext_resource type="Shader" uid="uid://buxlcyaw16kb" path="res://assets/shaders/blur.gdshader" id="4_ladfv"]
 [ext_resource type="Texture2D" uid="uid://dv4djdm3qnjg1" path="res://assets/ui/menus/level_2_icon.png" id="4_xa5f0"]
 [ext_resource type="Texture2D" uid="uid://c1nsjpmst2axa" path="res://assets/ui/menus/level_3_icon.png" id="5_h4fiq"]
@@ -213,6 +214,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_1ls3u")
 theme_override_styles/hover = SubResource("StyleBoxTexture_h4fiq")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_xa5f0")
 theme_override_styles/focus = SubResource("StyleBoxTexture_1ls3u")
+script = ExtResource("4_hti6p")
 
 [node name="Level2Button" type="Button" parent="LevelContainer"]
 unique_name_in_owner = true
@@ -226,6 +228,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_fq1nd")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xh7u1")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_yyfth")
 theme_override_styles/focus = SubResource("StyleBoxTexture_fq1nd")
+script = ExtResource("4_hti6p")
 
 [node name="Level3Button" type="Button" parent="LevelContainer"]
 unique_name_in_owner = true
@@ -239,6 +242,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_lfe4o")
 theme_override_styles/hover = SubResource("StyleBoxTexture_l1d84")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_sxmcu")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lfe4o")
+script = ExtResource("4_hti6p")
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 1
@@ -311,6 +315,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_d6kru")
 }
 
-[connection signal="pressed" from="LevelContainer/Level1Button" to="." method="on_level_1_pressed"]
-[connection signal="pressed" from="LevelContainer/Level2Button" to="." method="on_level_1_pressed"]
-[connection signal="pressed" from="LevelContainer/Level3Button" to="." method="on_level_1_pressed"]
+[connection signal="pressed" from="LevelContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="LevelContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="LevelContainer/Level3Button" to="." method="_on_level_3_button_pressed"]

@@ -8,7 +8,7 @@ const LEVEL_PATHS : Dictionary = {
 
 const STARTING_ACORNS = 3
 
-var current_level:Node = null
+var current_level:Level = null
 var acorns:int = STARTING_ACORNS
 
 func _ready() -> void:
@@ -26,7 +26,6 @@ func _on_acorns_spent(amt:int) -> void:
 	acorns = clampi((acorns - amt), 0, 999)
 	SignalBus.acorns_updated.emit(-amt)
 
-
 func change_to_level(level_key:String) -> void:
 	if LEVEL_PATHS.has(level_key) == false:
 		return
@@ -34,18 +33,19 @@ func change_to_level(level_key:String) -> void:
 	var new_level : Level = LOADED_LEVEL.instantiate()
 	self.add_child(new_level)
 	current_level = new_level
-	get_tree().current_scene = new_level
+	new_level.initialize_level()
 
 
 func get_acorns() -> int:
 	return acorns
 
-func set_current_level(new_level:Node) -> void:
+
+func set_current_level(new_level:Level) -> void:
 	current_level = new_level
 	
 	if current_level != null:
 		_setup_the_acorn_gobbler_3000()
-	
+
 
 func reset_current_level() -> void:
 	acorns = STARTING_ACORNS
@@ -55,9 +55,7 @@ func reset_current_level() -> void:
 # Comment out these functions when/if they break your testing.
 func _setup_the_acorn_gobbler_3000() -> void:
 	
-	var the_acorn_gobbler:Node = null
-	if current_level.has_node("LevelManager"):
-		the_acorn_gobbler = current_level.get_node("LevelManager")
+	var the_acorn_gobbler:Node = current_level
 		
 	the_acorn_gobbler.child_entered_tree.connect(func(nut:Node):
 		if nut is Node2D:

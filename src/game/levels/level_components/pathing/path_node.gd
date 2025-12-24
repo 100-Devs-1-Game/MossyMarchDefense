@@ -1,13 +1,13 @@
-extends Node2D
+class_name PathNode extends Node2D
 
-@export var next_path_node : Node2D
-@export var exit_node : bool = false
-@onready var area_2d = $Area2D
+var next_path_node : Node2D
+var exit_node : bool = false
+@onready var collision_area: Area2D = %CollisionArea
 
 signal damage_taken
 
 func _ready():
-	area_2d.body_entered.connect(on_body_entered)
+	collision_area.body_entered.connect(on_body_entered)
 	
 	#if this is the exit node automatically sets itself as the next
 	if exit_node:

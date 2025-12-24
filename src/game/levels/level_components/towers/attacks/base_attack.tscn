@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ctjebd8a8ch54"]
+
+[node name="BaseAttack" type="Node2D"]
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

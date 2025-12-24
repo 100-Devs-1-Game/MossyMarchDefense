@@ -5,9 +5,8 @@ extends BaseAttack
 var attack_interval : float = 5.0
 
 func shoot():
-	AudioManager.play_sfx(GlobalEnums.SFXTitle.PollenAttack)
+	attack_audio.play()
 	particles.emitting = true
 	
 	for enemy in enemies_in_range:
-		AudioManager.play_sfx(GlobalEnums.SFXTitle.MobImpact)
 		enemy.health_component.get_hit(5)

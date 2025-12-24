@@ -8,10 +8,11 @@ radius = 9.999999
 [node name="PathNode" type="Node2D"]
 script = ExtResource("1_ubi0c")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 260
 
-[node name="CollisionShape3D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape3D" type="CollisionShape2D" parent="CollisionArea"]
 scale = Vector2(0.1, 0.1)
 shape = SubResource("CircleShape2D_ubi0c")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://gfn1kb6aul6" path="res://game/ui/ui_list/ui_level_finished.gd" id="1_yny4e"]
 [ext_resource type="Texture2D" uid="uid://xo4y7l347mwu" path="res://assets/ui/menus/game_over.jpg" id="2_4bgig"]
 
-[node name="GameOver" type="Control"]
+[node name="LevelFinished" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15

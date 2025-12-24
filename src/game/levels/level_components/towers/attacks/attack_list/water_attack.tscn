@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://du6qamxsbmyy6"]
+
+[ext_resource type="PackedScene" uid="uid://ctjebd8a8ch54" path="res://game/levels/level_components/towers/attacks/base_attack.tscn" id="1_bw7dv"]
+[ext_resource type="Script" uid="uid://bc5t2n3iqhu3x" path="res://game/levels/level_components/towers/attacks/attack_list/water_attack.gd" id="2_ublph"]
+
+[node name="WaterAttack" instance=ExtResource("1_bw7dv")]
+script = ExtResource("2_ublph")

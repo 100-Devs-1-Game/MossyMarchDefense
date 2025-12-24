@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d17a1e45e00ld"]
 
 [ext_resource type="Texture2D" uid="uid://bghfs6gy7uoot" path="res://assets/Towers/Watering Can/watering_can_ammo_single.png" id="1_cj02v"]
-[ext_resource type="Script" uid="uid://w7jhrmnsfpsq" path="res://game/levels/level_components/towers/attacks/water_path.gd" id="1_seh75"]
+[ext_resource type="Script" uid="uid://w7jhrmnsfpsq" path="res://game/levels/level_components/towers/attacks/attack_list/water_path.gd" id="1_seh75"]
 
 [sub_resource type="Curve2D" id="Curve2D_pd578"]
 _data = {

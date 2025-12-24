@@ -1,4 +1,4 @@
-extends Node
+class_name EnemySpawner extends Node
 
 
 var enemy_queue : Array[String] 
@@ -13,20 +13,20 @@ var enemy_dictionary = {
 	"worm": preload("res://resources/enemy_data/worm_friend.tres")
 }
 
-@export var level_manager : Node
 @export var base_spawn_time : float
-@export var spawner_path_node : Node2D
-@export var wave_set : Array[Wave]
+@export var spawner_path_node : PathNode
+@export var wave_set : Array[WaveData]
+
 
 @onready var spawn_timer = $SpawnTimer
 
 
 func _ready():
 	spawn_timer.timeout.connect(on_spawn_timer_timeout)
-	
-	
+
+
 func spawn_next_enemy():
-	if level_manager.between_waves:
+	if Instance.current_level.between_waves:
 		return
 	
 	var next_enemy = enemy_queue[enemy_ind]
@@ -37,19 +37,21 @@ func spawn_next_enemy():
 	next_enemy_instance.load_enemy_stats(enemy_dictionary[next_enemy])
 	next_enemy_instance.global_position = spawner_path_node.global_position
 	
-	level_manager.adjust_enemies(1)
+	Instance.current_level.adjust_enemies(1)
 	
 	spawn_timer.start()
 
+
 func start_wave():
 	spawning_enemies = true
-	var wave = wave_set[level_manager.current_wave - 1]
+	var wave = wave_set[Instance.current_level.current_wave - 1]
 	enemy_queue = wave.enemy_queue
 	enemy_ind = 0
 	spawn_timer.wait_time = wave.enemy_spawn_timer
 	spawn_timer.start()
 	spawn_next_enemy()
-	
+
+
 func on_spawn_timer_timeout():
 	if spawning_enemies:
 		spawn_next_enemy()

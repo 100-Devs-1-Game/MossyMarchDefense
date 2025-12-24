@@ -40,13 +40,11 @@ func tower_placed(tower_type:GlobalEnums.TowerType) -> void:
 	## Bootleg lines of code to keep existing level structure working. When we set up a parent class.
 	## May space king have mercy on our souls for this. Need to finish the parent level class ASAP.
 	## -Phoenix
-	var _curr_tower_root:Node2D = get_tree().current_scene.get_node("Towers")
-	_curr_tower_root.add_child(new_tower)
+	
+	Instance.current_level.add_tower(new_tower)
 	new_tower.global_position = Vector2(
 		self.global_position.x,
-		self.global_position.y + _get_y_adjust(tower_type)
-	)
-	
+		self.global_position.y + _get_y_adjust(tower_type))
 	
 	SignalBus.acorns_spent.emit(RES_DATA.get_cost_from_enum(tower_type))
 	toggle_placement_preview(null, false)

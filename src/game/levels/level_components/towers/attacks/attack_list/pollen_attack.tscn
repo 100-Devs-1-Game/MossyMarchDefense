@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1vkvvntdmqmt"]
+
+[ext_resource type="PackedScene" uid="uid://ctjebd8a8ch54" path="res://game/levels/level_components/towers/attacks/base_attack.tscn" id="1_adkhh"]
+[ext_resource type="Texture2D" uid="uid://cda8hi3wbef6m" path="res://assets/Towers/Flower Pot/pollen_attack.png" id="1_r8o3o"]
+[ext_resource type="Script" uid="uid://cagoyo885hvp7" path="res://game/levels/level_components/towers/attacks/attack_list/pollen_attack.gd" id="2_uxtgi"]
+[ext_resource type="AudioStream" uid="uid://cnra76421sf3k" path="res://assets/Audio/SFX/pollen.ogg" id="4_7gj6f"]
+
+[sub_resource type="Curve" id="Curve_5fq0t"]
+_data = [Vector2(1e-05, 1), 1.2763867, -1.2362702e-07, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_7gj6f"]
+offsets = PackedFloat32Array(0, 0.106299214, 0.22047244, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.5764706, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="PollenAttack" instance=ExtResource("1_adkhh")]
+script = ExtResource("2_uxtgi")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="0"]
+scale = Vector2(2, 2)
+emitting = false
+amount = 128
+texture = ExtResource("1_r8o3o")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 8.0
+scale_amount_min = 0.03
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_5fq0t")
+color_ramp = SubResource("Gradient_7gj6f")
+
+[node name="AttackAudio" parent="." index="1"]
+stream = ExtResource("4_7gj6f")

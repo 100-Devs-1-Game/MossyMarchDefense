@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://cobwpb0clkgvb" path="res://game/levels/class_level.gd" id="1_stt8m"]
 [ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/levels/level_components/enemy_spawner.tscn" id="1_tvk8f"]
 [ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="2_vm5kg"]
-[ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/levels/level_components/level_manager.tscn" id="3_l5jy1"]
 [ext_resource type="Texture2D" uid="uid://cwyloqpfbm63m" path="res://assets/Background/Level 1/rain_layer1.png" id="7_3tymb"]
 [ext_resource type="Texture2D" uid="uid://bvqcd0fnuuppt" path="res://assets/Background/Level 1/rain_layer2.png" id="8_1wgse"]
+
+[sub_resource type="Resource" id="Resource_stt8m"]
+script = ExtResource("2_vm5kg")
+metadata/_custom_type_script = "uid://5t10kxtq3ygk"
 
 [sub_resource type="Resource" id="Resource_63j5y"]
 script = ExtResource("2_vm5kg")
@@ -13,74 +16,61 @@ enemy_queue = Array[String](["bird", "frog", "snail", "bird", "bird", "bird", "b
 enemy_spawn_timer = 1.4
 metadata/_custom_type_script = "uid://5t10kxtq3ygk"
 
-[sub_resource type="GDScript" id="GDScript_youly"]
-script/source = "extends Node2D
-
-var timer: float = 0
-var flip: bool = false
-
-func _process(delta: float) -> void:
-	timer += delta
-	if timer >= 0.5:
-		flip = !flip
-		timer = 0
-		
-	$rain_layer_1.visible = flip
-	$rain_layer_2.visible = !flip
-"
+[sub_resource type="SpriteFrames" id="SpriteFrames_stt8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3tymb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1wgse")
+}],
+"loop": true,
+"name": &"raining",
+"speed": 8.0
+}]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_stt8m")
+waves = Array[ExtResource("2_vm5kg")]([SubResource("Resource_stt8m")])
 
-[node name="EnemySpawner" parent="." node_paths=PackedStringArray("level_manager") instance=ExtResource("1_tvk8f")]
-level_manager = NodePath("../LevelManager")
+[node name="EnemySpawner" parent="." instance=ExtResource("1_tvk8f")]
+unique_name_in_owner = true
 base_spawn_time = 0.3
 wave_set = Array[ExtResource("2_vm5kg")]([SubResource("Resource_63j5y")])
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("3_l5jy1")]
-enemy_spawner = NodePath("../EnemySpawner")
-
 [node name="Background" type="Node2D" parent="."]
-script = SubResource("GDScript_youly")
 
-[node name="base_layer" type="TextureRect" parent="Background"]
+[node name="base_layer" type="Sprite2D" parent="Background"]
 z_index = -3
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
+position = Vector2(960, 540)
 
-[node name="overlay_layer" type="TextureRect" parent="Background"]
+[node name="overlay_layer" type="Sprite2D" parent="Background"]
 z_index = 3
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
+position = Vector2(960, 540)
 
-[node name="rain_layer_1" type="TextureRect" parent="Background"]
+[node name="rain" type="AnimatedSprite2D" parent="Background"]
+unique_name_in_owner = true
 z_index = 3
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-texture = ExtResource("7_3tymb")
-
-[node name="rain_layer_2" type="TextureRect" parent="Background"]
-z_index = 3
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-texture = ExtResource("8_1wgse")
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_stt8m")
+animation = &"raining"
+autoplay = "raining"
+frame_progress = 0.82483757
 
 [node name="Towers" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="Coins" type="Node2D" parent="."]
+[node name="Acorns" type="Node2D" parent="."]
 
 [node name="Worm" type="Node2D" parent="." groups=["worm_group"]]
 
 [node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
 
-[node name="Path" type="Node2D" parent="."]
+[node name="PathNodes" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="PathPoints" type="Node2D" parent="Path"]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Path"]
+[node name="PathNavigationRegion" type="NavigationRegion2D" parent="."]
 
 [node name="TowerMarkers" type="Node2D" parent="."]
+z_index = 100

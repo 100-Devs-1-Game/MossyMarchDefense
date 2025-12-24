@@ -1,5 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3ls3ecubkg74"]
+[gd_scene load_steps=7 format=3 uid="uid://b3ls3ecubkg74"]
 
 [ext_resource type="PackedScene" uid="uid://cpd4r77qxay3h" path="res://game/levels/class_level.tscn" id="1_86mqw"]
+[ext_resource type="Texture2D" uid="uid://q2wwfthneknl" path="res://assets/Background/Level 1/lvl_1_base.jpg" id="2_3pmc8"]
+[ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/levels/level_components/pathing/path_node.tscn" id="2_n7dkx"]
+[ext_resource type="Texture2D" uid="uid://43ltk5hye7ki" path="res://assets/Background/Level 1/lvl_1_overlay.png" id="3_kdq5m"]
+[ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/levels/level_components/towers/tower_marker.tscn" id="5_kdq5m"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kdq5m"]
+vertices = PackedVector2Array(7.28125, 505.89844, -1.2421875, 389.9375, 535.25, 387.04688, 391.8125, 501.89844, 544.25, 733.7578, 398.8125, 874.15625, 1097.8516, 885.8203, 924.89844, 743.25, 1090.8594, 395.10156, 929.89844, 247.9375, 1810.5938, 243.04688, 1819.3828, 388.10156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(8, 9, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-12, 380, 545, 377, 554, 724, 915, 733, 920, 238, 1820, 233, 1830, 398, 1101, 405, 1108, 896, 389, 884, 382, 512, -2, 516)])
 
 [node name="Level01" instance=ExtResource("1_86mqw")]
+
+[node name="base_layer" parent="Background" index="0"]
+texture = ExtResource("2_3pmc8")
+
+[node name="overlay_layer" parent="Background" index="1"]
+texture = ExtResource("3_kdq5m")
+
+[node name="PathNode" parent="PathNodes" index="0" instance=ExtResource("2_n7dkx")]
+position = Vector2(32, 451)
+
+[node name="PathNode2" parent="PathNodes" index="1" instance=ExtResource("2_n7dkx")]
+position = Vector2(445, 441)
+
+[node name="PathNode3" parent="PathNodes" index="2" instance=ExtResource("2_n7dkx")]
+position = Vector2(471, 798)
+
+[node name="PathNode4" parent="PathNodes" index="3" instance=ExtResource("2_n7dkx")]
+position = Vector2(992, 802)
+
+[node name="PathNode5" parent="PathNodes" index="4" instance=ExtResource("2_n7dkx")]
+position = Vector2(1002, 320)
+
+[node name="PathNode6" parent="PathNodes" index="5" instance=ExtResource("2_n7dkx")]
+position = Vector2(1749, 314)
+
+[node name="PathNavigationRegion" parent="." index="7"]
+navigation_polygon = SubResource("NavigationPolygon_kdq5m")
+
+[node name="TowerMarker01" parent="TowerMarkers" index="0" instance=ExtResource("5_kdq5m")]
+position = Vector2(128, 300)
+
+[node name="TowerMarker02" parent="TowerMarkers" index="1" instance=ExtResource("5_kdq5m")]
+position = Vector2(660, 467)
+
+[node name="TowerMarker03" parent="TowerMarkers" index="2" instance=ExtResource("5_kdq5m")]
+position = Vector2(821, 306)
+
+[node name="TowerMarker04" parent="TowerMarkers" index="3" instance=ExtResource("5_kdq5m")]
+position = Vector2(1205, 160)
+
+[node name="TowerMarker05" parent="TowerMarkers" index="4" instance=ExtResource("5_kdq5m")]
+position = Vector2(1415, 154)
+
+[node name="TowerMarker06" parent="TowerMarkers" index="5" instance=ExtResource("5_kdq5m")]
+position = Vector2(1241, 491)
+
+[node name="TowerMarker07" parent="TowerMarkers" index="6" instance=ExtResource("5_kdq5m")]
+position = Vector2(1220, 817)
+
+[node name="TowerMarker08" parent="TowerMarkers" index="7" instance=ExtResource("5_kdq5m")]
+position = Vector2(1012, 978)
+
+[node name="TowerMarker09" parent="TowerMarkers" index="8" instance=ExtResource("5_kdq5m")]
+position = Vector2(798, 984)
+
+[node name="TowerMarker10" parent="TowerMarkers" index="9" instance=ExtResource("5_kdq5m")]
+position = Vector2(277, 823)
+
+[node name="TowerMarker11" parent="TowerMarkers" index="10" instance=ExtResource("5_kdq5m")]
+position = Vector2(821, 656)
+
+[node name="TowerMarker12" parent="TowerMarkers" index="11" instance=ExtResource("5_kdq5m")]
+position = Vector2(333, 300)

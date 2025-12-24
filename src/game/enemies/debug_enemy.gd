@@ -13,15 +13,12 @@ extends Node2D
 
 var enemy_type : GlobalEnums.EnemyType
 var payout : int
-var level_manager
 var targeting_worm := false
 var worm_target : CharacterBody2D
 var is_moving := true
 
 func _ready():
-	level_manager = get_tree().get_first_node_in_group("level_manager")
-	
-	movement_component.update_target_location(navigation_agent_2d, level_manager.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
+	movement_component.update_target_location(navigation_agent_2d, Instance.current_level.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
 	area_2d.body_entered.connect(on_body_entered)
 	area_2d.body_exited.connect(on_body_exited)
 	
@@ -45,11 +42,10 @@ func load_enemy_stats(enemy_stats : EnemyData):
 
 func kill_enemy():
 	if not enemy_type == GlobalEnums.EnemyType.Worm:
-		level_manager.adjust_enemies(-1)
+		Instance.current_level.adjust_enemies(-1)
 		var coin_instance = coin.instantiate()
-		level_manager.add_child.call_deferred(coin_instance)
+		Instance.current_level.add_child.call_deferred(coin_instance)
 		coin_instance.global_position = self.global_position
-		AudioManager.play_sfx(GlobalEnums.SFXTitle.MobDefeat)
 	self.queue_free()
 
 func change_target_to_worm(body):

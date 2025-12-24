@@ -26,8 +26,6 @@ func _ready():
 	# debug_spawn_worms()
 	
 	_connect_signals()
-	AudioManager.play_music(level_theme)
-	AudioManager.apply_reverb(true)
 	
 
 func _connect_signals():
@@ -47,8 +45,6 @@ func get_first_path_node(worm: bool):
 		return worm_path_node
 	return first_path_node
 
-	
-	
 func adjust_enemies(modifier : int):
 	enemies_on_screen += modifier
 	
@@ -56,9 +52,6 @@ func adjust_enemies(modifier : int):
 		end_wave()
 
 func start_wave():
-	AudioManager.play_sfx(GlobalEnums.SFXTitle.WaveStart)
-	
-#	wave_counter.text = "WAVE " + str(current_wave)
 	
 	var worm_group = get_tree().get_first_node_in_group("worm_group")
 	var worm_instance = WORM_SCENE.instantiate()
@@ -110,16 +103,13 @@ func debug_spawn_worms():
 func on_wave_start_button_pressed():
 	if between_waves: 
 		
-		AudioManager.apply_reverb(false)
 		start_wave()
 		
 func on_pause_button_pressed():
 	var time_scale = Engine.time_scale
 	if time_scale <= 0:
-		AudioManager.apply_reverb(false)
 		Engine.time_scale = 1
 	else:
-		AudioManager.apply_reverb(true)
 		Engine.time_scale = 0
 
 func on_retry_level():

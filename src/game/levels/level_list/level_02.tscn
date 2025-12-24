@@ -17,22 +17,15 @@
 [ext_resource type="Resource" uid="uid://dr0jypjit0s14" path="res://resources/wave_data/wave9.tres" id="11_rc50h"]
 [ext_resource type="Resource" uid="uid://defjrnx15nmc4" path="res://resources/wave_data/wave10.tres" id="12_4a0sa"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_0y7y6"]
-vertices = PackedVector2Array(1822.2109, 564.71875, 1857.6875, 860.71094, 1313.0234, 847.2422, 1591.5234, 661.8828, 218, 516.22656, 4.5625, 511.2422, 11.453125, 389.78125, 370.14063, 381.2422, 375.14063, 741, 218, 891, 931.96094, 891, 759.8672, 741, 929.96094, 363, 766.8594, 218.88281, 1486.8594, 210.11719, 1314.0234, 363, 1480.8672, 663.1094, 1587.4766, 583.2031)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(4, 7, 8, 9), PackedInt32Array(10, 9, 8, 11), PackedInt32Array(12, 10, 11, 13), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(15, 14, 16, 2), PackedInt32Array(3, 17, 0), PackedInt32Array(2, 16, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(2, 380, 380, 371, 385, 731, 750, 731, 757, 209, 1497, 200, 1491, 653, 1581, 652, 1577, 574, 1831, 554, 1869, 871, 1303, 857, 1304, 373, 940, 373, 942, 901, 208, 901, 208, 526, -6, 521)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_h4k6v"]
+vertices = PackedVector2Array(1477.8203, 660.1172, 1832.7031, 656.1094, 1827.2813, 845.8125, 1318.8828, 836.1797, 1312.8828, 351.04688, 1485.8203, 207.96875, 764.96094, 206.02344, 922.8125, 348.9375, 762.96094, 740.9531, 932.7969, 880.9375, 221.9375, 877.0469, 375.10938, 743.0469, 219.95313, 505, 371.10156, 377.14844, -8.1328125, 382.85156, -9.859375, 505)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 13, 12, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-18, 373, 381, 367, 385, 733, 753, 731, 755, 196, 1496, 198, 1488, 650, 1843, 646, 1837, 856, 1309, 846, 1303, 361, 933, 359, 943, 891, 212, 887, 210, 515, -20, 515)])
 
 [node name="Level2" instance=ExtResource("1_k0xe4")]
 
-[node name="EnemySpawner" parent="." index="0" node_paths=PackedStringArray("spawner_path_node")]
-spawner_path_node = NodePath("../Path/PathPoints/PathNode8")
+[node name="EnemySpawner" parent="." index="0"]
 wave_set = Array[ExtResource("2_36r3l")]([ExtResource("3_36r3l"), ExtResource("4_lvi8s"), ExtResource("5_h4k6v"), ExtResource("6_ktuue"), ExtResource("7_7wsim"), ExtResource("8_4rcmj"), ExtResource("9_8ctrs"), ExtResource("10_scs6w"), ExtResource("11_rc50h"), ExtResource("12_4a0sa")])
-
-[node name="LevelManager" parent="." index="1" node_paths=PackedStringArray("first_path_node", "worm_spawn_node", "worm_path_node")]
-first_path_node = NodePath("../Path/PathPoints/PathNode")
-level_theme = 2
-worm_spawn_node = NodePath("../Path/PathPoints/PathNode2")
-worm_path_node = NodePath("../Path/PathPoints/PathNode3")
 
 [node name="base_layer" parent="Background" index="0"]
 texture = ExtResource("2_6gdii")
@@ -40,40 +33,32 @@ texture = ExtResource("2_6gdii")
 [node name="overlay_layer" parent="Background" index="1"]
 texture = ExtResource("3_wtatt")
 
-[node name="PathNode" parent="Path/PathPoints" index="0" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_36r3l")]
-position = Vector2(280, 456)
-next_path_node = NodePath("../PathNode2")
-
-[node name="PathNode2" parent="Path/PathPoints" index="1" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_36r3l")]
-position = Vector2(314, 815)
-next_path_node = NodePath("../PathNode3")
-
-[node name="PathNode3" parent="Path/PathPoints" index="2" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_36r3l")]
-position = Vector2(835, 809)
-next_path_node = NodePath("../PathNode4")
-
-[node name="PathNode4" parent="Path/PathPoints" index="3" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_36r3l")]
-position = Vector2(839, 272)
-next_path_node = NodePath("../PathNode5")
-
-[node name="PathNode5" parent="Path/PathPoints" index="4" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_36r3l")]
-position = Vector2(1416, 270)
-next_path_node = NodePath("../PathNode6")
-
-[node name="PathNode6" parent="Path/PathPoints" index="5" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_36r3l")]
-position = Vector2(1413, 764)
-next_path_node = NodePath("../PathNode7")
-
-[node name="PathNode7" parent="Path/PathPoints" index="6" instance=ExtResource("4_36r3l")]
-position = Vector2(1741, 759)
-exit_node = true
-
-[node name="PathNode8" parent="Path/PathPoints" index="7" node_paths=PackedStringArray("next_path_node") instance=ExtResource("4_36r3l")]
+[node name="PathNode01" parent="PathNodes" index="0" instance=ExtResource("4_36r3l")]
 position = Vector2(5, 456)
-next_path_node = NodePath("../PathNode")
 
-[node name="NavigationRegion2D" parent="Path" index="1"]
-navigation_polygon = SubResource("NavigationPolygon_0y7y6")
+[node name="PathNode02" parent="PathNodes" index="1" instance=ExtResource("4_36r3l")]
+position = Vector2(280, 456)
+
+[node name="PathNode03" parent="PathNodes" index="2" instance=ExtResource("4_36r3l")]
+position = Vector2(314, 815)
+
+[node name="PathNode04" parent="PathNodes" index="3" instance=ExtResource("4_36r3l")]
+position = Vector2(835, 809)
+
+[node name="PathNode05" parent="PathNodes" index="4" instance=ExtResource("4_36r3l")]
+position = Vector2(839, 272)
+
+[node name="PathNode06" parent="PathNodes" index="5" instance=ExtResource("4_36r3l")]
+position = Vector2(1416, 270)
+
+[node name="PathNode07" parent="PathNodes" index="6" instance=ExtResource("4_36r3l")]
+position = Vector2(1413, 764)
+
+[node name="PathNode08" parent="PathNodes" index="7" instance=ExtResource("4_36r3l")]
+position = Vector2(1741, 759)
+
+[node name="PathNavigationRegion" parent="." index="7"]
+navigation_polygon = SubResource("NavigationPolygon_h4k6v")
 
 [node name="TowerMarker" parent="TowerMarkers" index="0" instance=ExtResource("6_gkpsi")]
 position = Vector2(296, 302)

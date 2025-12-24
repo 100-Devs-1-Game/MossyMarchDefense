@@ -1,77 +1,88 @@
+
 extends Node
+## Audio Manager
 
-const MUSIC = GlobalEnums.MusicTitle
-const SFX = GlobalEnums.SFXTitle
-
-const MUSIC_DICTIONARY = {
-	MUSIC.MainMenu : preload("res://assets/Audio/Music/main-menu-bgm.ogg"),
-	MUSIC.Level1 : preload("res://assets/Audio/Music/mossy_march_lvl1.ogg"),
-	MUSIC.Level2 : preload("res://assets/Audio/Music/mossy_march_lvl2.ogg"),
-	MUSIC.Level3 : preload("res://assets/Audio/Music/mossy_march_lvl3.ogg")
+const SONG_PATHS : Dictionary = {
+	"main_menu" : "res://assets/Audio/Music/main-menu-bgm.ogg",
+	"level_01" : "res://assets/Audio/Music/mossy_march_lvl1.ogg",
+	"level_02" : "res://assets/Audio/Music/mossy_march_lvl2.ogg",
+	"level_03" : "res://assets/Audio/Music/mossy_march_lvl3.ogg",
 }
 
-const SFX_DICTIONARY = {
-	SFX.MobDefeat : 
-		[preload("res://assets/Audio/SFX/SFX Archive/mob-defeat.ogg"),
-		preload("res://assets/Audio/SFX/SFX Archive/mob-defeat2.ogg")],
-	SFX.MobImpact : preload("res://assets/Audio/SFX/SFX Archive/mob-impact.ogg"),
-	SFX.UIConfirm :
-		[ preload("res://assets/Audio/SFX/SFX Archive/ui-confirm.ogg"),
-		 preload("res://assets/Audio/SFX/SFX Archive/ui-confirm2.ogg"),
-		 preload("res://assets/Audio/SFX/SFX Archive/ui-confirm3.ogg"),
-		 preload("res://assets/Audio/SFX/ui_confirm.ogg")], # TODO: idk why we got this extra ui confirm
+# Audio Player
+enum Music {MainMenu, Level1, Level2, Level3}
 
-	SFX.LevelFail : preload("res://assets/Audio/SFX/level_fail.ogg"),
-	SFX.LevelSuccess : preload("res://assets/Audio/SFX/level_success.ogg"),
-	SFX.PollenAttack : preload("res://assets/Audio/SFX/pollen.ogg"),
-	SFX.WaterCanAttack : {
-		1 : preload("res://assets/Audio/SFX/watercan1.ogg"),
-		2 : preload("res://assets/Audio/SFX/watercan2.ogg")
-	},
-	SFX.WaveStart : preload("res://assets/Audio/SFX/wave_start.ogg"),
-	SFX.TowerPlace : preload("res://assets/Audio/SFX/SFX Archive/tower-place.ogg")
-}
+var current_audio : AudioStreamPlayer = null
+var fading_audio : AudioStreamPlayer = null
+var ui_audio : AudioStreamPlayer = null
 
-var music_player: AudioStreamPlayer
+var _fade_in_tween : Tween = null
+var _fade_out_tween : Tween = null
 
-func _ready():
-	music_player = AudioStreamPlayer.new()
-	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(music_player)
-	music_player.bus = &"Music"
-	assert(AudioServer.get_bus_index(music_player.bus) >= 0)
-	
-func play_music(music : GlobalEnums.MusicTitle) -> void:
-	
-	var selected_song = MUSIC_DICTIONARY[music]
-	
-	if music_player.stream != null and selected_song == music_player.stream:
-		return
-	
-	music_player.stream = selected_song
-	music_player.play()
+const FADE_TIME : float = 1.0
+const FADE_VAL : float = -61.0 # Project Settings disable audio under -60. So we lerp to -61.
 
-func apply_reverb(flag : bool) -> void:
+func _autoload_initialized() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	ui_audio =  AudioStreamPlayer.new()
+	self.add_child(ui_audio)
+
+func _connect_signals() -> void:
+	pass
+
+## Simple function that connects ENUM -> String.
+func play_level_song(music:Music) -> void:
+	match music:
+		Music.MainMenu:
+			play_new_song("main_menu")
+		Music.Level1:
+			play_new_song("level_01")
+		Music.Level2:
+			play_new_song("level_02")
+		Music.Level3:
+			play_new_song("level_03")
+
+func play_new_song(song_key:String) -> void:
+	if SONG_PATHS.has(song_key) == false: return
+	
+	if current_audio:
+		fade_out_song(current_audio)
+	
+	var NEW_SONG : AudioStream = load(SONG_PATHS[song_key])
+	current_audio = AudioStreamPlayer.new()
+	self.add_child(current_audio)
+	current_audio.volume_db = FADE_VAL
+	current_audio.stream = NEW_SONG
+	current_audio.bus = "MUSIC"
+	fade_in_song(current_audio)
+
+func fade_out_song(audio_player:AudioStreamPlayer) -> void:
+	if _fade_out_tween:
+		_fade_out_tween.kill()
+		if fading_audio:
+			fading_audio.queue_free()
+	fading_audio = current_audio
+	_fade_out_tween = get_tree().create_tween()
+	_fade_out_tween.tween_property(audio_player, "volume_db", FADE_VAL, FADE_TIME)
+
+func fade_in_song(audio_player:AudioStreamPlayer) -> void:
+	audio_player.play()
+	if _fade_in_tween: _fade_in_tween.kill()
+	_fade_in_tween = get_tree().create_tween()
+	_fade_in_tween.tween_property(audio_player, "volume_db", -15, FADE_TIME)
+
+func _process(_delta: float) -> void:
+	if fading_audio:
+		if fading_audio.volume_db <= FADE_VAL:
+			fading_audio.queue_free()
+
+
+func play_ui_sound(ui_stream:AudioStream) -> void:
+	ui_audio.stream = ui_stream
+	ui_audio.play()
+
+
+func toggle_highpass_filter(flag : bool) -> void:
 	# Says reverb but Im doing high pass filter lol
 	var music_bus = AudioServer.get_bus_index(&"Music")
-	
 	AudioServer.set_bus_effect_enabled(music_bus, 0, flag)
-
-func play_sfx(sfx : GlobalEnums.SFXTitle) -> void:
-	
-	var selected_sfx
-	
-	if sfx == SFX.MobDefeat or sfx == SFX.WaterCanAttack or sfx == SFX.UIConfirm:
-		var i = randi_range(0, SFX_DICTIONARY[sfx].size() - 1)
-		selected_sfx = SFX_DICTIONARY[sfx][i]
-	else:
-		selected_sfx = SFX_DICTIONARY[sfx]
-	
-	var audioplayer := AudioStreamPlayer.new()
-	audioplayer.name = "AudioSFX " + selected_sfx.resource_path.get_file()
-	add_child(audioplayer)
-	audioplayer.finished.connect(func(): audioplayer.queue_free())
-	
-	audioplayer.stream = selected_sfx
-	audioplayer.bus = &"SFX"
-	audioplayer.play()

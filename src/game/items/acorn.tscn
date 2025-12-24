@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cv4cqp1lkwhk" path="res://assets/Animations/acorn/acorn1.png" id="3_2ka22"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5ajq"]
-radius = 165.01212
+radius = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_50ftu"]
 animations = [{
@@ -17,21 +17,22 @@ animations = [{
 "texture": ExtResource("3_2ka22")
 }],
 "loop": false,
-"name": &"default",
+"name": &"wiggle",
 "speed": 5.0
 }]
 
 [node name="Acorn" type="Node2D"]
-scale = Vector2(0.245, 0.245)
 script = ExtResource("1_86mnn")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="."]
+unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 shape = SubResource("CircleShape2D_i5ajq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3.0517578e-05, -1.0000305)
-scale = Vector2(0.15159574, 0.15159576)
+scale = Vector2(0.02, 0.02)
 sprite_frames = SubResource("SpriteFrames_50ftu")
-frame_progress = 0.7012295
+animation = &"wiggle"
+autoplay = "wiggle"

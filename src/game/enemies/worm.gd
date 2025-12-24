@@ -17,11 +17,11 @@ var invuln := false
 func _ready():
 	level_manager = get_tree().get_first_node_in_group("level_manager")
 	
-	movement_component.update_target_location(navigation_agent_2d, level_manager.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
+	movement_component.update_target_location(navigation_agent_2d, Instance.current_level.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
 	invuln_timer.timeout.connect(on_invuln_timeout)
 	
 func _physics_process(_delta):
-	if not level_manager.between_waves:
+	if not Instance.current_level.between_waves:
 		movement_component.move_to_target(self, navigation_agent_2d)
 		play_animation()
 

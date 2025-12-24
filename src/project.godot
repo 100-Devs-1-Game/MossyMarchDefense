@@ -28,7 +28,7 @@ GlobalEnums="*res://game/core/autoloads/global_enums.gd"
 SignalBus="*res://game/core/autoloads/global_signal_bus.gd"
 Instance="*res://game/core/autoloads/global_game_instance.gd"
 UI="*res://game/core/autoloads/global_ui_manager.tscn"
-AudioManager="*res://game/core/autoloads/global_audio_manager.gd"
+Audio="*res://game/core/autoloads/global_audio_manager.gd"
 
 [debug]
 

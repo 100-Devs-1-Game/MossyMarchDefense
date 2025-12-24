@@ -4,12 +4,12 @@ extends StaticBody2D
 
 var enemies_in_range: Array[Node2D] = []
 
-var attack : Node2D
+var attack : BaseAttack
 
 var attack_dictionary = {
-	GlobalEnums.TowerType.PlantPot: preload("res://game/levels/level_components/towers/attacks/pollen_attack.tscn"),
-	GlobalEnums.TowerType.WateringCan: preload("res://game/levels/level_components/towers/attacks/water_attack.tscn"),
-	GlobalEnums.TowerType.Bubble: preload("res://game/levels/level_components/towers/attacks/water_attack.tscn")
+	GlobalEnums.TowerType.PlantPot: preload("res://game/levels/level_components/towers/attacks/attack_list/pollen_attack.tscn"),
+	GlobalEnums.TowerType.WateringCan: preload("res://game/levels/level_components/towers/attacks/attack_list/water_attack.tscn"),
+	GlobalEnums.TowerType.Bubble: preload("res://game/levels/level_components/towers/attacks/attack_list/water_attack.tscn")
 }
 
 func _ready():
@@ -23,7 +23,7 @@ func _ready():
 		$AttackTimer.timeout.connect(on_attack_timer_timeout)
 		
 		attack = attack_dictionary[tower_data.tower_type].instantiate()
-		attack.initialise($AttackSource, enemies_in_range)
+		attack.initialize($AttackSource, enemies_in_range)
 		add_child.call_deferred(attack)
 	
 	$DetectionArea.body_entered.connect(_enter_tower_range)

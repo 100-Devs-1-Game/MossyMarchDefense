@@ -1,41 +1,87 @@
 class_name Level extends Node
+signal finished_initialization
 
 const NUM_WAVES = 2
 const WORM_SCENE = preload("res://game/enemies/worm.tscn")
 const STARTUP_SCENE = preload("res://game/core/startup.tscn")
 
+@export_category("Level Settings")
+@export var starting_acorns : int = 5
+@export var worm_health : int = 30
+@export_category("Level Waves")
+@export var waves : Array[WaveData] = []
+@export_category("Level Visual & Audio")
+@export var level_theme : Audio.Music
+@export var rain_enabled : bool = true
+
+var current_acorns : int = 0
 var enemy_queue
 var current_wave : int = 1
 var between_waves : bool = true
 var enemies_on_screen : int = 0
-var ui_layer: UILayer
 
-@export var first_path_node : Node2D
-@export var enemy_spawner : Node
-@export var player_health: Label
-@export var level_theme : GlobalEnums.MusicTitle
-
-# DEBUG LIKELY (will be better later)
-# Anything to do with these text labels is DEBUG, WILL BE IMRPOVED LATER
-#I swapped em to export so we can move them around without having to rewrite🥚
-@export var worm_spawn_node: Node # This is just set to 2nd node for now for testing
-@export var worm_path_node: Node # Again debug
+# Core Node References
+@onready var towers: Node2D = %Towers
+@onready var path_nodes: Node2D = %PathNodes
+@onready var enemy_spawner: EnemySpawner = %EnemySpawner
+@onready var rain: AnimatedSprite2D = %rain
 
 
-func _initialize_level() -> void:
-	pass
+var first_path_node : PathNode = null
+var worm_spawn_node : PathNode = null
+var worm_path_node : PathNode = null
 
+var level_ready : bool = false
 
-func _ready():
+func initialize_level() -> void:
+	UI.open_new_layer(&"GAME_HUD")
+	_call_level_music()
+	_connect_path_nodes()
 	_connect_signals()
-	AudioManager.play_music(level_theme)
-	AudioManager.apply_reverb(true)
-
+	
+	if rain_enabled:
+		rain.visible = rain_enabled
+	else : rain.queue_free()
+	
+	level_ready = true
+	finished_initialization.emit()
 
 func _connect_signals():
 	SignalBus.start_wave_clicked.connect(on_wave_start_button_pressed)
 	SignalBus.pause_wave_clicked.connect(on_pause_button_pressed)
 	SignalBus.retry_level.connect(on_retry_level)
+
+
+func _call_level_music() -> void:
+	Audio.play_level_song(level_theme)
+	Audio.toggle_highpass_filter(true)
+
+
+func _connect_path_nodes() -> void:
+	var children:Array = path_nodes.get_children()
+	
+	# Failsafes/Validation
+	if children.size() < 2: return
+	
+	for node in children:
+		if node is not PathNode:
+			return
+	
+	# Set node references.
+	first_path_node = children[0]
+	worm_spawn_node = children[2]
+	worm_path_node = worm_spawn_node
+	enemy_spawner.spawner_path_node = first_path_node
+	var curr_node:PathNode = children[0]
+	
+	# Connect each node to the next one
+	for i in range(children.size() - 1):
+		var next_node:PathNode = children[i + 1]
+		curr_node.next_path_node = next_node
+		curr_node = next_node
+	
+	# Mark the last node as exit node
+	curr_node.exit_node = true
 
 
 func _process(_delta: float) -> void:
@@ -60,7 +106,6 @@ func adjust_enemies(modifier : int):
 
 
 func start_wave():
-	AudioManager.play_sfx(GlobalEnums.SFXTitle.WaveStart)
 	
 #	wave_counter.text = "WAVE " + str(current_wave)
 	
@@ -119,17 +164,14 @@ func debug_spawn_worms():
 func on_wave_start_button_pressed():
 	if between_waves: 
 		
-		AudioManager.apply_reverb(false)
 		start_wave()
 
 
 func on_pause_button_pressed():
 	var time_scale = Engine.time_scale
 	if time_scale <= 0:
-		AudioManager.apply_reverb(false)
 		Engine.time_scale = 1
 	else:
-		AudioManager.apply_reverb(true)
 		Engine.time_scale = 0
 
 
@@ -137,3 +179,6 @@ func on_retry_level():
 	current_wave = 1
 	
 	get_tree().reload_current_scene()
+
+func add_tower(node) -> void:
+	towers.add_child(node)

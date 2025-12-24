@@ -11,8 +11,6 @@ extends UILayer
 @onready var next_wave: Button = %NextWave
 @onready var pause: Button = %Pause
 @onready var player_hp: Label = %PlayerHP
-@onready var worms: Label = %Worms
-@onready var player_money: Label = %PlayerMoney
 @onready var wave_counter: Label = %WaveCounter
 
 
@@ -38,6 +36,12 @@ var _wob_time: float = 0.0
 var _wob_angle: float = 0.0
 
 const COUNT_INTERVAL: float = 0.05
+
+# UI Sound Preloads
+const LEVEL_FAIL = preload("uid://cr07bq6s5h5nm")
+const LEVEL_SUCCESS = preload("uid://dmpeo1fvyag10")
+const WAVE_START = preload("uid://tmp0nqcw3odb")
+
 
 func _ready() -> void:
 	acorn_raw_count = Instance.get_acorns()
@@ -65,7 +69,6 @@ func _connect_signals() -> void:
 	next_wave.pressed.connect(func(): SignalBus.start_wave_clicked.emit())
 	pause.pressed.connect(func(): SignalBus.pause_wave_clicked.emit())
 	SignalBus.set_current_wave.connect(func(val): wave_counter.text = str(val))
-	SignalBus.set_current_worms.connect(func(val): worms.text = str(val))
 	SignalBus.worm_damaged.connect(func(val): player_hp.text = str(val))
 
 

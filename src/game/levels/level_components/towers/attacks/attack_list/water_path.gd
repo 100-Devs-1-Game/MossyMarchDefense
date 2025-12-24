@@ -1,4 +1,4 @@
-extends Path2D
+class_name WaterAttackPath extends Path2D
 
 @export var speed : float = 0.5
 

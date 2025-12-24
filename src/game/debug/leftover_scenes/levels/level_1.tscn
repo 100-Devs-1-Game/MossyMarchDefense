@@ -177,29 +177,23 @@ path_color = Color(0.8778953, 0.67546505, 0.40634537, 1)
 
 [node name="PathPoints" type="Node2D" parent="Path"]
 
-[node name="PathNode" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+[node name="PathNode" parent="Path/PathPoints" instance=ExtResource("2_82bkl")]
 position = Vector2(32, 451)
-next_path_node = NodePath("../PathNode2")
 
-[node name="PathNode2" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+[node name="PathNode2" parent="Path/PathPoints" instance=ExtResource("2_82bkl")]
 position = Vector2(445, 441)
-next_path_node = NodePath("../PathNode3")
 
-[node name="PathNode3" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+[node name="PathNode3" parent="Path/PathPoints" instance=ExtResource("2_82bkl")]
 position = Vector2(471, 798)
-next_path_node = NodePath("../PathNode4")
 
-[node name="PathNode4" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+[node name="PathNode4" parent="Path/PathPoints" instance=ExtResource("2_82bkl")]
 position = Vector2(992, 802)
-next_path_node = NodePath("../PathNode5")
 
-[node name="PathNode5" parent="Path/PathPoints" node_paths=PackedStringArray("next_path_node") instance=ExtResource("2_82bkl")]
+[node name="PathNode5" parent="Path/PathPoints" instance=ExtResource("2_82bkl")]
 position = Vector2(1002, 320)
-next_path_node = NodePath("../PathNode6")
 
 [node name="PathNode6" parent="Path/PathPoints" instance=ExtResource("2_82bkl")]
 position = Vector2(1749, 314)
-exit_node = true
 
 [node name="PlaceableRegion" type="Area2D" parent="Path" groups=["PlacableRegion"]]
 metadata/_edit_lock_ = true
@@ -220,15 +214,11 @@ base_spawn_time = 0.3
 spawner_path_node = NodePath("../Path/PathPoints/PathNode")
 wave_set = Array[ExtResource("4_naiax")]([ExtResource("10_mlv2r"), ExtResource("11_beyd7"), ExtResource("12_2qn1w"), ExtResource("13_oex4v"), ExtResource("14_3yyup"), ExtResource("15_eamed"), ExtResource("16_m82l0"), ExtResource("17_o51ma"), ExtResource("18_tf2gn"), ExtResource("19_gqi6j")])
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "wave_start_button", "pause_button", "player_health", "player_money_label", "wave_counter", "worm_spawn_node", "worm_path_node") instance=ExtResource("4_63j5y")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("first_path_node", "enemy_spawner", "player_health", "worm_spawn_node", "worm_path_node") instance=ExtResource("4_63j5y")]
 first_path_node = NodePath("../Path/PathPoints/PathNode")
 enemy_spawner = NodePath("../EnemySpawner")
-wave_start_button = NodePath("../UI/Control/VBoxContainer/NextWave")
-pause_button = NodePath("../UI/Control/VBoxContainer/Pause")
 player_health = NodePath("../UI/Control/VBoxContainer/HPPanel/PlayerHP")
 level_theme = 1
-player_money_label = NodePath("../UI/Control/Panel/VBoxContainer/PlayerMoney")
-wave_counter = NodePath("../UI/Control/Panel/VBoxContainer/WaveCounter")
 worm_spawn_node = NodePath("../Path/PathPoints/PathNode3")
 worm_path_node = NodePath("../Path/PathPoints/PathNode4")
 
@@ -376,5 +366,3 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
 text = "WAVE 1"
 horizontal_alignment = 1
-
-[editable path="TowerMarkers/TowerMarker3"]

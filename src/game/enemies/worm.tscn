@@ -65,7 +65,7 @@ collision_mask = 2
 script = ExtResource("1_rpgii")
 
 [node name="MovementComponent" parent="." instance=ExtResource("3_50v1h")]
-max_movement_speed = 10.0
+max_movement_speed = 50.0
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("4_r7o68")]
 health_bar = NodePath("../HealthBar")
