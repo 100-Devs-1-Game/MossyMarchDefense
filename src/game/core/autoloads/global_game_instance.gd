@@ -1,7 +1,9 @@
 extends Node
 
 const LEVEL_PATHS : Dictionary = {
-	"level_01" : ""
+	"level_01" : "res://game/levels/level_list/level_01.tscn",
+	"level_02" : "res://game/levels/level_list/level_02.tscn",
+	"level_03" : "res://game/levels/level_list/level_03.tscn"
 }
 
 const STARTING_ACORNS = 3
@@ -25,8 +27,15 @@ func _on_acorns_spent(amt:int) -> void:
 	SignalBus.acorns_updated.emit(-amt)
 
 
-func _change_to_level() -> void:
-	pass
+func change_to_level(level_key:String) -> void:
+	if LEVEL_PATHS.has(level_key) == false:
+		return
+	var LOADED_LEVEL : PackedScene = load(LEVEL_PATHS[level_key])
+	var new_level : Level = LOADED_LEVEL.instantiate()
+	self.add_child(new_level)
+	current_level = new_level
+	get_tree().current_scene = new_level
+
 
 func get_acorns() -> int:
 	return acorns

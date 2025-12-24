@@ -2,9 +2,9 @@ extends CanvasLayer
 
 
 const LAYER_PATHS : Dictionary = {
-	&"MAIN_MENU" : &"res://game/ui/ui_list/ui_main_menu.tscn",
-	&"GAME_HUD" : &"res://game/ui/ui_list/ui_game_hud.tscn",
-	&"GAME_OVER" : &"res://game/ui/ui_list/GameOver.tscn",
+	"MAIN_MENU" : "res://game/ui/ui_list/ui_main_menu.tscn",
+	"GAME_HUD" : "res://game/ui/ui_list/ui_game_hud.tscn",
+	"LEVEL_FINISHED" : "res://game/ui/ui_list/ui_level_finished.tscn",
 	"DEBUG_INFO" : "",
 }
 

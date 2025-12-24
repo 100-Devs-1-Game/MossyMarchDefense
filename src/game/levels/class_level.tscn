@@ -1,5 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpd4r77qxay3h"]
 
+[ext_resource type="Script" uid="uid://cobwpb0clkgvb" path="res://game/levels/class_level.gd" id="1_stt8m"]
 [ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/levels/level_components/enemy_spawner.tscn" id="1_tvk8f"]
 [ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="2_vm5kg"]
 [ext_resource type="PackedScene" uid="uid://bfa2a610e6sw6" path="res://game/levels/level_components/level_manager.tscn" id="3_l5jy1"]
@@ -28,10 +29,8 @@ func _process(delta: float) -> void:
 	$rain_layer_2.visible = !flip
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stt8m"]
-size = Vector2(1920, 1080)
-
 [node name="Level" type="Node"]
+script = ExtResource("1_stt8m")
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("level_manager") instance=ExtResource("1_tvk8f")]
 level_manager = NodePath("../LevelManager")
@@ -83,14 +82,5 @@ texture = ExtResource("8_1wgse")
 [node name="PathPoints" type="Node2D" parent="Path"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Path"]
-
-[node name="PlaceableRegion" type="Area2D" parent="Path" groups=["PlacableRegion"]]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PlaceableRegion"]
-position = Vector2(960, 540)
-shape = SubResource("RectangleShape2D_stt8m")
-debug_color = Color(1.1551381e-06, 0.6399762, 0.36140433, 0.41960785)
-metadata/_edit_lock_ = true
 
 [node name="TowerMarkers" type="Node2D" parent="."]
