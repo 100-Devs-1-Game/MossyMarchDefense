@@ -16,19 +16,21 @@ extends UILayer
 @onready var wave_counter: Label = %WaveCounter
 
 
-
 var tower_choices : Array[UITowerChoice] = []
 var acorn_raw_count : int = 0
 var display_acorn_count : int = 0
 var tween: Tween
 var feedback_tween: Tween
 
+
 var clicked_tower : UITowerChoice = null
 var dragged_tower : UITowerChoice = null
 var hovered_placement : TowerMarker = null
 
+
 var is_dragging : bool = false
 var drag_preview : Control = null
+
 
 const WOB_SPD: float = 8.0
 const WOB_AMT: float = 5.0

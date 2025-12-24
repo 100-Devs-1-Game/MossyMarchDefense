@@ -1,7 +1,7 @@
 extends UILayer
 
 @onready var menu_anim: AnimationPlayer = %MenuAnimations
-@onready var level_container: GridContainer = %LevelContainer
+@onready var level_container: HBoxContainer = %LevelContainer
 
 # TODO: Maybe make the preloads consistent
 const LEVEL_1 = preload("uid://du7map0fgin22")
@@ -9,6 +9,7 @@ const LEVEL_2 = preload("res://game/levels/level_list/level_02.tscn")
 const LEVEL_3 = preload("res://game/levels/level_list/level_03.tscn")
 
 func _ready():
+	AudioManager.play_music(GlobalEnums.MusicTitle.MainMenu)
 	menu_anim.play(&"main_menu_fade_in")
 
 func load_level(level):
@@ -27,8 +28,6 @@ func load_level(level):
 	# Called by ANY UI Layer at any time, to close itself.
 	close_layer.emit(self)
 
-func play_menu_theme():
-	AudioManager.play_music(GlobalEnums.MusicTitle.MainMenu)
 
 func on_level_1_pressed():
 	load_level(LEVEL_1)

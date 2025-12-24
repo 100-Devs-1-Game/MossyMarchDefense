@@ -1,9 +1,59 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3v1k7r8vxso3"]
+[gd_scene load_steps=25 format=3 uid="uid://b3v1k7r8vxso3"]
 
 [ext_resource type="Script" uid="uid://kd0s7peornng" path="res://game/ui/ui_list/ui_main_menu.gd" id="1_aekqq"]
 [ext_resource type="Texture2D" uid="uid://3kqvxl8jxs26" path="res://assets/ui/menus/main_menu.jpg" id="2_kfoo5"]
+[ext_resource type="Texture2D" uid="uid://cdv3i15h11ne0" path="res://assets/ui/menus/level_1_icon.png" id="3_1ls3u"]
 [ext_resource type="PackedScene" uid="uid://cg8vkmg6whglf" path="res://game/ui/ui_components/volume_slider.tscn" id="3_d6kru"]
 [ext_resource type="Texture2D" uid="uid://baw7a48oq31s1" path="res://assets/ui/menus/title_banner.jpg" id="3_kfoo5"]
+[ext_resource type="Shader" uid="uid://buxlcyaw16kb" path="res://assets/shaders/blur.gdshader" id="4_ladfv"]
+[ext_resource type="Texture2D" uid="uid://dv4djdm3qnjg1" path="res://assets/ui/menus/level_2_icon.png" id="4_xa5f0"]
+[ext_resource type="Texture2D" uid="uid://c1nsjpmst2axa" path="res://assets/ui/menus/level_3_icon.png" id="5_h4fiq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xa5f0"]
+load_path = "res://.godot/imported/level_1_icon.png-39d942610d0e398f2a63bd17e4f7aead.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xa5f0"]
+texture = SubResource("CompressedTexture2D_xa5f0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ls3u"]
+texture = ExtResource("3_1ls3u")
+modulate_color = Color(1, 0.6117647, 0.5529412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h4fiq"]
+texture = ExtResource("3_1ls3u")
+modulate_color = Color(1, 1, 0.5529412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hti6p"]
+texture = ExtResource("4_xa5f0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fq1nd"]
+texture = ExtResource("4_xa5f0")
+modulate_color = Color(1, 0.6117647, 0.5529412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xh7u1"]
+texture = ExtResource("4_xa5f0")
+modulate_color = Color(1, 1, 0.5529412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyfth"]
+texture = ExtResource("4_xa5f0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7uft6"]
+texture = ExtResource("5_h4fiq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lfe4o"]
+texture = ExtResource("5_h4fiq")
+modulate_color = Color(1, 0.6117647, 0.5529412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l1d84"]
+texture = ExtResource("5_h4fiq")
+modulate_color = Color(1, 1, 0.5529412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxmcu"]
+texture = ExtResource("5_h4fiq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ladfv"]
+shader = ExtResource("4_ladfv")
+shader_parameter/lod = 0.0
 
 [sub_resource type="Animation" id="Animation_d6kru"]
 length = 0.001
@@ -41,12 +91,24 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1.5, 1.5)]
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blur:material:shader_parameter/lod")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_kfoo5"]
 resource_name = "main_menu_fade_in"
-length = 3.0
+length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,7 +117,7 @@ tracks/0/path = NodePath("Title:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2.2, 3),
+"times": PackedFloat32Array(1, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -67,7 +129,7 @@ tracks/1/path = NodePath("Title:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -79,24 +141,22 @@ tracks/2/path = NodePath("Title:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(1, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(10, 10)]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".")
+tracks/3/path = NodePath("Blur:material:shader_parameter/lod")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_menu_theme"
-}]
+"times": PackedFloat32Array(1, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 5.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d6kru"]
@@ -126,112 +186,103 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_kfoo5")
 
-[node name="Control" type="Control" parent="."]
+[node name="LevelContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -167.0
+offset_right = 304.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level1Button" type="Button" parent="LevelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 154)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_xa5f0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1ls3u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h4fiq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xa5f0")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1ls3u")
+
+[node name="Level2Button" type="Button" parent="LevelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 154)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_hti6p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fq1nd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xh7u1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_yyfth")
+theme_override_styles/focus = SubResource("StyleBoxTexture_fq1nd")
+
+[node name="Level3Button" type="Button" parent="LevelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 154)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_7uft6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lfe4o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l1d84")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_sxmcu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lfe4o")
+
+[node name="Buttons" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="HowToPlayButton" type="Button" parent="Control"]
+[node name="HowToPlayButton" type="Button" parent="Buttons"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 878.0
-offset_top = 519.0
+offset_top = 850.0
 offset_right = -870.0
-offset_bottom = -483.0
+offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "How to Play"
 
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -151.5
-offset_top = -358.0
-offset_right = 151.5
-offset_bottom = -205.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "PUT AUDIO CONTROLS HERE
-ALSO FIX THE UI
-CREDITS (ALSO REDO LATER):
-Lead/Artist - Amatrine
-Code - Lexo, JerryBeans, Vienetta, Plant
-Music - Lancer"
-
-[node name="MusicSlider" parent="Control" instance=ExtResource("3_d6kru")]
+[node name="MusicSlider" parent="Buttons" instance=ExtResource("3_d6kru")]
 layout_mode = 0
-offset_left = 1430.0
-offset_top = 757.0
-offset_right = 1616.0
-offset_bottom = 796.0
+offset_left = 500.0
+offset_top = 697.0
+offset_right = 686.0
+offset_bottom = 736.0
 max_value = 1.0
 step = 0.001
 bus_name = "Music"
 label_text = "Music Volume"
 
-[node name="SFXSlider" parent="Control" instance=ExtResource("3_d6kru")]
+[node name="SFXSlider" parent="Buttons" instance=ExtResource("3_d6kru")]
 layout_mode = 0
-offset_left = 1430.0
-offset_top = 809.0
-offset_right = 1616.0
-offset_bottom = 848.0
+offset_left = 500.0
+offset_top = 749.0
+offset_right = 686.0
+offset_bottom = 788.0
 max_value = 1.0
 step = 0.001
 bus_name = "SFX"
 label_text = "Effects Volume"
-
-[node name="LevelContainer" type="GridContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.008854167
-anchor_top = -0.019444445
-anchor_right = 0.99114585
-anchor_bottom = 0.98055553
-offset_left = 346.0
-offset_top = 311.0
-offset_right = -346.0
-offset_bottom = -311.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 8
-metadata/_edit_use_anchors_ = true
-
-[node name="Level1Button" type="Button" parent="LevelContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
-text = "Level 1"
-
-[node name="Level2Button" type="Button" parent="LevelContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
-text = "Level 2"
-
-[node name="Level3Button" type="Button" parent="LevelContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
-text = "Level 3"
 
 [node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
@@ -240,9 +291,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(960, 540)
+mouse_filter = 2
 texture = ExtResource("3_kfoo5")
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ladfv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="MenuAnimations" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -251,5 +312,5 @@ libraries = {
 }
 
 [connection signal="pressed" from="LevelContainer/Level1Button" to="." method="on_level_1_pressed"]
-[connection signal="pressed" from="LevelContainer/Level2Button" to="." method="on_level_2_button_pressed"]
-[connection signal="pressed" from="LevelContainer/Level3Button" to="." method="on_level_3_button_pressed"]
+[connection signal="pressed" from="LevelContainer/Level2Button" to="." method="on_level_1_pressed"]
+[connection signal="pressed" from="LevelContainer/Level3Button" to="." method="on_level_1_pressed"]
