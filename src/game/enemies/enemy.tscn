@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://tgcyp6gpnxip"]
+
+[ext_resource type="Script" uid="uid://7e63ryy8u1a6" path="res://game/enemies/enemy.gd" id="1_k0yxv"]
+[ext_resource type="PackedScene" uid="uid://c57niq1ophbeq" path="res://game/items/acorn.tscn" id="2_yd1pl"]
+[ext_resource type="PackedScene" uid="uid://b63va5oryp3q1" path="res://game/enemies/movement_component.tscn" id="3_tk2mw"]
+[ext_resource type="PackedScene" uid="uid://cbqaacuahs3s" path="res://game/enemies/health_component.tscn" id="4_y8mcj"]
+[ext_resource type="PackedScene" uid="uid://deldoejppigim" path="res://game/enemies/health_bar.tscn" id="5_jncvr"]
+[ext_resource type="SpriteFrames" uid="uid://bbuq2ktiyjn32" path="res://resources/sprite_frames/animated_bird.tres" id="6_jf0do"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ow6v"]
+radius = 3.6666667
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1emua"]
+radius = 155.55556
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.09, 0.09)
+collision_layer = 13
+collision_mask = 2
+script = ExtResource("1_k0yxv")
+coin = ExtResource("2_yd1pl")
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_tk2mw")]
+max_movement_speed = 15.0
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("4_y8mcj")]
+health_bar = NodePath("../HealthBar")
+
+[node name="HealthBar" parent="." instance=ExtResource("5_jncvr")]
+position = Vector2(0, -24)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("6_jf0do")
+animation = &"walk_back"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7ow6v")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1emua")

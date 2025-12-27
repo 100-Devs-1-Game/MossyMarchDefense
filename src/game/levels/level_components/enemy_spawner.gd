@@ -4,7 +4,7 @@ class_name EnemySpawner extends Node
 var enemy_queue : Array[String] 
 var enemy_ind
 var spawning_enemies := false
-var enemy = preload("res://game/enemies/debug_enemy.tscn")
+var enemy = preload("res://game/enemies/enemy.tscn")
 
 var enemy_dictionary = {
 	"snail": preload("res://resources/enemy_data/snail_enemy.tres"),
