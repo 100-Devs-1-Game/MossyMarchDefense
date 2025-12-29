@@ -269,9 +269,9 @@ text = "How to Play"
 [node name="MusicSlider" parent="Buttons" instance=ExtResource("3_d6kru")]
 layout_mode = 0
 offset_left = 500.0
-offset_top = 697.0
+offset_top = 728.0
 offset_right = 686.0
-offset_bottom = 736.0
+offset_bottom = 767.0
 max_value = 1.0
 step = 0.001
 bus_name = "Music"
@@ -280,9 +280,9 @@ label_text = "Music Volume"
 [node name="SFXSlider" parent="Buttons" instance=ExtResource("3_d6kru")]
 layout_mode = 0
 offset_left = 500.0
-offset_top = 749.0
+offset_top = 780.0
 offset_right = 686.0
-offset_bottom = 788.0
+offset_bottom = 819.0
 max_value = 1.0
 step = 0.001
 bus_name = "SFX"

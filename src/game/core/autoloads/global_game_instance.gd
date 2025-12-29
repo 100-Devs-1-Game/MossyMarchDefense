@@ -29,11 +29,20 @@ func _on_acorns_spent(amt:int) -> void:
 func change_to_level(level_key:String) -> void:
 	if LEVEL_PATHS.has(level_key) == false:
 		return
+	
+	if Instance.current_level != null:
+		Instance.current_level.exit_level()
+	
 	var LOADED_LEVEL : PackedScene = load(LEVEL_PATHS[level_key])
 	var new_level : Level = LOADED_LEVEL.instantiate()
 	self.add_child(new_level)
 	current_level = new_level
 	new_level.initialize_level()
+
+func return_to_main_menu() -> void:
+	if Instance.current_level != null:
+		Instance.current_level.exit_level()
+	UI.open_new_layer("MAIN_MENU")
 
 
 func get_acorns() -> int:

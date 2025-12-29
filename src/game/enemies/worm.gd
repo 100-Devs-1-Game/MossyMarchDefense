@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var area_2d = $Area2D
 @onready var invuln_timer = $InvulnTimer
 
-var enemy_type := GlobalEnums.EnemyType.Worm
+var enemy_type := ENUM.EnemyType.Worm
 var payout : int
 var level_manager
 var invuln := false
@@ -17,7 +17,7 @@ var invuln := false
 func _ready():
 	level_manager = get_tree().get_first_node_in_group("level_manager")
 	
-	movement_component.update_target_location(navigation_agent_2d, Instance.current_level.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
+	movement_component.update_target_location(navigation_agent_2d, Instance.current_level.get_first_path_node(enemy_type == ENUM.EnemyType.Worm).global_position)
 	invuln_timer.timeout.connect(on_invuln_timeout)
 	
 func _physics_process(_delta):

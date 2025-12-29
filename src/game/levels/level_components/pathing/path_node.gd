@@ -18,7 +18,7 @@ func on_body_entered(body):
 		return
 	
 	if exit_node:
-		if body.enemy_type == GlobalEnums.EnemyType.Worm:
+		if body.enemy_type == ENUM.EnemyType.Worm:
 			SignalBus.wave_ended.emit()
 			body.queue_free()
 		else:

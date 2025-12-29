@@ -31,4 +31,4 @@ signal wave_ended
 # Temporary Signals
 signal tower_placement_hovered(location:TowerMarker)
 signal tower_placement_unhovered(location:TowerMarker)
-signal ui_tower_dropped(tower_type:GlobalEnums.TowerType)
+signal ui_tower_dropped(tower_type:ENUM.TowerType)

@@ -5,12 +5,12 @@ extends Node2D
 @export var tower_parent : Node2D
 
 var is_snapping : bool = false
-var dragged_tower_type : GlobalEnums.TowerType
+var dragged_tower_type : ENUM.TowerType
 var snap_body : Node2D
 
 var tower_dictionary = {
-	GlobalEnums.TowerType.PlantPot: preload("res://resources/tower_data/plant_pot_tower.tres"),
-	GlobalEnums.TowerType.WateringCan: preload("res://resources/tower_data/watering_can_tower.tres"),
+	ENUM.TowerType.PlantPot: preload("res://resources/tower_data/plant_pot_tower.tres"),
+	ENUM.TowerType.WateringCan: preload("res://resources/tower_data/watering_can_tower.tres"),
 }
 
 func _ready() -> void:
@@ -59,7 +59,7 @@ func enter_snap_range(body):
 func exit_snap_range(_body):
 	is_snapping = false
 
-func on_tower_dragged(tower_type : GlobalEnums.TowerType) -> void:
+func on_tower_dragged(tower_type : ENUM.TowerType) -> void:
 	dragged_tower_type = tower_type
 	
 	var tower_data = tower_dictionary[tower_type]

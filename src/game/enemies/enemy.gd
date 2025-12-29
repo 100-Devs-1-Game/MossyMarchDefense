@@ -10,17 +10,18 @@ extends Node2D
 
 const ACORN = preload("uid://c57niq1ophbeq")
 
-var enemy_type : GlobalEnums.EnemyType
+var enemy_type : ENUM.EnemyType
 var payout : int = 0
 var targeting_worm : bool = false
 var worm_target : CharacterBody2D = null
 var is_moving : bool = true
 
 func _ready():
-	movement_component.update_target_location(navigation_agent_2d, Instance.current_level.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
+	movement_component.update_target_location(navigation_agent_2d, Instance.current_level.get_first_path_node(enemy_type == ENUM.EnemyType.Worm).global_position)
 	area_2d.body_entered.connect(on_body_entered)
 	area_2d.body_exited.connect(on_body_exited)
-	
+
+
 func _physics_process(_delta):
 	play_animation()
 	
@@ -32,6 +33,7 @@ func _physics_process(_delta):
 	
 	movement_component.move_to_target(self, navigation_agent_2d)
 
+
 func load_enemy_stats(enemy_stats : EnemyData):
 	enemy_type = enemy_stats.enemy_type
 	movement_component.max_movement_speed = enemy_stats.movement_speed
@@ -40,7 +42,7 @@ func load_enemy_stats(enemy_stats : EnemyData):
 	
 
 func kill_enemy():
-	if not enemy_type == GlobalEnums.EnemyType.Worm:
+	if not enemy_type == ENUM.EnemyType.Worm:
 		Instance.current_level.adjust_enemies(-1)
 		var acorn_instance : AcornPickup = ACORN.instantiate()
 		acorn_instance.amount = payout
@@ -48,9 +50,11 @@ func kill_enemy():
 		acorn_instance.global_position = self.global_position
 	self.queue_free()
 
+
 func change_target_to_worm(body):
 	targeting_worm = true
 	worm_target = body
+
 
 func play_animation():
 	# Ugly if statement block incoming!!! ("Uh Oh!" <--- that's you after reading this)

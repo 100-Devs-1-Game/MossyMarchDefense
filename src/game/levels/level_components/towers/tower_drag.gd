@@ -2,7 +2,7 @@ extends Sprite2D
 
 signal on_dragged
 
-@export var tower_type : GlobalEnums.TowerType
+@export var tower_type : ENUM.TowerType
 
 var is_dragging = false
 

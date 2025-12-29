@@ -1,7 +1,6 @@
 class_name Level extends Node
 signal finished_initialization
 
-const NUM_WAVES = 2
 const WORM_SCENE = preload("res://game/enemies/worm.tscn")
 const STARTUP_SCENE = preload("res://game/core/startup.tscn")
 
@@ -114,7 +113,7 @@ func _on_wave_ended():
 	
 	cleanup_enemies()
 	
-	if current_wave > NUM_WAVES:
+	if current_wave > waves.size():
 		win_game()
 	else:
 		between_waves = true
@@ -126,9 +125,9 @@ func cleanup_enemies():
 	for n in enemy_group.get_children():
 		n.queue_free()
 
-# TODO: Obviously this aint the final functions for winning nor losing
+
 func win_game():
-	get_tree().change_scene_to_packed(STARTUP_SCENE)
+	Instance.return_to_main_menu()
 
 
 func lose_game():
@@ -169,3 +168,9 @@ func on_retry_level():
 
 func add_tower(node) -> void:
 	towers.add_child(node)
+
+func exit_level() -> void:
+	
+	## Any additional deconstruction goes here.
+	
+	self.queue_free()

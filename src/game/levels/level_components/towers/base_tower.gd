@@ -7,9 +7,9 @@ var enemies_in_range: Array[Node2D] = []
 var attack : BaseAttack
 
 var attack_dictionary = {
-	GlobalEnums.TowerType.PlantPot: preload("res://game/levels/level_components/towers/attacks/attack_list/pollen_attack.tscn"),
-	GlobalEnums.TowerType.WateringCan: preload("res://game/levels/level_components/towers/attacks/attack_list/water_attack.tscn"),
-	GlobalEnums.TowerType.Bubble: preload("res://game/levels/level_components/towers/attacks/attack_list/water_attack.tscn")
+	ENUM.TowerType.PlantPot: preload("res://game/levels/level_components/towers/attacks/attack_list/pollen_attack.tscn"),
+	ENUM.TowerType.WateringCan: preload("res://game/levels/level_components/towers/attacks/attack_list/water_attack.tscn"),
+	ENUM.TowerType.Bubble: preload("res://game/levels/level_components/towers/attacks/attack_list/water_attack.tscn")
 }
 
 func _ready():
@@ -43,7 +43,7 @@ func _exit_tower_range(body):
 		enemies_in_range.erase(body)
 
 func is_enemy(body):
-	return body.is_in_group("enemy") and body.enemy_type != GlobalEnums.EnemyType.Worm
+	return body.is_in_group("enemy") and body.enemy_type != ENUM.EnemyType.Worm
 	
 func on_attack_timer_timeout():
 	if enemies_in_range.size() == 0:

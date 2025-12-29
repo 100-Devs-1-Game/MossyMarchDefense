@@ -33,7 +33,7 @@ func toggle_placement_preview(ui_tower:UITowerChoice, state:bool) -> void:
 		placement_preview.texture = null
 		range_display.visible = false
 
-func tower_placed(tower_type:GlobalEnums.TowerType) -> void:
+func tower_placed(tower_type:ENUM.TowerType) -> void:
 	var new_tower:Node2D = DEBUG_TOWER.instantiate()
 	new_tower.tower_data = RES_DATA.get_tower_data_duplicate_from_enum(tower_type)
 	
@@ -53,13 +53,13 @@ func tower_placed(tower_type:GlobalEnums.TowerType) -> void:
 
 
 ## Temporary func to adjust the vertical pos, since the things are diff size. xD -Phoenix
-func _get_y_adjust(tower_type:GlobalEnums.TowerType) -> float:
+func _get_y_adjust(tower_type:ENUM.TowerType) -> float:
 	var y_adjust:float = -50
 	
 	match tower_type:
-		GlobalEnums.TowerType.PlantPot:
+		ENUM.TowerType.PlantPot:
 			y_adjust = -50
-		GlobalEnums.TowerType.WateringCan:
+		ENUM.TowerType.WateringCan:
 			y_adjust = -25
 	
 	return y_adjust

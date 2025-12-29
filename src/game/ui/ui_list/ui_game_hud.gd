@@ -47,9 +47,9 @@ func _ready() -> void:
 	acorn_raw_count = Instance.get_acorns()
 	acorn_amount.text = str(acorn_raw_count)
 	display_acorn_count = acorn_raw_count
-	flower_cost.text = str(RES_DATA.get_cost_from_enum(GlobalEnums.TowerType.PlantPot))
-	can_cost.text = str(RES_DATA.get_cost_from_enum(GlobalEnums.TowerType.WateringCan))
-	water_cost.text = str(RES_DATA.get_cost_from_enum(GlobalEnums.TowerType.Bubble))
+	flower_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.PlantPot))
+	can_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.WateringCan))
+	water_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.Bubble))
 	_connect_signals()
 	menu_anims.play(&"hud_spawned_in")
 

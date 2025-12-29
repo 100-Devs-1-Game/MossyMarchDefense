@@ -21,7 +21,7 @@ static func get_tower_data_duplicate_by_key(tower_key:String) -> TowerData:
 	return LOADED_RES.duplicate()
 
 
-static func get_tower_data_duplicate_from_enum(tower_type:GlobalEnums.TowerType) -> TowerData:
+static func get_tower_data_duplicate_from_enum(tower_type:ENUM.TowerType) -> TowerData:
 	var key : String = _get_key_from_type(tower_type)
 	if key.is_empty():
 		printerr("Could not get key from TowerType: " + str(tower_type))
@@ -30,15 +30,15 @@ static func get_tower_data_duplicate_from_enum(tower_type:GlobalEnums.TowerType)
 	return get_tower_data_duplicate_by_key(key)
 
 
-static func get_tower_type(tower_key:String) -> GlobalEnums.TowerType:
+static func get_tower_type(tower_key:String) -> ENUM.TowerType:
 	if not _is_valid_key(tower_key):
 		printerr("Returning default enum, plant pot. Invalid tower key: " + tower_key)
-		return GlobalEnums.TowerType.PlantPot
+		return ENUM.TowerType.PlantPot
 	
 	var resource = load(res_paths[tower_key])
 	if not resource is TowerData:
 		printerr("Returning default enum, plant pot. Loaded resource is not TowerData for key: " + tower_key)
-		return GlobalEnums.TowerType.PlantPot
+		return ENUM.TowerType.PlantPot
 	
 	return resource.tower_type
 
@@ -95,16 +95,16 @@ static func get_cost(tower_key:String) -> int:
 	return resource.cost
 
 
-static func get_tower_type_from_enum(tower_type:GlobalEnums.TowerType) -> GlobalEnums.TowerType:
+static func get_tower_type_from_enum(tower_type:ENUM.TowerType) -> ENUM.TowerType:
 	var key = _get_key_from_type(tower_type)
 	if key.is_empty():
 		printerr("Returning default enum, plant pot. Could not get key from TowerType: " + str(tower_type))
-		return GlobalEnums.TowerType.PlantPot
+		return ENUM.TowerType.PlantPot
 	
 	return get_tower_type(key)
 
 
-static func get_detection_radius_from_enum(tower_type:GlobalEnums.TowerType) -> float:
+static func get_detection_radius_from_enum(tower_type:ENUM.TowerType) -> float:
 	var key = _get_key_from_type(tower_type)
 	if key.is_empty():
 		printerr("Could not get key from TowerType: " + str(tower_type))
@@ -113,7 +113,7 @@ static func get_detection_radius_from_enum(tower_type:GlobalEnums.TowerType) -> 
 	return get_detection_radius(key)
 
 
-static func get_sprite_from_enum(tower_type:GlobalEnums.TowerType) -> Texture2D:
+static func get_sprite_from_enum(tower_type:ENUM.TowerType) -> Texture2D:
 	var key = _get_key_from_type(tower_type)
 	if key.is_empty():
 		printerr("Could not get key from TowerType: " + str(tower_type))
@@ -122,7 +122,7 @@ static func get_sprite_from_enum(tower_type:GlobalEnums.TowerType) -> Texture2D:
 	return get_sprite(key)
 
 
-static func get_sprite_frames_from_enum(tower_type:GlobalEnums.TowerType) -> SpriteFrames:
+static func get_sprite_frames_from_enum(tower_type:ENUM.TowerType) -> SpriteFrames:
 	var key = _get_key_from_type(tower_type)
 	if key.is_empty():
 		printerr("Could not get key from TowerType: " + str(tower_type))
@@ -131,7 +131,7 @@ static func get_sprite_frames_from_enum(tower_type:GlobalEnums.TowerType) -> Spr
 	return get_sprite_frames(key)
 
 
-static func get_cost_from_enum(tower_type:GlobalEnums.TowerType) -> int:
+static func get_cost_from_enum(tower_type:ENUM.TowerType) -> int:
 	var key = _get_key_from_type(tower_type)
 	if key.is_empty():
 		printerr("Could not get key from TowerType: " + str(tower_type))
@@ -141,13 +141,13 @@ static func get_cost_from_enum(tower_type:GlobalEnums.TowerType) -> int:
 
 
 ## Ignore this, private helper function. Do not use this. - Phoenix
-static func _get_key_from_type(tower_type:GlobalEnums.TowerType) -> String:
+static func _get_key_from_type(tower_type:ENUM.TowerType) -> String:
 	match tower_type:
-		GlobalEnums.TowerType.PlantPot:
+		ENUM.TowerType.PlantPot:
 			return "plant_pot"
-		GlobalEnums.TowerType.WateringCan:
+		ENUM.TowerType.WateringCan:
 			return "watering_can"
-		GlobalEnums.TowerType.Bubble:
+		ENUM.TowerType.Bubble:
 			return "bubble"
 		_:
 			printerr("Not a valid TowerType: " + str(tower_type))

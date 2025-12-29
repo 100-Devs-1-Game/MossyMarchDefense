@@ -17,7 +17,7 @@ func _physics_process(_delta):
 	if collision:
 		var body = collision.get_collider()
 		if body.is_in_group("enemy"):
-			AudioManager.play_sfx(GlobalEnums.SFXTitle.MobImpact)
+			AudioManager.play_sfx(ENUM.SFXTitle.MobImpact)
 			body.health_component.get_hit(base_damage)
 			queue_free()
 
