@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://tgcyp6gpnxip"]
+[gd_scene load_steps=8 format=3 uid="uid://tgcyp6gpnxip"]
 
 [ext_resource type="Script" uid="uid://7e63ryy8u1a6" path="res://game/enemies/enemy.gd" id="1_k0yxv"]
-[ext_resource type="PackedScene" uid="uid://c57niq1ophbeq" path="res://game/items/acorn.tscn" id="2_yd1pl"]
 [ext_resource type="PackedScene" uid="uid://b63va5oryp3q1" path="res://game/enemies/movement_component.tscn" id="3_tk2mw"]
 [ext_resource type="PackedScene" uid="uid://cbqaacuahs3s" path="res://game/enemies/health_component.tscn" id="4_y8mcj"]
 [ext_resource type="PackedScene" uid="uid://deldoejppigim" path="res://game/enemies/health_bar.tscn" id="5_jncvr"]
@@ -18,7 +17,6 @@ scale = Vector2(0.09, 0.09)
 collision_layer = 13
 collision_mask = 2
 script = ExtResource("1_k0yxv")
-coin = ExtResource("2_yd1pl")
 
 [node name="MovementComponent" parent="." instance=ExtResource("3_tk2mw")]
 max_movement_speed = 15.0
@@ -27,7 +25,9 @@ max_movement_speed = 15.0
 health_bar = NodePath("../HealthBar")
 
 [node name="HealthBar" parent="." instance=ExtResource("5_jncvr")]
-position = Vector2(0, -24)
+z_index = 2
+position = Vector2(0, -588.8889)
+scale = Vector2(58.333336, 19.444443)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("6_jf0do")

@@ -16,6 +16,18 @@ signal set_current_worms(worm_number:int)
 signal worm_damaged(new_hp:int)
 signal close_game_hud
 
+# Level Signals
+signal wave_ended
+
+
+
+
+
+
+
+
+
+
 # Temporary Signals
 signal tower_placement_hovered(location:TowerMarker)
 signal tower_placement_unhovered(location:TowerMarker)

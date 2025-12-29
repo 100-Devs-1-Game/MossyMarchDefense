@@ -2,20 +2,19 @@ extends Node2D
 
 
 @onready var movement_component = $MovementComponent
-@onready var navigation_agent_2d = $NavigationAgent2D
+@onready var navigation_agent_2d : NavigationAgent2D = $NavigationAgent2D
 @onready var health_component = $HealthComponent
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var area_2d = $Area2D
 
-@export var coin: PackedScene
-
+const ACORN = preload("uid://c57niq1ophbeq")
 
 var enemy_type : GlobalEnums.EnemyType
-var payout : int
-var targeting_worm := false
-var worm_target : CharacterBody2D
-var is_moving := true
+var payout : int = 0
+var targeting_worm : bool = false
+var worm_target : CharacterBody2D = null
+var is_moving : bool = true
 
 func _ready():
 	movement_component.update_target_location(navigation_agent_2d, Instance.current_level.get_first_path_node(enemy_type == GlobalEnums.EnemyType.Worm).global_position)
@@ -43,9 +42,10 @@ func load_enemy_stats(enemy_stats : EnemyData):
 func kill_enemy():
 	if not enemy_type == GlobalEnums.EnemyType.Worm:
 		Instance.current_level.adjust_enemies(-1)
-		var coin_instance = coin.instantiate()
-		Instance.current_level.add_child.call_deferred(coin_instance)
-		coin_instance.global_position = self.global_position
+		var acorn_instance : AcornPickup = ACORN.instantiate()
+		acorn_instance.amount = payout
+		Instance.current_level.add_child.call_deferred(acorn_instance)
+		acorn_instance.global_position = self.global_position
 	self.queue_free()
 
 func change_target_to_worm(body):
@@ -73,9 +73,11 @@ func play_animation():
 			animated_sprite_2d.play(&"walk_towards")
 		else:
 			animated_sprite_2d.play(&"walk_back")
-			
+
+
 func control_movement_flag(flag : bool):
 	is_moving = flag
+
 
 func on_body_entered(body):
 	if body.is_in_group("worm"):
@@ -84,6 +86,7 @@ func on_body_entered(body):
 			body.health_component.get_hit(1)
 			body.enter_invuln()
 		change_target_to_worm(body)
+
 
 func on_body_exited(body):
 	if body.is_in_group("worm"):

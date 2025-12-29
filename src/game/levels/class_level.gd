@@ -26,7 +26,6 @@ var enemies_on_screen : int = 0
 @onready var enemy_spawner: EnemySpawner = %EnemySpawner
 @onready var rain: AnimatedSprite2D = %rain
 
-
 var first_path_node : PathNode = null
 var worm_spawn_node : PathNode = null
 var worm_path_node : PathNode = null
@@ -47,6 +46,7 @@ func initialize_level() -> void:
 	finished_initialization.emit()
 
 func _connect_signals():
+	SignalBus.wave_ended.connect(_on_wave_ended)
 	SignalBus.start_wave_clicked.connect(on_wave_start_button_pressed)
 	SignalBus.pause_wave_clicked.connect(on_pause_button_pressed)
 	SignalBus.retry_level.connect(on_retry_level)
@@ -84,14 +84,6 @@ func _connect_path_nodes() -> void:
 	curr_node.exit_node = true
 
 
-func _process(_delta: float) -> void:
-	_refresh_ui()
-
-
-func _refresh_ui() -> void:
-	pass
-
-
 func get_first_path_node(worm: bool):
 	if worm:
 		return worm_path_node
@@ -102,13 +94,10 @@ func adjust_enemies(modifier : int):
 	enemies_on_screen += modifier
 	
 	if enemies_on_screen == 0 and enemy_spawner.spawning_enemies == false:
-		end_wave()
+		SignalBus.wave_ended.emit()
 
 
 func start_wave():
-	
-#	wave_counter.text = "WAVE " + str(current_wave)
-	
 	var worm_group = get_tree().get_first_node_in_group("worm_group")
 	var worm_instance = WORM_SCENE.instantiate()
 	worm_group.add_child(worm_instance)
@@ -118,7 +107,7 @@ func start_wave():
 	enemy_spawner.start_wave()
 
 
-func end_wave():
+func _on_wave_ended():
 	between_waves = true
 	
 	current_wave += 1
@@ -176,9 +165,7 @@ func on_pause_button_pressed():
 
 
 func on_retry_level():
-	current_wave = 1
-	
-	get_tree().reload_current_scene()
+	pass
 
 func add_tower(node) -> void:
 	towers.add_child(node)

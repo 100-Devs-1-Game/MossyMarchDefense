@@ -18,9 +18,8 @@ func on_body_entered(body):
 		return
 	
 	if exit_node:
-		var level_manager = get_tree().get_first_node_in_group("level_manager")
 		if body.enemy_type == GlobalEnums.EnemyType.Worm:
-			level_manager.end_wave()
+			SignalBus.wave_ended.emit()
 			body.queue_free()
 		else:
 			body.kill_enemy()
