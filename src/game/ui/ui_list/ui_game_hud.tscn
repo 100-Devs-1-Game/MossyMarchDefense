@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://behtnp632nowv"]
+[gd_scene load_steps=22 format=3 uid="uid://behtnp632nowv"]
 
 [ext_resource type="Script" uid="uid://dh0yyfup3qnuw" path="res://game/ui/ui_list/ui_game_hud.gd" id="1_rfypm"]
 [ext_resource type="Script" uid="uid://d2yvpa8bao7ik" path="res://game/ui/ui_components/ui_tower_choice.gd" id="4_3a5vc"]
@@ -84,6 +84,78 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pause:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-339, 974)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pause:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("NextWave:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-339, 884)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pause:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("NextWave:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("NextWave:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_mdypi"]
@@ -191,12 +263,114 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pause:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-339, 974), Vector2(29, 974), Vector2(48, 974), Vector2(29, 974)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pause:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("NextWave:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-339, 884), Vector2(29, 884), Vector2(48, 884), Vector2(29, 884)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pause:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("NextWave:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("NextWave:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_pwnpw"]
+resource_name = "move_wave_button_out"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NextWave:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(29, 884), Vector2(43, 884), Vector2(-329, 884)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NextWave:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r5t23"]
 _data = {
 &"RESET": SubResource("Animation_r5t23"),
 &"hide_shop": SubResource("Animation_mdypi"),
-&"hud_spawned_in": SubResource("Animation_qp5ji")
+&"hud_spawned_in": SubResource("Animation_qp5ji"),
+&"move_wave_button_out": SubResource("Animation_pwnpw")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp5ji"]
@@ -204,69 +378,80 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.71992487, 0.73521674, 1.1551381e-06, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
+bg_color = Color(0.7019608, 0.6431373, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.6, 0.50000006, 0, 1)
 border_blend = true
-corner_radius_top_left = 8
+corner_radius_top_left = 25
 corner_radius_top_right = 8
-corner_radius_bottom_right = 8
+corner_radius_bottom_right = 25
 corner_radius_bottom_left = 8
-corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5t23"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ud5n"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.88804847, 0.902335, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.5837085, 0.59338415, 1.92523e-07, 1)
+bg_color = Color(0.7, 0.525, 0, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.45, 0.33749998, 0, 1)
 border_blend = true
-corner_radius_top_left = 8
+corner_radius_top_left = 25
 corner_radius_top_right = 8
-corner_radius_bottom_right = 8
+corner_radius_bottom_right = 25
 corner_radius_bottom_left = 8
-corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdypi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kh4j"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
+bg_color = Color(0.8, 0.7333333, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6, 0.50000006, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 8
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnemr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7019608, 0.65882355, 0.21176471, 0.5019608)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.6, 0.53000003, 0.18, 0.5019608)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 8
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdw62"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.6, 0, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwnpw"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vsum"]
 content_margin_left = 0.0
@@ -283,18 +468,6 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdw62"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0, 0.6, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 corner_detail = 5
 
 [node name="GameHUD" type="Control"]
@@ -314,7 +487,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -944.0
-offset_bottom = -798.9961
+offset_bottom = -798.99634
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -430,61 +603,47 @@ libraries = {
 &"": SubResource("AnimationLibrary_r5t23")
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 72.0
-offset_top = -263.0
-offset_right = 281.0
-offset_bottom = -38.0
-grow_vertical = 0
-
-[node name="NextWave" type="Button" parent="VBoxContainer"]
+[node name="NextWave" type="Button" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 0
+offset_left = -339.0
+offset_top = 884.0
+offset_right = -39.0
+offset_bottom = 964.0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_pressed_color = Color(0, 0.22216667, 0.31, 1)
+theme_override_colors/font_disabled_color = Color(0, 0.15594886, 0.19966345, 0.5)
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_qp5ji")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_r5t23")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qp5ji")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_mdypi")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pwnpw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0ud5n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7kh4j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_xnemr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7kh4j")
+disabled = true
 text = "Next Wave"
 
-[node name="Pause" type="Button" parent="VBoxContainer"]
+[node name="Pause" type="Button" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 0
+offset_left = -339.0
+offset_top = 974.0
+offset_right = -39.0
+offset_bottom = 1054.0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_pressed_color = Color(0, 0.22352941, 0.30980393, 1)
+theme_override_colors/font_disabled_color = Color(0, 0.15686275, 0.2, 0.5019608)
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_qp5ji")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_r5t23")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qp5ji")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_mdypi")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pwnpw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0ud5n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7kh4j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_xnemr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7kh4j")
+disabled = true
 text = "Pause Game"
-
-[node name="HPPanel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 41.325)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4vsum")
-
-[node name="PlayerHP" type="Label" parent="VBoxContainer/HPPanel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-theme_override_font_sizes/font_size = 33
-text = "HP: 30/30"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -523,7 +682,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1710.0
-offset_bottom = -793.0
+offset_bottom = -793.00024
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -547,3 +706,30 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 48
 text = "023"
+
+[node name="HPPanel#Unused" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 41.325)
+layout_mode = 0
+offset_left = 26.0
+offset_top = 966.0
+offset_right = 235.0
+offset_bottom = 1007.325
+theme_override_styles/panel = SubResource("StyleBoxFlat_4vsum")
+
+[node name="PlayerHP" type="Label" parent="HPPanel#Unused"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_font_sizes/font_size = 33
+text = "HP: 30/30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="NextWave" to="." method="_on_next_wave_pressed"]
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]

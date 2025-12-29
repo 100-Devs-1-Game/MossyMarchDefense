@@ -8,8 +8,8 @@ extends UILayer
 
 @onready var acorn_label: Label = %AcornAmount
 
-@onready var next_wave: Button = %NextWave
-@onready var pause: Button = %Pause
+@onready var next_wave_button: Button = %NextWave
+@onready var pause_button: Button = %Pause
 @onready var player_hp: Label = %PlayerHP
 @onready var wave_counter: Label = %WaveCounter
 
@@ -20,6 +20,7 @@ var display_acorn_count : int = 0
 var tween: Tween
 var feedback_tween: Tween
 
+var managed_level : Level = null
 
 var clicked_tower : UITowerChoice = null
 var dragged_tower : UITowerChoice = null
@@ -44,6 +45,7 @@ const WAVE_START = preload("uid://tmp0nqcw3odb")
 
 
 func _ready() -> void:
+	managed_level = Instance.current_level
 	flower_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.PlantPot))
 	can_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.WateringCan))
 	water_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.Bubble))
@@ -66,10 +68,13 @@ func _connect_signals() -> void:
 			node.mouse_entered.connect(_on_tower_choice_hovered.bind(node))
 			node.mouse_exited.connect(_on_tower_choice_unhovered.bind(node))
 	
-	next_wave.pressed.connect(func(): SignalBus.start_wave_clicked.emit())
-	pause.pressed.connect(func(): SignalBus.pause_wave_clicked.emit())
 	SignalBus.set_current_wave.connect(func(val): wave_counter.text = str(val))
 	SignalBus.worm_damaged.connect(func(val): player_hp.text = str(val))
+	SignalBus.level_exited_successfully.connect(_on_level_exited_successfully)
+	
+	
+	SignalBus.wave_started.connect(_on_wave_started)
+	SignalBus.wave_ended.connect(_on_wave_ended)
 
 
 func _process(delta: float) -> void:
@@ -304,3 +309,25 @@ func is_hovering_empty_slot() -> bool:
 
 func drag_preview_active() -> bool:
 	return is_instance_valid(drag_preview)
+
+func _on_level_exited_successfully(exiting_level:Level) -> void:
+	if exiting_level == managed_level:
+		close_layer.emit(self)
+
+
+func _on_next_wave_pressed() -> void:
+	SignalBus.start_wave_clicked.emit()
+
+
+func _on_pause_pressed() -> void:
+	if pause_button.text == "Pause Game":
+		pause_button.text = "Resume Game"
+	else:
+		pause_button.text = "Pause Game"
+	SignalBus.pause_wave_clicked.emit()
+
+func _on_wave_started() -> void:
+	menu_anims.play("move_wave_button_out")
+
+func _on_wave_ended() -> void:
+	menu_anims.play("move_wave_button_out", -1, -1.0, true)

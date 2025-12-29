@@ -23,6 +23,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-18, 373, 381, 367, 385, 733, 753, 731, 755, 196, 1496, 198, 1488, 650, 1843, 646, 1837, 856, 1309, 846, 1303, 361, 933, 359, 943, 891, 212, 887, 210, 515, -20, 515)])
 
 [node name="Level2" instance=ExtResource("1_k0xe4")]
+level_theme = 2
 
 [node name="EnemySpawner" parent="." index="0"]
 wave_set = Array[ExtResource("2_36r3l")]([ExtResource("3_36r3l"), ExtResource("4_lvi8s"), ExtResource("5_h4k6v"), ExtResource("6_ktuue"), ExtResource("7_7wsim"), ExtResource("8_4rcmj"), ExtResource("9_8ctrs"), ExtResource("10_scs6w"), ExtResource("11_rc50h"), ExtResource("12_4a0sa")])

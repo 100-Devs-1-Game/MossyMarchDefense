@@ -23,6 +23,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-27, 785, 191, 791, 201, 421, 1072, 419, 1066, 224, 1550, 232, 1546, 606, 1820, 614, 1813, 822, 1372, 795, 1380, 395, 1250, 401, 1251, 596, 365, 596, 371, 937, -21, 937)])
 
 [node name="Level3" instance=ExtResource("1_rwme5")]
+level_theme = 3
 
 [node name="EnemySpawner" parent="." index="0"]
 wave_set = Array[ExtResource("2_lvd17")]([ExtResource("3_1gvl0"), ExtResource("4_kmnoo"), ExtResource("5_g35gk"), ExtResource("6_tomsj"), ExtResource("7_n38vd"), ExtResource("8_aslu5"), ExtResource("9_yip8v"), ExtResource("10_y2kma"), ExtResource("11_a7c5s"), ExtResource("12_40rgr")])
@@ -32,12 +33,6 @@ texture = ExtResource("2_b6kxb")
 
 [node name="overlay_layer" parent="Background" index="1"]
 texture = ExtResource("3_lvd17")
-
-[node name="rain_layer_1" parent="Background" index="2"]
-visible = false
-
-[node name="rain_layer_2" parent="Background" index="3"]
-visible = false
 
 [node name="PathNode01" parent="PathNodes" index="0" instance=ExtResource("4_1gvl0")]
 position = Vector2(11, 865)

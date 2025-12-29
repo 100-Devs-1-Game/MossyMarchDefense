@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3ls3ecubkg74"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ls3ecubkg74"]
 
 [ext_resource type="PackedScene" uid="uid://cpd4r77qxay3h" path="res://game/levels/class_level.tscn" id="1_86mqw"]
 [ext_resource type="Texture2D" uid="uid://q2wwfthneknl" path="res://assets/Background/Level 1/lvl_1_base.jpg" id="2_3pmc8"]
+[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="2_5t118"]
 [ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/levels/level_components/pathing/path_node.tscn" id="2_n7dkx"]
 [ext_resource type="Texture2D" uid="uid://43ltk5hye7ki" path="res://assets/Background/Level 1/lvl_1_overlay.png" id="3_kdq5m"]
+[ext_resource type="Resource" uid="uid://djkw2c8iqqjo0" path="res://resources/wave_data/wave2.tres" id="3_pk2gr"]
 [ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/levels/level_components/towers/tower_marker.tscn" id="5_kdq5m"]
+
+[sub_resource type="Resource" id="Resource_stt8m"]
+script = ExtResource("2_5t118")
+metadata/_custom_type_script = "uid://5t10kxtq3ygk"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kdq5m"]
 vertices = PackedVector2Array(7.28125, 505.89844, -1.2421875, 389.9375, 535.25, 387.04688, 391.8125, 501.89844, 544.25, 733.7578, 398.8125, 874.15625, 1097.8516, 885.8203, 924.89844, 743.25, 1090.8594, 395.10156, 929.89844, 247.9375, 1810.5938, 243.04688, 1819.3828, 388.10156)
@@ -12,6 +18,8 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-12, 380, 545, 377, 554, 724, 915, 733, 920, 238, 1820, 233, 1830, 398, 1101, 405, 1108, 896, 389, 884, 382, 512, -2, 516)])
 
 [node name="Level01" instance=ExtResource("1_86mqw")]
+waves = Array[ExtResource("2_5t118")]([SubResource("Resource_stt8m"), ExtResource("3_pk2gr")])
+level_theme = 1
 
 [node name="base_layer" parent="Background" index="0"]
 texture = ExtResource("2_3pmc8")

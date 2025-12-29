@@ -29,6 +29,7 @@ var worm_spawn_node : PathNode = null
 var worm_path_node : PathNode = null
 
 var level_ready : bool = false
+var exit_finished : bool = false
 
 func initialize_level() -> void:
 	_call_level_music()
@@ -106,6 +107,7 @@ func adjust_enemies(modifier : int):
 
 
 func start_wave():
+	Audio.toggle_highpass_filter(false)
 	var worm_group = get_tree().get_first_node_in_group("worm_group")
 	var worm_instance = WORM_SCENE.instantiate()
 	worm_group.add_child(worm_instance)
@@ -113,9 +115,11 @@ func start_wave():
 	
 	between_waves = false
 	enemy_spawner.start_wave()
+	SignalBus.wave_started.emit()
 
 
 func _on_wave_ended():
+	Audio.toggle_highpass_filter(true)
 	between_waves = true
 	
 	current_wave += 1
@@ -165,15 +169,17 @@ func debug_spawn_worms():
 
 func on_wave_start_button_pressed():
 	if between_waves: 
-		
+		Audio.toggle_highpass_filter(false)
 		start_wave()
 
 
 func on_pause_button_pressed():
 	var time_scale = Engine.time_scale
 	if time_scale <= 0:
+		Audio.toggle_highpass_filter(false)
 		Engine.time_scale = 1
 	else:
+		Audio.toggle_highpass_filter(true)
 		Engine.time_scale = 0
 
 
@@ -182,7 +188,6 @@ func add_tower(tower:BaseTower) -> void:
 
 
 func exit_level() -> void:
-	
-	## Any additional deconstruction goes here.
-	
+	exit_finished = true
+	SignalBus.level_exited_successfully.emit(self)
 	self.queue_free()

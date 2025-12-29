@@ -13,8 +13,10 @@ func change_to_level(level_key:String) -> void:
 	if LEVEL_PATHS.has(level_key) == false:
 		return
 	
-	if Instance.current_level != null:
-		Instance.current_level.exit_level()
+	if current_level != null:
+		current_level.exit_level()
+		if current_level.exit_finished == false:
+			await SignalBus.level_exited_successfully
 	
 	var LOADED_LEVEL : PackedScene = load(LEVEL_PATHS[level_key])
 	var new_level : Level = LOADED_LEVEL.instantiate()

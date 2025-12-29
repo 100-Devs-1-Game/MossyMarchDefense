@@ -14,9 +14,10 @@ signal worm_damaged(new_hp:int)
 signal close_game_hud
 
 # Level Signals
-signal level_initialization_complete
+signal level_initialization_complete(level:Level)
+signal wave_started
 signal wave_ended
-
+signal level_exited_successfully(level:Level)
 
 
 

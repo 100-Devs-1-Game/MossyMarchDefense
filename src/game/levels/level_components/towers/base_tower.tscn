@@ -16,6 +16,7 @@ position = Vector2(-0.16666667, 24.5)
 shape = SubResource("RectangleShape2D_asv8d")
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
+z_index = 5
 scale = Vector2(0.1, 0.1)
 
 [node name="AttackSource" type="Marker2D" parent="."]

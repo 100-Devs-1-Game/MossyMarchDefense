@@ -53,7 +53,7 @@ func play_new_song(song_key:String) -> void:
 	self.add_child(current_audio)
 	current_audio.volume_db = FADE_VAL
 	current_audio.stream = NEW_SONG
-	current_audio.bus = "MUSIC"
+	current_audio.bus = "Music"
 	fade_in_song(current_audio)
 
 func fade_out_song(audio_player:AudioStreamPlayer) -> void:
