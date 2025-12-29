@@ -1,8 +1,5 @@
 extends Node
 
-# Instance Signals
-signal acorns_updated(new_total:int)
-
 # Game Signals
 signal acorns_gained(amount:int)
 signal acorns_spent(amount:int)
@@ -17,6 +14,7 @@ signal worm_damaged(new_hp:int)
 signal close_game_hud
 
 # Level Signals
+signal level_initialization_complete
 signal wave_ended
 
 

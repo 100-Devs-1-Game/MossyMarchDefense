@@ -1,5 +1,4 @@
 class_name Level extends Node
-signal finished_initialization
 
 const WORM_SCENE = preload("res://game/enemies/worm.tscn")
 const STARTUP_SCENE = preload("res://game/core/startup.tscn")
@@ -32,7 +31,6 @@ var worm_path_node : PathNode = null
 var level_ready : bool = false
 
 func initialize_level() -> void:
-	UI.open_new_layer(&"GAME_HUD")
 	_call_level_music()
 	_connect_path_nodes()
 	_connect_signals()
@@ -42,14 +40,25 @@ func initialize_level() -> void:
 	else : rain.queue_free()
 	
 	level_ready = true
-	finished_initialization.emit()
+	SignalBus.level_initialization_complete.emit()
+
+func _on_initialization_complete() -> void:
+	UI.open_new_layer(&"GAME_HUD")
+	
+	await get_tree().create_timer(0.1).timeout
+	
+	SignalBus.acorns_gained.emit(starting_acorns)
+
 
 func _connect_signals():
 	SignalBus.wave_ended.connect(_on_wave_ended)
 	SignalBus.start_wave_clicked.connect(on_wave_start_button_pressed)
 	SignalBus.pause_wave_clicked.connect(on_pause_button_pressed)
-	SignalBus.retry_level.connect(on_retry_level)
 
+	SignalBus.acorns_gained.connect(_on_acorns_gained)
+	SignalBus.acorns_spent.connect(_on_acorns_spent)
+	
+	SignalBus.level_initialization_complete.connect(_on_initialization_complete)
 
 func _call_level_music() -> void:
 	Audio.play_level_song(level_theme)
@@ -118,6 +127,11 @@ func _on_wave_ended():
 	else:
 		between_waves = true
 
+func _on_acorns_gained(amount:int) -> void:
+	current_acorns += amount
+
+func _on_acorns_spent(amount:int) -> void:
+	current_acorns -= amount
 
 func cleanup_enemies():
 	var enemy_group = get_tree().get_first_node_in_group("enemies_group")
@@ -163,11 +177,9 @@ func on_pause_button_pressed():
 		Engine.time_scale = 0
 
 
-func on_retry_level():
-	pass
+func add_tower(tower:BaseTower) -> void:
+	towers.add_child(tower)
 
-func add_tower(node) -> void:
-	towers.add_child(node)
 
 func exit_level() -> void:
 	

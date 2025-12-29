@@ -6,7 +6,7 @@ extends UILayer
 @onready var can_cost: Label = %CanCost
 @onready var water_cost: Label = %WaterCost
 
-@onready var acorn_amount: Label = %AcornAmount
+@onready var acorn_label: Label = %AcornAmount
 
 @onready var next_wave: Button = %NextWave
 @onready var pause: Button = %Pause
@@ -44,17 +44,17 @@ const WAVE_START = preload("uid://tmp0nqcw3odb")
 
 
 func _ready() -> void:
-	acorn_raw_count = Instance.get_acorns()
-	acorn_amount.text = str(acorn_raw_count)
-	display_acorn_count = acorn_raw_count
 	flower_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.PlantPot))
 	can_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.WateringCan))
 	water_cost.text = str(RES_DATA.get_cost_from_enum(ENUM.TowerType.Bubble))
 	_connect_signals()
 	menu_anims.play(&"hud_spawned_in")
 
+
 func _connect_signals() -> void:
-	SignalBus.acorns_updated.connect(_on_acorns_updated)
+	SignalBus.acorns_gained.connect(_on_acorns_gained)
+	SignalBus.acorns_spent.connect(_on_acorns_spent)
+	
 	SignalBus.tower_placement_hovered.connect(_on_tower_placement_hovered)
 	SignalBus.tower_placement_unhovered.connect(_on_tower_placement_unhovered)
 	SignalBus.close_game_hud.connect(_on_close_game_hud)
@@ -77,6 +77,7 @@ func _process(delta: float) -> void:
 		drag_preview.position = get_viewport().get_mouse_position()
 		_drag_wobble(delta)
 
+
 func _drag_wobble(delta:float) -> void:
 	if not drag_preview_active():
 		return
@@ -85,13 +86,16 @@ func _drag_wobble(delta:float) -> void:
 	_wob_angle = sin(_wob_time * WOB_SPD) * deg_to_rad(WOB_AMT)
 	drag_preview.rotation = _wob_angle
 
+
 func _on_tower_placement_hovered(location:TowerMarker) -> void:
 	hovered_placement = location
 	if is_dragging_tower():
 		hovered_placement.toggle_placement_preview(dragged_tower, true)
 
+
 func _on_tower_placement_unhovered(_location:TowerMarker) -> void:
 	_clear_placement_preview()
+
 
 func _on_gui_input(event: InputEvent, tower:UITowerChoice) -> void:
 	if event.is_action_pressed(&"ui_left_click"):
@@ -107,8 +111,10 @@ func _on_gui_input(event: InputEvent, tower:UITowerChoice) -> void:
 	if event is InputEventMouseMotion and not is_dragging_tower() and is_tower_clicked():
 		_begin_drag()
 
+
 func _update_clicked_tower(tower:UITowerChoice):
 	clicked_tower = tower
+
 
 func _begin_drag() -> void:
 	menu_anims.play(&"hide_shop")
@@ -116,6 +122,7 @@ func _begin_drag() -> void:
 	dragged_tower = clicked_tower
 	_wob_time = 0.0
 	_create_drag_preview()
+
 
 func _handle_release_click() -> void:
 	if clicked_tower: 
@@ -136,10 +143,12 @@ func _handle_release_click() -> void:
 	# Always clear any active preview
 	_clear_placement_preview()
 
+
 func _clear_placement_preview() -> void:
 	if hovered_placement:
 		hovered_placement.toggle_placement_preview(null, false)
 		hovered_placement = null
+
 
 func _create_drag_preview() -> void:
 	drag_preview = Control.new()
@@ -165,20 +174,26 @@ func _create_drag_preview() -> void:
 	drag_preview.add_child(_drag_texture)
 	self.add_child(drag_preview)
 
-func _on_acorns_updated(amount:int) -> void:
-	var old_count = acorn_raw_count
-	acorn_raw_count += amount
-	_start_count_animation(old_count, acorn_raw_count, amount)
+func _on_acorns_gained(amount:int) -> void:
+	var old_count = Instance.get_current_acorns() - amount
+	_start_count_animation(old_count, Instance.get_current_acorns(), amount)
 	_update_selectable_towers()
+
+func _on_acorns_spent(amount:int) -> void:
+	var old_count = Instance.get_current_acorns() + amount
+	_start_count_animation(old_count, Instance.get_current_acorns(), amount)
+	_update_selectable_towers()
+
 
 func _update_selectable_towers() -> void:
 	for tower in tower_choices:
-		if RES_DATA.get_cost_from_enum(tower.tower_type) > Instance.get_acorns():
+		if RES_DATA.get_cost_from_enum(tower.tower_type) > Instance.get_current_acorns():
 			tower.set_disabled_state(true)
 			tower.self_modulate = Color(1.0, 1.0, 1.0, 0.5)
 		else:
 			tower.set_disabled_state(false)
 			tower.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
+
 
 func _start_count_animation(old_value: int, new_value: int, change: int) -> void:
 	if tween and tween.is_running():
@@ -197,9 +212,11 @@ func _start_count_animation(old_value: int, new_value: int, change: int) -> void
 	elif change < 0:
 		_negative_change_feedback()
 
+
 func _update_display_count(value: float) -> void:
 	display_acorn_count = int(value)
-	acorn_amount.text = str(display_acorn_count)
+	acorn_label.text = str(display_acorn_count)
+
 
 func _positive_change_feedback() -> void:
 	if feedback_tween and feedback_tween.is_running():
@@ -207,14 +224,15 @@ func _positive_change_feedback() -> void:
 	
 	feedback_tween = get_tree().create_tween()
 	feedback_tween.set_parallel(true)
-	feedback_tween.tween_property(acorn_amount, "scale", Vector2(1.2, 1.2), 0.1)
-	feedback_tween.tween_property(acorn_amount, "modulate", Color(0.227, 0.743, 0.25, 1.0), 0.1)
+	feedback_tween.tween_property(acorn_label, "scale", Vector2(1.2, 1.2), 0.1)
+	feedback_tween.tween_property(acorn_label, "modulate", Color(0.227, 0.743, 0.25, 1.0), 0.1)
 	
 	await feedback_tween.finished
 	
 	feedback_tween = get_tree().create_tween()
-	feedback_tween.tween_property(acorn_amount, "scale", Vector2(1.0, 1.0), 0.2)
-	feedback_tween.parallel().tween_property(acorn_amount, "modulate", Color.WHITE, 0.2)
+	feedback_tween.tween_property(acorn_label, "scale", Vector2(1.0, 1.0), 0.2)
+	feedback_tween.parallel().tween_property(acorn_label, "modulate", Color.WHITE, 0.2)
+
 
 func _negative_change_feedback() -> void:
 	if feedback_tween and feedback_tween.is_running():
@@ -222,14 +240,15 @@ func _negative_change_feedback() -> void:
 	
 	feedback_tween = get_tree().create_tween()
 	feedback_tween.set_parallel(true)
-	feedback_tween.tween_property(acorn_amount, "scale", Vector2(0.8, 0.8), 0.1)
-	feedback_tween.tween_property(acorn_amount, "modulate", Color(1.0, 0.0, 0.1, 1.0), 0.1)
+	feedback_tween.tween_property(acorn_label, "scale", Vector2(0.8, 0.8), 0.1)
+	feedback_tween.tween_property(acorn_label, "modulate", Color(1.0, 0.0, 0.1, 1.0), 0.1)
 	
 	await feedback_tween.finished
 	
 	feedback_tween = get_tree().create_tween()
-	feedback_tween.tween_property(acorn_amount, "scale", Vector2(1.0, 1.0), 0.2)
-	feedback_tween.parallel().tween_property(acorn_amount, "modulate", Color.WHITE, 0.2)
+	feedback_tween.tween_property(acorn_label, "scale", Vector2(1.0, 1.0), 0.2)
+	feedback_tween.parallel().tween_property(acorn_label, "modulate", Color.WHITE, 0.2)
+
 
 func _shake_tower(target_tower: UITowerChoice) -> void:
 	if not target_tower:
@@ -252,6 +271,7 @@ func _on_tower_choice_hovered(tower:UITowerChoice) -> void:
 	else:
 		tower.scale = Vector2(1.1, 1.1)
 
+
 func _on_tower_choice_unhovered(tower:UITowerChoice) -> void:
 	if tower.is_disabled():
 		tower.self_modulate = Color(1.0, 1.0, 1.0, 0.5)
@@ -259,14 +279,18 @@ func _on_tower_choice_unhovered(tower:UITowerChoice) -> void:
 		tower.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 		tower.scale = Vector2(1.0, 1.0)
 
+
 func _on_close_game_hud() -> void:
 	close_layer.emit(self)
+
 
 func is_tower_clicked() -> bool:
 	return is_instance_valid(clicked_tower)
 
+
 func is_dragging_tower() -> bool:
 	return is_instance_valid(dragged_tower)
+
 
 func is_hovering_empty_slot() -> bool:
 	if hovered_placement == null:
@@ -276,6 +300,7 @@ func is_hovering_empty_slot() -> bool:
 			return false
 		else:
 			return true
+
 
 func drag_preview_active() -> bool:
 	return is_instance_valid(drag_preview)

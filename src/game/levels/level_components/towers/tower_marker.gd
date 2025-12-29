@@ -4,7 +4,7 @@ class_name TowerMarker extends Area2D
 @onready var preview_anim: AnimationPlayer = %PreviewAnim
 @onready var range_display: ColorRect = %AimRadius
 
-const DEBUG_TOWER = preload("uid://ht2s7wyyb24a")
+const TOWER = preload("uid://ht2s7wyyb24a")
 
 var occupied : bool = false
 
@@ -34,7 +34,7 @@ func toggle_placement_preview(ui_tower:UITowerChoice, state:bool) -> void:
 		range_display.visible = false
 
 func tower_placed(tower_type:ENUM.TowerType) -> void:
-	var new_tower:Node2D = DEBUG_TOWER.instantiate()
+	var new_tower:Node2D = TOWER.instantiate()
 	new_tower.tower_data = RES_DATA.get_tower_data_duplicate_from_enum(tower_type)
 	
 	## Bootleg lines of code to keep existing level structure working. When we set up a parent class.

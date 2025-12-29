@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name BaseTower extends StaticBody2D
 
 @export var tower_data : TowerData
 
