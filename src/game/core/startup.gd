@@ -4,8 +4,6 @@ extends Node
 
 func _ready() -> void:
 	
-	# Do cool startup stuff here.
-	
 	# Stamp Intro
 	startup_animations.play(&"stamp")
 	await startup_animations.animation_finished

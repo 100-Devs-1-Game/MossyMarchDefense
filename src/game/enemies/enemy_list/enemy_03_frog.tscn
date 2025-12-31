@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8c6ry6bavun6"]
+
+[ext_resource type="PackedScene" uid="uid://tgcyp6gpnxip" path="res://game/enemies/enemy.tscn" id="1_8scox"]
+[ext_resource type="SpriteFrames" uid="uid://jxrjklpcjwhq" path="res://resources/sprite_frames/frog_sprite_frames.tres" id="2_gtrxa"]
+
+[node name="Frog" instance=ExtResource("1_8scox")]
+base_movespeed = 50.0
+acorn_payout = 1
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -43.999996)
+sprite_frames = ExtResource("2_gtrxa")

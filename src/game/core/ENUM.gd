@@ -1,7 +1,7 @@
 class_name ENUM
 
 # Entity Types
-enum EnemyType {Frog, Bird, Snail, Worm}
+enum EnemyType {Frog, Bird, Snail}
 enum TowerType {PlantPot, WateringCan, Bubble}
 
 # SFX

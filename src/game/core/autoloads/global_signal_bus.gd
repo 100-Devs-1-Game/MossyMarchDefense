@@ -15,16 +15,13 @@ signal close_game_hud
 
 # Level Signals
 signal level_initialization_complete(level:Level)
+signal section_started(wave_section:WaveSection)
+signal section_ended
 signal wave_started
 signal wave_ended
+signal level_finished(level:Level)
+signal level_failed()
 signal level_exited_successfully(level:Level)
-
-
-
-
-
-
-
 
 
 # Temporary Signals

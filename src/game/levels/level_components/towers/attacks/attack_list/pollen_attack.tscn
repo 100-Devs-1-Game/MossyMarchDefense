@@ -15,6 +15,8 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.5764706, 1, 1, 1, 1, 1, 1, 1, 0
 
 [node name="PollenAttack" instance=ExtResource("1_adkhh")]
 script = ExtResource("2_uxtgi")
+attack_inteveral = 6.5
+base_damage = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." index="0"]
 scale = Vector2(2, 2)

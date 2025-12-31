@@ -1,24 +1,46 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3ls3ecubkg74"]
+[gd_scene load_steps=14 format=3 uid="uid://b3ls3ecubkg74"]
 
 [ext_resource type="PackedScene" uid="uid://cpd4r77qxay3h" path="res://game/levels/class_level.tscn" id="1_86mqw"]
 [ext_resource type="Texture2D" uid="uid://q2wwfthneknl" path="res://assets/Background/Level 1/lvl_1_base.jpg" id="2_3pmc8"]
-[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="2_5t118"]
+[ext_resource type="Script" uid="uid://cdlliy3mo7737" path="res://resources/wave_structure/RES_wave_structure.gd" id="2_5t118"]
 [ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/levels/level_components/pathing/path_node.tscn" id="2_n7dkx"]
 [ext_resource type="Texture2D" uid="uid://43ltk5hye7ki" path="res://assets/Background/Level 1/lvl_1_overlay.png" id="3_kdq5m"]
-[ext_resource type="Resource" uid="uid://djkw2c8iqqjo0" path="res://resources/wave_data/wave2.tres" id="3_pk2gr"]
+[ext_resource type="Script" uid="uid://b3xcc47mja1hc" path="res://resources/wave_structure/RES_wave_section.gd" id="3_pk2gr"]
 [ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/levels/level_components/towers/tower_marker.tscn" id="5_kdq5m"]
 
-[sub_resource type="Resource" id="Resource_stt8m"]
-script = ExtResource("2_5t118")
-metadata/_custom_type_script = "uid://5t10kxtq3ygk"
+[sub_resource type="Resource" id="Resource_hsge0"]
+script = ExtResource("3_pk2gr")
+enemies = Array[int]([2, 0, 0, 0, 1])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_kdq5m"]
-vertices = PackedVector2Array(7.28125, 505.89844, -1.2421875, 389.9375, 535.25, 387.04688, 391.8125, 501.89844, 544.25, 733.7578, 398.8125, 874.15625, 1097.8516, 885.8203, 924.89844, 743.25, 1090.8594, 395.10156, 929.89844, 247.9375, 1810.5938, 243.04688, 1819.3828, 388.10156)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(8, 9, 10, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-12, 380, 545, 377, 554, 724, 915, 733, 920, 238, 1820, 233, 1830, 398, 1101, 405, 1108, 896, 389, 884, 382, 512, -2, 516)])
+[sub_resource type="Resource" id="Resource_m2xn2"]
+script = ExtResource("2_5t118")
+wave_sections = Array[ExtResource("3_pk2gr")]([SubResource("Resource_hsge0")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_5t118"]
+script = ExtResource("3_pk2gr")
+enemies = Array[int]([2, 2, 0, 0, 1])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_pk2gr"]
+script = ExtResource("2_5t118")
+wave_sections = Array[ExtResource("3_pk2gr")]([SubResource("Resource_5t118")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_hofo6"]
+script = ExtResource("3_pk2gr")
+enemies = Array[int]([1, 0, 2, 1, 1])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_0yob6"]
+script = ExtResource("2_5t118")
+wave_sections = Array[ExtResource("3_pk2gr")]([SubResource("Resource_hofo6")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
 
 [node name="Level01" instance=ExtResource("1_86mqw")]
-waves = Array[ExtResource("2_5t118")]([SubResource("Resource_stt8m"), ExtResource("3_pk2gr")])
+level_key = "level_01"
+wave_structures = Array[ExtResource("2_5t118")]([SubResource("Resource_m2xn2"), SubResource("Resource_pk2gr"), SubResource("Resource_0yob6")])
 level_theme = 1
 
 [node name="base_layer" parent="Background" index="0"]
@@ -44,9 +66,6 @@ position = Vector2(1002, 320)
 
 [node name="PathNode6" parent="PathNodes" index="5" instance=ExtResource("2_n7dkx")]
 position = Vector2(1749, 314)
-
-[node name="PathNavigationRegion" parent="." index="7"]
-navigation_polygon = SubResource("NavigationPolygon_kdq5m")
 
 [node name="TowerMarker01" parent="TowerMarkers" index="0" instance=ExtResource("5_kdq5m")]
 position = Vector2(128, 300)

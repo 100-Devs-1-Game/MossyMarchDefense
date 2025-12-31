@@ -1,32 +1,27 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfunuu271utjt"]
+[gd_scene load_steps=10 format=3 uid="uid://bfunuu271utjt"]
 
 [ext_resource type="PackedScene" uid="uid://cpd4r77qxay3h" path="res://game/levels/class_level.tscn" id="1_k0xe4"]
 [ext_resource type="Texture2D" uid="uid://dx1yo5jdp5ve7" path="res://assets/Background/Level 2/lvl_2_base.jpg" id="2_6gdii"]
-[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="2_36r3l"]
-[ext_resource type="Resource" uid="uid://dclevx1lyc5qm" path="res://resources/wave_data/wave1.tres" id="3_36r3l"]
+[ext_resource type="Script" uid="uid://cdlliy3mo7737" path="res://resources/wave_structure/RES_wave_structure.gd" id="2_wtatt"]
+[ext_resource type="Script" uid="uid://b3xcc47mja1hc" path="res://resources/wave_structure/RES_wave_section.gd" id="3_36r3l"]
 [ext_resource type="Texture2D" uid="uid://wyuxtgw8l2cw" path="res://assets/Background/Level 2/lvl_2_overlay.png" id="3_wtatt"]
 [ext_resource type="PackedScene" uid="uid://d0sttnlpnm00u" path="res://game/levels/level_components/pathing/path_node.tscn" id="4_36r3l"]
-[ext_resource type="Resource" uid="uid://djkw2c8iqqjo0" path="res://resources/wave_data/wave2.tres" id="4_lvi8s"]
-[ext_resource type="Resource" uid="uid://ds1b46xi6tsx4" path="res://resources/wave_data/wave3.tres" id="5_h4k6v"]
 [ext_resource type="PackedScene" uid="uid://cr1hj35781yes" path="res://game/levels/level_components/towers/tower_marker.tscn" id="6_gkpsi"]
-[ext_resource type="Resource" uid="uid://bprgprbss0ed1" path="res://resources/wave_data/wave4.tres" id="6_ktuue"]
-[ext_resource type="Resource" uid="uid://bn7um3d61xlxa" path="res://resources/wave_data/wave5.tres" id="7_7wsim"]
-[ext_resource type="Resource" uid="uid://b30sisxtdt2b1" path="res://resources/wave_data/wave6.tres" id="8_4rcmj"]
-[ext_resource type="Resource" uid="uid://cf7skq0asx5t2" path="res://resources/wave_data/wave7.tres" id="9_8ctrs"]
-[ext_resource type="Resource" uid="uid://bugolccfmcc1h" path="res://resources/wave_data/wave8.tres" id="10_scs6w"]
-[ext_resource type="Resource" uid="uid://dr0jypjit0s14" path="res://resources/wave_data/wave9.tres" id="11_rc50h"]
-[ext_resource type="Resource" uid="uid://defjrnx15nmc4" path="res://resources/wave_data/wave10.tres" id="12_4a0sa"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_h4k6v"]
-vertices = PackedVector2Array(1477.8203, 660.1172, 1832.7031, 656.1094, 1827.2813, 845.8125, 1318.8828, 836.1797, 1312.8828, 351.04688, 1485.8203, 207.96875, 764.96094, 206.02344, 922.8125, 348.9375, 762.96094, 740.9531, 932.7969, 880.9375, 221.9375, 877.0469, 375.10938, 743.0469, 219.95313, 505, 371.10156, 377.14844, -8.1328125, 382.85156, -9.859375, 505)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 13, 12, 15)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-18, 373, 381, 367, 385, 733, 753, 731, 755, 196, 1496, 198, 1488, 650, 1843, 646, 1837, 856, 1309, 846, 1303, 361, 933, 359, 943, 891, 212, 887, 210, 515, -20, 515)])
+[sub_resource type="Resource" id="Resource_wtatt"]
+script = ExtResource("3_36r3l")
+enemies = Array[int]([0, 0, 0, 0, 0])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_lvi8s"]
+script = ExtResource("2_wtatt")
+wave_sections = Array[ExtResource("3_36r3l")]([SubResource("Resource_wtatt")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
 
 [node name="Level2" instance=ExtResource("1_k0xe4")]
+level_key = "level_02"
+wave_structures = Array[ExtResource("2_wtatt")]([SubResource("Resource_lvi8s")])
 level_theme = 2
-
-[node name="EnemySpawner" parent="." index="0"]
-wave_set = Array[ExtResource("2_36r3l")]([ExtResource("3_36r3l"), ExtResource("4_lvi8s"), ExtResource("5_h4k6v"), ExtResource("6_ktuue"), ExtResource("7_7wsim"), ExtResource("8_4rcmj"), ExtResource("9_8ctrs"), ExtResource("10_scs6w"), ExtResource("11_rc50h"), ExtResource("12_4a0sa")])
 
 [node name="base_layer" parent="Background" index="0"]
 texture = ExtResource("2_6gdii")
@@ -57,9 +52,6 @@ position = Vector2(1413, 764)
 
 [node name="PathNode08" parent="PathNodes" index="7" instance=ExtResource("4_36r3l")]
 position = Vector2(1741, 759)
-
-[node name="PathNavigationRegion" parent="." index="7"]
-navigation_polygon = SubResource("NavigationPolygon_h4k6v")
 
 [node name="TowerMarker" parent="TowerMarkers" index="0" instance=ExtResource("6_gkpsi")]
 position = Vector2(296, 302)

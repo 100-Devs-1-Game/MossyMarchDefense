@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="TowerData" load_steps=4 format=3 uid="uid://dykxy8hwduu70"]
 
-[ext_resource type="Script" uid="uid://b27e20uk00133" path="res://resources/tower_data/tower.gd" id="1_qkmkf"]
+[ext_resource type="Script" uid="uid://b27e20uk00133" path="res://resources/tower_data/RES_tower.gd" id="1_t4ds0"]
 [ext_resource type="SpriteFrames" uid="uid://100p4xh05nkn" path="res://resources/sprite_frames/animated_watering_can.tres" id="2_oq0vg"]
 [ext_resource type="Texture2D" uid="uid://dxpj4ilbctyno" path="res://assets/Towers/Watering Can/watering_can1.png" id="2_t4ds0"]
 
 [resource]
-script = ExtResource("1_qkmkf")
+script = ExtResource("1_t4ds0")
 tower_type = 1
 detection_radius = 512.0
 sprite = ExtResource("2_t4ds0")
 sprite_frames = ExtResource("2_oq0vg")
 cost = 3
-attack_interval = 1.5
+attack_interval = 1.0
+base_damage = 1
 metadata/_custom_type_script = "uid://b27e20uk00133"

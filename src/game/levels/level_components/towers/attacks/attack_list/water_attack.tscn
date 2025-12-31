@@ -5,3 +5,5 @@
 
 [node name="WaterAttack" instance=ExtResource("1_bw7dv")]
 script = ExtResource("2_ublph")
+water_speed = 170.0
+base_damage = 2

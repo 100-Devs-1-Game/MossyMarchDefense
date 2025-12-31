@@ -59,7 +59,6 @@ func _connect_signals() -> void:
 	
 	SignalBus.tower_placement_hovered.connect(_on_tower_placement_hovered)
 	SignalBus.tower_placement_unhovered.connect(_on_tower_placement_unhovered)
-	SignalBus.close_game_hud.connect(_on_close_game_hud)
 	
 	for node in towers_node.get_children():
 		if node is UITowerChoice:
@@ -310,9 +309,9 @@ func is_hovering_empty_slot() -> bool:
 func drag_preview_active() -> bool:
 	return is_instance_valid(drag_preview)
 
-func _on_level_exited_successfully(exiting_level:Level) -> void:
-	if exiting_level == managed_level:
-		close_layer.emit(self)
+
+func _on_level_exited_successfully(_exiting_level:Level) -> void:
+	close_layer.emit(self)
 
 
 func _on_next_wave_pressed() -> void:

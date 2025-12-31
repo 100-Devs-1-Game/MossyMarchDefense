@@ -1,46 +1,83 @@
-[gd_scene load_steps=8 format=3 uid="uid://tgcyp6gpnxip"]
+[gd_scene load_steps=7 format=3 uid="uid://tgcyp6gpnxip"]
 
 [ext_resource type="Script" uid="uid://7e63ryy8u1a6" path="res://game/enemies/enemy.gd" id="1_k0yxv"]
-[ext_resource type="PackedScene" uid="uid://b63va5oryp3q1" path="res://game/enemies/movement_component.tscn" id="3_tk2mw"]
-[ext_resource type="PackedScene" uid="uid://cbqaacuahs3s" path="res://game/enemies/health_component.tscn" id="4_y8mcj"]
-[ext_resource type="PackedScene" uid="uid://deldoejppigim" path="res://game/enemies/health_bar.tscn" id="5_jncvr"]
-[ext_resource type="SpriteFrames" uid="uid://bbuq2ktiyjn32" path="res://resources/sprite_frames/animated_bird.tres" id="6_jf0do"]
+[ext_resource type="SpriteFrames" uid="uid://bbuq2ktiyjn32" path="res://resources/sprite_frames/bird_sprite_frames.tres" id="6_jf0do"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ow6v"]
-radius = 3.6666667
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1emua"]
-radius = 155.55556
+radius = 5.7542233
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-scale = Vector2(0.09, 0.09)
-collision_layer = 13
-collision_mask = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qymtj"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4nw2"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.63, 0.18900001, 0.18900001, 1)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_k0yxv")
 
-[node name="MovementComponent" parent="." instance=ExtResource("3_tk2mw")]
-max_movement_speed = 15.0
-
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("4_y8mcj")]
-health_bar = NodePath("../HealthBar")
-
-[node name="HealthBar" parent="." instance=ExtResource("5_jncvr")]
-z_index = 2
-position = Vector2(0, -588.8889)
-scale = Vector2(58.333336, 19.444443)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("6_jf0do")
 animation = &"walk_back"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7ow6v")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="HitboxRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(3, 3)
-collision_mask = 256
+[node name="Hitbox" type="Area2D" parent="HitboxRoot"]
+position = Vector2(36.000004, 0)
+scale = Vector2(3.0000002, 3.0000002)
+collision_layer = 2
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxRoot/Hitbox"]
 shape = SubResource("CircleShape2D_1emua")
+
+[node name="HealthRoot" type="Control" parent="."]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_top = -93.0
+offset_bottom = -93.0
+mouse_filter = 2
+
+[node name="Healthbar" type="ProgressBar" parent="HealthRoot"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qymtj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b4nw2")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false
+
+[connection signal="body_entered" from="HitboxRoot/Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="HitboxRoot/Hitbox" to="." method="_on_hitbox_body_exited"]

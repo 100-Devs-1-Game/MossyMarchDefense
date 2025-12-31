@@ -85,22 +85,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Title:scale")
+tracks/2/path = NodePath("Blur:material:shader_parameter/lod")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Blur:material:shader_parameter/lod")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -138,22 +126,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Title:scale")
+tracks/2/path = NodePath("Blur:material:shader_parameter/lod")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1, 1.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(10, 10)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Blur:material:shader_parameter/lod")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(1, 1.8, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -214,6 +190,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_1ls3u")
 theme_override_styles/hover = SubResource("StyleBoxTexture_h4fiq")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_xa5f0")
 theme_override_styles/focus = SubResource("StyleBoxTexture_1ls3u")
+disabled = true
 script = ExtResource("4_hti6p")
 
 [node name="Level2Button" type="Button" parent="LevelContainer"]
@@ -228,6 +205,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_fq1nd")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xh7u1")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_yyfth")
 theme_override_styles/focus = SubResource("StyleBoxTexture_fq1nd")
+disabled = true
 script = ExtResource("4_hti6p")
 
 [node name="Level3Button" type="Button" parent="LevelContainer"]
@@ -242,6 +220,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_lfe4o")
 theme_override_styles/hover = SubResource("StyleBoxTexture_l1d84")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_sxmcu")
 theme_override_styles/focus = SubResource("StyleBoxTexture_lfe4o")
+disabled = true
 script = ExtResource("4_hti6p")
 
 [node name="Buttons" type="Control" parent="."]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://j2l5116pp4ql"]
+
+[ext_resource type="PackedScene" uid="uid://tgcyp6gpnxip" path="res://game/enemies/enemy.tscn" id="1_hdr1s"]
+[ext_resource type="SpriteFrames" uid="uid://dpunwi0p54bp1" path="res://resources/sprite_frames/snail_sprite_frames.tres" id="2_vhxvo"]
+
+[node name="Snail" instance=ExtResource("1_hdr1s")]
+health = 30
+base_movespeed = 35.0
+acorn_payout = 1
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -11.999999)
+sprite_frames = ExtResource("2_vhxvo")

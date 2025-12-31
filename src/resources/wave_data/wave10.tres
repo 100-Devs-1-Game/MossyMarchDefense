@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://defjrnx15nmc4"]
-
-[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="1_2d6e1"]
-
-[resource]
-script = ExtResource("1_2d6e1")
-enemy_queue = Array[String](["snail", "snail", "frog", "frog", "bird", "bird", "snail", "snail", "bird", "bird", "frog", "frog", "bird", "frog", "snail"])
-enemy_spawn_timer = 2.0
-metadata/_custom_type_script = "uid://5t10kxtq3ygk"

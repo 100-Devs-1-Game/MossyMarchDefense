@@ -9,28 +9,29 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_seh75"]
-size = Vector2(124.16931, 268.5735)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ashbi"]
+radius = 30.0
 
 [node name="WaterPath" type="Path2D"]
 curve = SubResource("Curve2D_pd578")
 script = ExtResource("1_seh75")
-speed = 128.0
 
 [node name="PathFollowMain" type="PathFollow2D" parent="."]
 position = Vector2(505, 129)
 rotation = -2.3253858
 
+[node name="Hitbox" type="Area2D" parent="PathFollowMain"]
+position = Vector2(-16.233955, 1.2077479)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollowMain/Hitbox"]
+shape = SubResource("CircleShape2D_ashbi")
+
 [node name="Sprite2D" type="Sprite2D" parent="PathFollowMain"]
 rotation = 4.712389
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_cj02v")
-
-[node name="Area2D" type="Area2D" parent="PathFollowMain/Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollowMain/Sprite2D/Area2D"]
-position = Vector2(2.1782227, 0.21777344)
-shape = SubResource("RectangleShape2D_seh75")
 
 [node name="PathFollowVisual1" type="PathFollow2D" parent="."]
 position = Vector2(505, 129)
@@ -63,3 +64,5 @@ position = Vector2(-45.494736, -7.087239)
 rotation = 4.4505897
 scale = Vector2(0.03, 0.032)
 texture = ExtResource("1_cj02v")
+
+[connection signal="body_entered" from="PathFollowMain/Hitbox" to="." method="_on_hitbox_entered"]

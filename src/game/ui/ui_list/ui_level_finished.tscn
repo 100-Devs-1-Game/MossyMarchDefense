@@ -1,7 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceftfjifmpxyt"]
+[gd_scene load_steps=6 format=3 uid="uid://ceftfjifmpxyt"]
 
 [ext_resource type="Script" uid="uid://gfn1kb6aul6" path="res://game/ui/ui_list/ui_level_finished.gd" id="1_yny4e"]
-[ext_resource type="Texture2D" uid="uid://xo4y7l347mwu" path="res://assets/ui/menus/game_over.jpg" id="2_4bgig"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hmbb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7019608, 0.6431373, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.6, 0.50000006, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 8
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yny4e"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7, 0.525, 0, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.45, 0.33749998, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 8
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bgig"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8, 0.7333333, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6, 0.50000006, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 8
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6b5j"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7019608, 0.65882355, 0.21176471, 0.5019608)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.6, 0.53000003, 0.18, 0.5019608)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 8
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 8
 
 [node name="LevelFinished" type="Control"]
 process_mode = 3
@@ -14,35 +81,61 @@ grow_vertical = 2
 script = ExtResource("1_yny4e")
 
 [node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_4bgig")
 
-[node name="ButtonContainer" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 767.0
-offset_top = 680.0
-offset_right = 807.0
-offset_bottom = 720.0
-columns = 2
-
-[node name="MainMenuButton" type="Button" parent="ButtonContainer"]
+[node name="Buttons" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -307.0
+offset_top = -344.0
+offset_right = 308.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="MainMenu" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.22216667, 0.31, 1)
+theme_override_colors/font_disabled_color = Color(0, 0.15594886, 0.19966345, 0.5)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_8hmbb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yny4e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4bgig")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6b5j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4bgig")
 text = "Main Menu"
 
-[node name="RetryLevelButton" type="Button" parent="ButtonContainer"]
-custom_minimum_size = Vector2(150, 150)
+[node name="Retry" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.22216667, 0.31, 1)
+theme_override_colors/font_disabled_color = Color(0, 0.15594886, 0.19966345, 0.5)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_8hmbb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yny4e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4bgig")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6b5j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4bgig")
 text = "Retry Level"
+
+[connection signal="pressed" from="Buttons/MainMenu" to="." method="on_main_menu_pressed"]
+[connection signal="pressed" from="Buttons/Retry" to="." method="on_retry_level_pressed"]

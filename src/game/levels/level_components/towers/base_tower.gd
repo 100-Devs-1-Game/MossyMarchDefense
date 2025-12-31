@@ -2,7 +2,7 @@ class_name BaseTower extends StaticBody2D
 
 @export var tower_data : TowerData
 
-var enemies_in_range: Array[Node2D] = []
+var enemies_in_range: Array[Enemy] = []
 
 var attack : BaseAttack
 
@@ -23,14 +23,14 @@ func _ready():
 		$AttackTimer.timeout.connect(on_attack_timer_timeout)
 		
 		attack = attack_dictionary[tower_data.tower_type].instantiate()
-		attack.initialize($AttackSource, enemies_in_range)
+		attack.initialize(tower_data.base_damage, $AttackSource, enemies_in_range)
 		add_child.call_deferred(attack)
 	
 	$DetectionArea.body_entered.connect(_enter_tower_range)
 	$DetectionArea.body_exited.connect(_exit_tower_range)
 
 func _enter_tower_range(body):
-	if is_enemy(body):
+	if body is Enemy:
 		enemies_in_range.append(body)
 		
 		var is_first_enemy = enemies_in_range.size() == 1
@@ -39,12 +39,10 @@ func _enter_tower_range(body):
 			$AttackTimer.start()
 
 func _exit_tower_range(body):
-	if is_enemy(body):
+	if body is Enemy:
 		enemies_in_range.erase(body)
 
-func is_enemy(body):
-	return body.is_in_group("enemy") and body.enemy_type != ENUM.EnemyType.Worm
-	
+
 func on_attack_timer_timeout():
 	if enemies_in_range.size() == 0:
 		$AttackTimer.stop()

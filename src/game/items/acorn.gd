@@ -4,6 +4,11 @@ class_name AcornPickup extends Node2D
 var pickup_timer : float = 0.1
 var amount : int = 0
 
+func _ready() -> void:
+	if Instance.current_level.level_failed:
+		self.queue_free()
+	SignalBus.level_failed.connect(func(): self.queue_free())
+
 func _on_mouse_entered():
 	if pickup_timer >= 0.0:
 		pickup_timer = -1.0

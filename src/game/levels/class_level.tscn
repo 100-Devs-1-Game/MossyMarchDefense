@@ -1,20 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpd4r77qxay3h"]
+[gd_scene load_steps=5 format=3 uid="uid://cpd4r77qxay3h"]
 
 [ext_resource type="Script" uid="uid://cobwpb0clkgvb" path="res://game/levels/class_level.gd" id="1_stt8m"]
-[ext_resource type="PackedScene" uid="uid://dqrescp1p70b4" path="res://game/levels/level_components/enemy_spawner.tscn" id="1_tvk8f"]
-[ext_resource type="Script" uid="uid://5t10kxtq3ygk" path="res://resources/wave_data/wave_data.gd" id="2_vm5kg"]
 [ext_resource type="Texture2D" uid="uid://cwyloqpfbm63m" path="res://assets/Background/Level 1/rain_layer1.png" id="7_3tymb"]
 [ext_resource type="Texture2D" uid="uid://bvqcd0fnuuppt" path="res://assets/Background/Level 1/rain_layer2.png" id="8_1wgse"]
-
-[sub_resource type="Resource" id="Resource_stt8m"]
-script = ExtResource("2_vm5kg")
-metadata/_custom_type_script = "uid://5t10kxtq3ygk"
-
-[sub_resource type="Resource" id="Resource_63j5y"]
-script = ExtResource("2_vm5kg")
-enemy_queue = Array[String](["bird", "frog", "snail", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird", "bird"])
-enemy_spawn_timer = 1.4
-metadata/_custom_type_script = "uid://5t10kxtq3ygk"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_stt8m"]
 animations = [{
@@ -32,12 +20,6 @@ animations = [{
 
 [node name="Level" type="Node"]
 script = ExtResource("1_stt8m")
-waves = Array[ExtResource("2_vm5kg")]([SubResource("Resource_stt8m")])
-
-[node name="EnemySpawner" parent="." instance=ExtResource("1_tvk8f")]
-unique_name_in_owner = true
-base_spawn_time = 0.3
-wave_set = Array[ExtResource("2_vm5kg")]([SubResource("Resource_63j5y")])
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -62,15 +44,17 @@ frame_progress = 0.82483757
 unique_name_in_owner = true
 
 [node name="Acorns" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="Worm" type="Node2D" parent="." groups=["worm_group"]]
+[node name="CaterpillarRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="Enemies" type="Node2D" parent="." groups=["enemies_group"]]
+[node name="EnemyRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="PathNodes" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="PathNavigationRegion" type="NavigationRegion2D" parent="."]
-
 [node name="TowerMarkers" type="Node2D" parent="."]
+unique_name_in_owner = true
 z_index = 100

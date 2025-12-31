@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://faslw1qqymqc"]
+[gd_scene load_steps=7 format=3 uid="uid://faslw1qqymqc"]
 
 [ext_resource type="Script" uid="uid://td8pvxffsju7" path="res://game/core/startup.gd" id="1_nyid8"]
 [ext_resource type="Texture2D" uid="uid://cvpo6mk3b6lr3" path="res://assets/ui/intro/godot_icon.webp" id="2_8iqhs"]
 [ext_resource type="Texture2D" uid="uid://di6y22287tnhn" path="res://assets/ui/intro/extended_arm.webp" id="3_b8r14"]
-[ext_resource type="AudioStream" uid="uid://ico2ejhwwwra" path="res://assets/Audio/UI/ui-intro.ogg" id="4_gg63v"]
 
 [sub_resource type="Animation" id="Animation_gg63v"]
 length = 0.001
@@ -134,8 +133,3 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_gg63v")
 }
-
-[node name="Stamp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_gg63v")
-pitch_scale = 1.5
-autoplay = true

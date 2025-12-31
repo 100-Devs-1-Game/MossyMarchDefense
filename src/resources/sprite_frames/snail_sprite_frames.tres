@@ -1,0 +1,49 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://dpunwi0p54bp1"]
+
+[ext_resource type="Texture2D" uid="uid://de1b5vcuscoxi" path="res://assets/Animations/SnailWalking/snail_away1.png" id="1_tpv0w"]
+[ext_resource type="Texture2D" uid="uid://crcu54lx2x4of" path="res://assets/Animations/SnailWalking/snail_away2.png" id="2_n3ruq"]
+[ext_resource type="Texture2D" uid="uid://d4s3olc4qvvp" path="res://assets/Animations/SnailWalking/snail1.png" id="3_gddeu"]
+[ext_resource type="Texture2D" uid="uid://dydu3bk34s4k6" path="res://assets/Animations/SnailWalking/snail2.png" id="4_h8hh3"]
+[ext_resource type="Texture2D" uid="uid://dywxokc2hn2e5" path="res://assets/Animations/SnailWalking/snail_towards1.png" id="5_v34fx"]
+[ext_resource type="Texture2D" uid="uid://cql1uu6egjoq8" path="res://assets/Animations/SnailWalking/snail_towards2.png" id="6_cwf30"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tpv0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n3ruq")
+}],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gddeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h8hh3")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v34fx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cwf30")
+}],
+"loop": true,
+"name": &"walk_towards",
+"speed": 5.0
+}]

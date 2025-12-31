@@ -7,3 +7,4 @@ class_name TowerData
 @export var sprite_frames : SpriteFrames 
 @export var cost : int
 @export var attack_interval : float
+@export var base_damage : int

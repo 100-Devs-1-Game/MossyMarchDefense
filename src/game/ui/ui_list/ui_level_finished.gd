@@ -1,22 +1,24 @@
 extends UILayer
 
-# TODO: I messed up and formatted the filename of the scene wrong oops!
+@onready var background: TextureRect = %Background
+@onready var buttons: HBoxContainer = %Buttons
 
-@onready var button_container = $ButtonContainer
-@onready var main_menu_button = %MainMenuButton
-@onready var retry_level_button = $ButtonContainer/RetryLevelButton
-
-const STARTUP_SCENE = preload("res://game/core/startup.tscn")
+const GAME_OVER = preload("uid://xo4y7l347mwu")
+const LEVEL_COMPLETE = preload("uid://kksiagft4hqq")
 
 func _ready():
-	main_menu_button.pressed.connect(on_main_menu_pressed)
-	retry_level_button.pressed.connect(on_retry_level_pressed)
-	
+	Audio.toggle_highpass_filter(true)
+	if Instance.current_level.level_failed:
+		background.texture = GAME_OVER
+	elif Instance.current_level.level_succeeded:
+		background.texture = LEVEL_COMPLETE
+
+
 func on_main_menu_pressed():
 	
 	_disable_buttons()
 	
-	UI.open_new_layer(&"MAIN_MENU")
+	Instance.return_to_main_menu()
 	
 	# Called by ANY UI Layer at any time, to close itself.
 	close_layer.emit(self)
@@ -37,5 +39,5 @@ func on_retry_level_pressed():
 	
 	
 func _disable_buttons() -> void:
-	for button in button_container.get_children():
+	for button in buttons.get_children():
 		button.disabled = true

@@ -1,0 +1,49 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://jxrjklpcjwhq"]
+
+[ext_resource type="Texture2D" uid="uid://b0rvy4fkp447k" path="res://assets/Animations/FrogWalking/frog_away1.png" id="1_bh4l5"]
+[ext_resource type="Texture2D" uid="uid://cs8polfiqj518" path="res://assets/Animations/FrogWalking/frog_away2.png" id="2_q1pbv"]
+[ext_resource type="Texture2D" uid="uid://cr7c1kxl10ki3" path="res://assets/Animations/FrogWalking/frog1.png" id="3_8dyro"]
+[ext_resource type="Texture2D" uid="uid://dmuodys2flw0i" path="res://assets/Animations/FrogWalking/frog2.png" id="4_rb8uy"]
+[ext_resource type="Texture2D" uid="uid://bdocasgma73g4" path="res://assets/Animations/FrogWalking/frog_toward1.png" id="5_kph3i"]
+[ext_resource type="Texture2D" uid="uid://bpefvjr334iku" path="res://assets/Animations/FrogWalking/frog_toward2.png" id="6_sfdri"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bh4l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q1pbv")
+}],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8dyro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rb8uy")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kph3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sfdri")
+}],
+"loop": true,
+"name": &"walk_towards",
+"speed": 5.0
+}]
