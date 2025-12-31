@@ -69,6 +69,7 @@ func spawn_in(target:Caterpillar, path_nodes:Array[Node]) -> void:
 	else:
 		_next_target_target_node = null
 	
+	set_collision_layer_value(2, true)
 	done_spawning = true
 
 func _set_stats_from_export() -> void:
@@ -185,7 +186,7 @@ func _update_animation() -> void:
 func _kill_enemy():
 	dying = true
 	_spawn_acorn()
-	killed.emit(self)
+	killed.emit()
 
 func _spawn_acorn() -> void:
 	var acorn_instance : AcornPickup = ACORN.instantiate()

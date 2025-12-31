@@ -67,7 +67,7 @@ func _connect_signals() -> void:
 			node.mouse_entered.connect(_on_tower_choice_hovered.bind(node))
 			node.mouse_exited.connect(_on_tower_choice_unhovered.bind(node))
 	
-	SignalBus.set_current_wave.connect(func(val): wave_counter.text = str(val))
+	SignalBus.set_current_wave.connect(func(val): wave_counter.text = "Wave " + str(val + 1))
 	SignalBus.worm_damaged.connect(func(val): player_hp.text = str(val))
 	SignalBus.level_exited_successfully.connect(_on_level_exited_successfully)
 	
@@ -328,5 +328,26 @@ func _on_pause_pressed() -> void:
 func _on_wave_started() -> void:
 	menu_anims.play("move_wave_button_out")
 
+@onready var flower_pot: UITowerChoice = %FlowerPot
+@onready var watering_can: UITowerChoice = %WateringCan
+@onready var water_drop: UITowerChoice = %WaterDrop
+
 func _on_wave_ended() -> void:
+	if drag_preview_active():
+		drag_preview.queue_free()
+	# Always clear any active preview
+	_clear_placement_preview()
+	
+	flower_pot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	watering_can.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	water_drop.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	menu_anims.play("move_wave_button_out", -1, -1.0, true)
+	
+	await menu_anims.animation_finished
+	flower_pot.mouse_filter = Control.MOUSE_FILTER_STOP
+	watering_can.mouse_filter = Control.MOUSE_FILTER_STOP
+	water_drop.mouse_filter = Control.MOUSE_FILTER_STOP
+
+
+func _on_exit_level_pressed() -> void:
+	Instance.return_to_main_menu()

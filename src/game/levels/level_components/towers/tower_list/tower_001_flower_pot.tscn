@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://do6g0fpvebusu"]
+
+[ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/levels/level_components/towers/base_tower.tscn" id="1_ebwn6"]
+[ext_resource type="SpriteFrames" uid="uid://4yj6kcey8aom" path="res://resources/sprite_frames/animated_plant_pot_tower.tres" id="2_qeti4"]
+[ext_resource type="PackedScene" uid="uid://b1vkvvntdmqmt" path="res://game/levels/level_components/towers/attacks/attack_list/pollen_attack.tscn" id="3_sxkx3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxkx3"]
+radius = 256.0
+
+[node name="FlowerPot" node_paths=PackedStringArray("attack") instance=ExtResource("1_ebwn6")]
+base_damage = 4
+attack = NodePath("PollenAttack")
+
+[node name="TowerSprite" parent="." index="0"]
+sprite_frames = ExtResource("2_qeti4")
+autoplay = "default"
+
+[node name="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_sxkx3")
+
+[node name="AttackTimer" parent="." index="3"]
+wait_time = 3.5
+
+[node name="PollenAttack" parent="." index="4" instance=ExtResource("3_sxkx3")]

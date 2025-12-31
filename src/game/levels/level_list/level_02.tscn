@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfunuu271utjt"]
+[gd_scene load_steps=20 format=3 uid="uid://bfunuu271utjt"]
 
 [ext_resource type="PackedScene" uid="uid://cpd4r77qxay3h" path="res://game/levels/class_level.tscn" id="1_k0xe4"]
 [ext_resource type="Texture2D" uid="uid://dx1yo5jdp5ve7" path="res://assets/Background/Level 2/lvl_2_base.jpg" id="2_6gdii"]
@@ -10,17 +10,67 @@
 
 [sub_resource type="Resource" id="Resource_wtatt"]
 script = ExtResource("3_36r3l")
-enemies = Array[int]([0, 0, 0, 0, 0])
+enemies = Array[int]([0, 1, 0, 1, 2])
 metadata/_custom_type_script = "uid://b3xcc47mja1hc"
 
-[sub_resource type="Resource" id="Resource_lvi8s"]
+[sub_resource type="Resource" id="Resource_36r3l"]
 script = ExtResource("2_wtatt")
 wave_sections = Array[ExtResource("3_36r3l")]([SubResource("Resource_wtatt")])
 metadata/_custom_type_script = "uid://cdlliy3mo7737"
 
+[sub_resource type="Resource" id="Resource_lvi8s"]
+script = ExtResource("3_36r3l")
+enemies = Array[int]([1, 0, 1, 0, 1, 0, 1, 2])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_gkpsi"]
+script = ExtResource("2_wtatt")
+wave_sections = Array[ExtResource("3_36r3l")]([SubResource("Resource_lvi8s")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_0y7y6"]
+script = ExtResource("3_36r3l")
+enemies = Array[int]([1, 0, 2, 1, 0, 2])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_psky0"]
+script = ExtResource("2_wtatt")
+wave_sections = Array[ExtResource("3_36r3l")]([SubResource("Resource_0y7y6")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_h4k6v"]
+script = ExtResource("3_36r3l")
+enemies = Array[int]([2, 2, 2, 2, 2])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_5iebs"]
+script = ExtResource("2_wtatt")
+wave_sections = Array[ExtResource("3_36r3l")]([SubResource("Resource_h4k6v")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_ktuue"]
+script = ExtResource("3_36r3l")
+enemies = Array[int]([1, 1, 1, 1, 1, 1, 0])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_6lwei"]
+script = ExtResource("2_wtatt")
+wave_sections = Array[ExtResource("3_36r3l")]([SubResource("Resource_ktuue")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_7wsim"]
+script = ExtResource("3_36r3l")
+enemies = Array[int]([2, 1, 2, 1, 2, 1, 2])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_6mq5o"]
+script = ExtResource("2_wtatt")
+wave_sections = Array[ExtResource("3_36r3l")]([SubResource("Resource_7wsim")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
 [node name="Level2" instance=ExtResource("1_k0xe4")]
 level_key = "level_02"
-wave_structures = Array[ExtResource("2_wtatt")]([SubResource("Resource_lvi8s")])
+wave_structures = Array[ExtResource("2_wtatt")]([SubResource("Resource_36r3l"), SubResource("Resource_gkpsi"), SubResource("Resource_psky0"), SubResource("Resource_5iebs"), SubResource("Resource_6lwei"), SubResource("Resource_6mq5o")])
 level_theme = 2
 
 [node name="base_layer" parent="Background" index="0"]

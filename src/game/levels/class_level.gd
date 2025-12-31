@@ -16,6 +16,8 @@ var current_wave : int = 0
 var between_waves : bool = true
 var done_spawning : bool = true
 var current_enemies : Array[Enemy] = []
+var enemies_alive_count: int = 0
+var wave_spawn_complete: bool = false
 
 # Core Node References
 @onready var towers: Node2D = %Towers
@@ -25,6 +27,7 @@ var current_enemies : Array[Enemy] = []
 @onready var enemy_root: Node2D = %EnemyRoot
 @onready var rain: AnimatedSprite2D = %rain
 @onready var tower_markers: Node2D = %TowerMarkers
+@onready var bullets: Node2D = %Bullets
 
 # Important Nodes
 var first_path_node : PathNode = null
@@ -40,6 +43,7 @@ const WORM = preload("uid://oykmyp40ux3u")
 const ENEMY_01_BIRD = preload("uid://cxcrvo7kbfilv")
 const ENEMY_02_SNAIL = preload("uid://j2l5116pp4ql")
 const ENEMY_03_FROG = preload("uid://b8c6ry6bavun6")
+const WAVE_START = preload("uid://tmp0nqcw3odb")
 
 # Level States
 var level_ready : bool = false
@@ -124,9 +128,11 @@ func _on_acorns_spent(amount:int) -> void:
 
 
 func _on_wave_start_button_pressed():
+	SignalBus.set_current_wave.emit(current_wave)
 	if between_waves: 
 		between_waves = false
 		Audio.toggle_highpass_filter(false)
+		Audio.play_ui_sound(WAVE_START)
 		SignalBus.wave_started.emit()
 
 func _on_pause_button_pressed():
@@ -155,6 +161,9 @@ func _on_wave_started() -> void:
 	_spawn_caterpillar(target_structure.worm_start_node, 5)
 	
 	done_spawning = false
+	wave_spawn_complete = false
+	enemies_alive_count = 0
+	
 	for section:WaveSection in target_structure.wave_sections:
 		SignalBus.section_started.emit(section)
 		await SignalBus.section_ended
@@ -163,6 +172,8 @@ func _on_wave_started() -> void:
 	
 	if not level_failed:
 		done_spawning = true
+		wave_spawn_complete = true
+		_check_wave_completion()
 
 
 func _on_wave_section_started(wave_section:WaveSection) -> void:
@@ -178,7 +189,8 @@ func _on_wave_section_started(wave_section:WaveSection) -> void:
 
 func _on_wave_ended():
 	Audio.toggle_highpass_filter(true)
-	current_caterpillar.queue_free()
+	if current_caterpillar:
+		current_caterpillar.queue_free()
 	between_waves = true
 	current_wave += 1
 	
@@ -194,19 +206,24 @@ func _spawn_next_enemy(enemy_type:ENUM.EnemyType):
 			_spawned_enemy = ENEMY_02_SNAIL.instantiate()
 		ENUM.EnemyType.Frog:
 			_spawned_enemy = ENEMY_03_FROG.instantiate()
+	
 	enemy_root.add_child(_spawned_enemy)
-	current_enemies.append(_spawned_enemy)
 	_spawned_enemy.spawn_in(current_caterpillar, node_array)
-	_spawned_enemy.killed.connect(_test_if_last_enemy)
+	
+	# Increment enemy count and connect signal
+	enemies_alive_count += 1
+	_spawned_enemy.killed.connect(_on_enemy_killed.bind(_spawned_enemy))
 
 
-func _test_if_last_enemy(body:Enemy) -> void:
-	current_enemies.erase(body)
+func _on_enemy_killed(body: Enemy) -> void:
+	enemies_alive_count -= 1
 	body.queue_free()
 	
-	await get_tree().create_timer(0.5).timeout
-	
-	if done_spawning and current_enemies.is_empty():
+	# Check if wave should end
+	_check_wave_completion()
+
+func _check_wave_completion() -> void:
+	if wave_spawn_complete and enemies_alive_count == 0:
 		SignalBus.wave_ended.emit()
 
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5lo511h23n74"]
+
+[ext_resource type="PackedScene" uid="uid://ctjebd8a8ch54" path="res://game/levels/level_components/towers/attacks/base_attack.tscn" id="1_hvyxd"]
+[ext_resource type="Script" uid="uid://clhxxybj7tvi4" path="res://game/levels/level_components/towers/attacks/attack_list/bubble_attack.gd" id="2_ymeub"]
+[ext_resource type="AudioStream" uid="uid://bswjgpfd4gsub" path="res://assets/Audio/SFX/watercan1.ogg" id="3_tr5qi"]
+
+[node name="BubbleAttack" instance=ExtResource("1_hvyxd")]
+script = ExtResource("2_ymeub")
+
+[node name="AttackAudio" parent="." index="0"]
+stream = ExtResource("3_tr5qi")
+volume_db = -15.0
+pitch_scale = 0.8

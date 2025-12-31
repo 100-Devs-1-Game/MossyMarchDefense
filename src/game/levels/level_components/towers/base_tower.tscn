@@ -1,35 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://ht2s7wyyb24a"]
+[gd_scene load_steps=3 format=3 uid="uid://ht2s7wyyb24a"]
 
 [ext_resource type="Script" uid="uid://bucr4bpnvq2ww" path="res://game/levels/level_components/towers/base_tower.gd" id="1_xel23"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_asv8d"]
-size = Vector2(113, 95)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sc58m"]
 radius = 256.0
 
-[node name="base_tower" type="StaticBody2D"]
+[node name="BaseTower" type="Node2D"]
 script = ExtResource("1_xel23")
-
-[node name="TowerCollider (Unused)" type="CollisionShape2D" parent="."]
-position = Vector2(-0.16666667, 24.5)
-shape = SubResource("RectangleShape2D_asv8d")
 
 [node name="TowerSprite" type="AnimatedSprite2D" parent="."]
 z_index = 5
 scale = Vector2(0.1, 0.1)
 
 [node name="AttackSource" type="Marker2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(-35.333332, -55.333336)
-
-[node name="Node" type="Node" parent="."]
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+unique_name_in_owner = true
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_sc58m")
 
 [node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

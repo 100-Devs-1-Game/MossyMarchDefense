@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://fc448pn2akes"]
+
+[ext_resource type="Texture2D" uid="uid://bsuf5j05uqp7a" path="res://assets/Towers/Bubble/bubble1.png" id="1_snsub"]
+[ext_resource type="Texture2D" uid="uid://dl7mvnrnm7ai" path="res://assets/Towers/Bubble/bubble2.png" id="2_ds22j"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_snsub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ds22j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

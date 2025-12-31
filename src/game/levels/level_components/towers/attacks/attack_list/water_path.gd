@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	path_follow_visual_1.progress_ratio = ease(progress_ratio_visual_1, 0.92)
 	path_follow_visual_2.progress_ratio = ease(progress_ratio_visual_2, 0.94)
 	
-	if progress_ratio >= 1.0:
+	if progress_ratio >= 0.8:
 		queue_free()
 
 

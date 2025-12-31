@@ -22,7 +22,7 @@ bg_color = Color(0.3507, 0.63, 0.18900001, 1)
 
 [node name="Caterpillar" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("1_rkqgc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

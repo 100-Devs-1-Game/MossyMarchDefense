@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://behtnp632nowv"]
+[gd_scene load_steps=25 format=3 uid="uid://behtnp632nowv"]
 
 [ext_resource type="Script" uid="uid://dh0yyfup3qnuw" path="res://game/ui/ui_list/ui_game_hud.gd" id="1_rfypm"]
 [ext_resource type="Script" uid="uid://d2yvpa8bao7ik" path="res://game/ui/ui_components/ui_tower_choice.gd" id="4_3a5vc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b3wksxm4kqcg2" path="res://assets/ui/game_hud/watercan_icon.png" id="9_4vsum"]
 [ext_resource type="Texture2D" uid="uid://c56dg03qsjytn" path="res://assets/ui/game_hud/waterdrop_icon.png" id="10_wdw62"]
 [ext_resource type="Texture2D" uid="uid://ceog522jum5q8" path="res://assets/ui/game_hud/acorn_counter_icon.png" id="11_0ud5n"]
+[ext_resource type="Texture2D" uid="uid://colsjdb4r0j7j" path="res://assets/ui/game_hud/button_icon.png" id="11_pwnpw"]
 
 [sub_resource type="Animation" id="Animation_r5t23"]
 length = 0.001
@@ -156,6 +157,66 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("WaveCounterPanel:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-142, 694)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WaveCounterPanel:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TowerChoices/WaterDrop:mouse_filter")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TowerChoices/FlowerPot:mouse_filter")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TowerChoices/WateringCan:mouse_filter")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_mdypi"]
@@ -335,6 +396,66 @@ tracks/11/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("WaveCounterPanel:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-404, 694), Vector2(-142, 694), Vector2(-133, 694), Vector2(-142, 694)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WaveCounterPanel:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TowerChoices/WaterDrop:mouse_filter")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TowerChoices/FlowerPot:mouse_filter")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TowerChoices/WateringCan:mouse_filter")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_pwnpw"]
 resource_name = "move_wave_button_out"
@@ -441,18 +562,6 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdw62"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0, 0.6, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vsum"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -469,6 +578,18 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4vsum"]
+texture = ExtResource("11_pwnpw")
+modulate_color = Color(1, 1, 1, 0.53333336)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pwnpw"]
+texture = ExtResource("11_pwnpw")
+modulate_color = Color(1, 0.42358288, 0.42358288, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdw62"]
+texture = ExtResource("11_pwnpw")
+modulate_color = Color(1, 1, 0.48788664, 1)
 
 [node name="GameHUD" type="Control"]
 layout_mode = 3
@@ -487,18 +608,19 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -944.0
-offset_bottom = -798.99634
+offset_bottom = -798.9968
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="FlowerPot" type="TextureRect" parent="TowerChoices"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 214.0
 offset_right = 424.0
 offset_bottom = 287.0
 size_flags_horizontal = 3
-mouse_filter = 0
+mouse_filter = 2
 texture = ExtResource("8_pwnpw")
 expand_mode = 1
 stretch_mode = 4
@@ -524,12 +646,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WateringCan" type="TextureRect" parent="TowerChoices"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 428.0
 offset_right = 638.0
 offset_bottom = 287.0
 size_flags_horizontal = 3
-mouse_filter = 0
+mouse_filter = 2
 texture = ExtResource("9_4vsum")
 expand_mode = 1
 stretch_mode = 4
@@ -556,12 +679,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WaterDrop" type="TextureRect" parent="TowerChoices"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 642.0
 offset_right = 852.0
 offset_bottom = 287.0
 size_flags_horizontal = 3
-mouse_filter = 0
+mouse_filter = 2
 texture = ExtResource("10_wdw62")
 expand_mode = 1
 stretch_mode = 4
@@ -645,36 +769,6 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_7kh4j")
 disabled = true
 text = "Pause Game"
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = -77.0
-offset_bottom = 78.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wdw62")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="WaveCounter" type="Label" parent="Panel/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.15686275, 0.2, 1)
-text = "WAVE 1"
-horizontal_alignment = 1
-
 [node name="Acorn" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -682,7 +776,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1710.0
-offset_bottom = -793.00024
+offset_bottom = -793.0005
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -731,5 +825,56 @@ text = "HP: 30/30"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ExitLevel" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1821.748
+offset_top = 2.0
+offset_right = 1917.1968
+offset_bottom = 78.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4vsum")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pwnpw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wdw62")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_4vsum")
+theme_override_styles/focus = SubResource("StyleBoxTexture_4vsum")
+
+[node name="ExitLevelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1698.0
+offset_top = 16.0
+offset_right = 1831.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 32
+text = "Exit Level"
+
+[node name="WaveCounterPanel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = 694.0
+offset_right = -1674.9984
+offset_bottom = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_0ud5n")
+expand_mode = 1
+
+[node name="WaveCounter" type="Label" parent="WaveCounterPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.425
+anchor_top = 0.47100002
+anchor_right = 0.425
+anchor_bottom = 0.65800005
+offset_left = 0.16349792
+offset_top = 0.1269989
+offset_right = 117.1635
+offset_bottom = -0.054016113
+theme_override_font_sizes/font_size = 40
+text = "Wave 1"
+
 [connection signal="pressed" from="NextWave" to="." method="_on_next_wave_pressed"]
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="ExitLevel" to="." method="_on_exit_level_pressed"]

@@ -1,4 +1,3 @@
-
 extends Node
 ## Audio Manager
 
@@ -21,6 +20,9 @@ var _fade_out_tween : Tween = null
 
 const FADE_TIME : float = 1.0
 const FADE_VAL : float = -61.0 # Project Settings disable audio under -60. So we lerp to -61.
+
+func _ready() -> void:
+	_autoload_initialized()
 
 func _autoload_initialized() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -77,8 +79,9 @@ func _process(_delta: float) -> void:
 			fading_audio.queue_free()
 
 
-func play_ui_sound(ui_stream:AudioStream) -> void:
+func play_ui_sound(ui_stream:AudioStream, vol:float = 0) -> void:
 	ui_audio.stream = ui_stream
+	ui_audio.volume_db = vol
 	ui_audio.play()
 
 

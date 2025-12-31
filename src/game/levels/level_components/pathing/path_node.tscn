@@ -10,9 +10,11 @@ script = ExtResource("1_ubi0c")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 260
+collision_layer = 8
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape2D" parent="CollisionArea"]
 scale = Vector2(0.1, 0.1)
 shape = SubResource("CircleShape2D_ubi0c")
+
+[connection signal="body_entered" from="CollisionArea" to="." method="on_body_entered"]

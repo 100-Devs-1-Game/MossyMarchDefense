@@ -6,12 +6,17 @@ extends UILayer
 const GAME_OVER = preload("uid://xo4y7l347mwu")
 const LEVEL_COMPLETE = preload("uid://kksiagft4hqq")
 
+const LEVEL_FAIL = preload("uid://cr07bq6s5h5nm")
+const LEVEL_SUCCESS = preload("uid://dmpeo1fvyag10")
+
 func _ready():
 	Audio.toggle_highpass_filter(true)
 	if Instance.current_level.level_failed:
 		background.texture = GAME_OVER
+		Audio.play_ui_sound(LEVEL_FAIL)
 	elif Instance.current_level.level_succeeded:
 		background.texture = LEVEL_COMPLETE
+		Audio.play_ui_sound(LEVEL_SUCCESS)
 
 
 func on_main_menu_pressed():

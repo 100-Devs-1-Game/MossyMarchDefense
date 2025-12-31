@@ -1,29 +1,15 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=5 format=3 uid="uid://brjcpfens6ary"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=4 format=3 uid="uid://brjcpfens6ary"]
 
 [ext_resource type="Script" uid="uid://b27e20uk00133" path="res://resources/tower_data/RES_tower.gd" id="1_4jx66"]
 [ext_resource type="Texture2D" uid="uid://bsuf5j05uqp7a" path="res://assets/Towers/Bubble/bubble1.png" id="2_msdvs"]
-[ext_resource type="Texture2D" uid="uid://dl7mvnrnm7ai" path="res://assets/Towers/Bubble/bubble2.png" id="3_4o17r"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3xn5u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_msdvs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_4o17r")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://fc448pn2akes" path="res://resources/sprite_frames/animated_bubble.tres" id="3_msdvs"]
 
 [resource]
 script = ExtResource("1_4jx66")
 tower_type = 2
-detection_radius = 1080.0
+detection_radius = 900.0
 sprite = ExtResource("2_msdvs")
-sprite_frames = SubResource("SpriteFrames_3xn5u")
+sprite_frames = ExtResource("3_msdvs")
 cost = 2
 attack_interval = 1.0
 metadata/_custom_type_script = "uid://b27e20uk00133"

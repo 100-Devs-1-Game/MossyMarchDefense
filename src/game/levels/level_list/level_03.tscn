@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyxdn0vsupg51"]
+[gd_scene load_steps=20 format=3 uid="uid://dyxdn0vsupg51"]
 
 [ext_resource type="PackedScene" uid="uid://cpd4r77qxay3h" path="res://game/levels/class_level.tscn" id="1_rwme5"]
 [ext_resource type="Texture2D" uid="uid://cijn4jmm14saj" path="res://assets/Background/Level 3/lvl_3_base.jpg" id="2_b6kxb"]
@@ -10,17 +10,67 @@
 
 [sub_resource type="Resource" id="Resource_kmnoo"]
 script = ExtResource("3_1gvl0")
-enemies = Array[int]([0, 0, 0, 0, 0])
+enemies = Array[int]([0, 2, 1, 0, 2, 1])
 metadata/_custom_type_script = "uid://b3xcc47mja1hc"
 
-[sub_resource type="Resource" id="Resource_lhb77"]
+[sub_resource type="Resource" id="Resource_b6kxb"]
 script = ExtResource("2_lvd17")
 wave_sections = Array[ExtResource("3_1gvl0")]([SubResource("Resource_kmnoo")])
 metadata/_custom_type_script = "uid://cdlliy3mo7737"
 
+[sub_resource type="Resource" id="Resource_lvd17"]
+script = ExtResource("3_1gvl0")
+enemies = Array[int]([2, 1, 1, 1])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_1gvl0"]
+script = ExtResource("2_lvd17")
+wave_sections = Array[ExtResource("3_1gvl0")]([SubResource("Resource_lvd17")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_lhb77"]
+script = ExtResource("3_1gvl0")
+enemies = Array[int]([0, 1, 2, 2, 2, 1])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_ym46w"]
+script = ExtResource("2_lvd17")
+wave_sections = Array[ExtResource("3_1gvl0")]([SubResource("Resource_lhb77")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_24jn7"]
+script = ExtResource("3_1gvl0")
+enemies = Array[int]([2, 2, 1, 1, 1, 1, 1])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_y8c1x"]
+script = ExtResource("2_lvd17")
+wave_sections = Array[ExtResource("3_1gvl0")]([SubResource("Resource_24jn7")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_6ys8a"]
+script = ExtResource("3_1gvl0")
+enemies = Array[int]([0, 0, 2, 2, 2, 1, 1])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_g35gk"]
+script = ExtResource("2_lvd17")
+wave_sections = Array[ExtResource("3_1gvl0")]([SubResource("Resource_6ys8a")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
+[sub_resource type="Resource" id="Resource_tomsj"]
+script = ExtResource("3_1gvl0")
+enemies = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+metadata/_custom_type_script = "uid://b3xcc47mja1hc"
+
+[sub_resource type="Resource" id="Resource_n38vd"]
+script = ExtResource("2_lvd17")
+wave_sections = Array[ExtResource("3_1gvl0")]([SubResource("Resource_tomsj")])
+metadata/_custom_type_script = "uid://cdlliy3mo7737"
+
 [node name="Level3" instance=ExtResource("1_rwme5")]
 level_key = "level_03"
-wave_structures = Array[ExtResource("2_lvd17")]([SubResource("Resource_lhb77")])
+wave_structures = Array[ExtResource("2_lvd17")]([SubResource("Resource_b6kxb"), SubResource("Resource_1gvl0"), SubResource("Resource_ym46w"), SubResource("Resource_y8c1x"), SubResource("Resource_g35gk"), SubResource("Resource_n38vd")])
 level_theme = 3
 
 [node name="base_layer" parent="Background" index="0"]
@@ -33,25 +83,25 @@ texture = ExtResource("3_lvd17")
 position = Vector2(11, 865)
 
 [node name="PathNode02" parent="PathNodes" index="1" instance=ExtResource("4_1gvl0")]
-position = Vector2(293, 858)
+position = Vector2(278, 865)
 
 [node name="PathNode03" parent="PathNodes" index="2" instance=ExtResource("4_1gvl0")]
-position = Vector2(283, 506)
+position = Vector2(278, 506)
 
 [node name="PathNode04" parent="PathNodes" index="3" groups=["worm"] instance=ExtResource("4_1gvl0")]
-position = Vector2(1165, 488)
+position = Vector2(1159, 506)
 
 [node name="PathNode05" parent="PathNodes" index="4" instance=ExtResource("4_1gvl0")]
-position = Vector2(1165, 313)
+position = Vector2(1159, 313)
 
 [node name="PathNode06" parent="PathNodes" index="5" instance=ExtResource("4_1gvl0")]
-position = Vector2(1465, 308)
+position = Vector2(1459, 313)
 
 [node name="PathNode07" parent="PathNodes" index="6" instance=ExtResource("4_1gvl0")]
-position = Vector2(1468, 675)
+position = Vector2(1459, 691)
 
 [node name="PathNode08" parent="PathNodes" index="7" instance=ExtResource("4_1gvl0")]
-position = Vector2(1719, 686)
+position = Vector2(1719, 691)
 
 [node name="TowerMarker" parent="TowerMarkers" index="0" instance=ExtResource("6_lhb77")]
 position = Vector2(99, 717)

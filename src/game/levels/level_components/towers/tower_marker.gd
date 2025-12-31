@@ -5,6 +5,9 @@ class_name TowerMarker extends Area2D
 @onready var range_display: ColorRect = %AimRadius
 
 const TOWER = preload("uid://ht2s7wyyb24a")
+const TOWER_001_FLOWER_POT = preload("uid://do6g0fpvebusu")
+const TOWER_002_WATERING_CAN = preload("uid://c611k14x2ius6")
+const TOWER_003_WATER_DROP = preload("uid://c4yv17to02f3g")
 
 var occupied : bool = false
 
@@ -34,12 +37,14 @@ func toggle_placement_preview(ui_tower:UITowerChoice, state:bool) -> void:
 		range_display.visible = false
 
 func tower_placed(tower_type:ENUM.TowerType) -> void:
-	var new_tower:Node2D = TOWER.instantiate()
-	new_tower.tower_data = RES_DATA.get_tower_data_duplicate_from_enum(tower_type)
-	
-	## Bootleg lines of code to keep existing level structure working. When we set up a parent class.
-	## May space king have mercy on our souls for this. Need to finish the parent level class ASAP.
-	## -Phoenix
+	var new_tower:BaseTower = null
+	match tower_type:
+		ENUM.TowerType.PlantPot:
+			new_tower = TOWER_001_FLOWER_POT.instantiate()
+		ENUM.TowerType.WateringCan:
+			new_tower = TOWER_002_WATERING_CAN.instantiate()
+		ENUM.TowerType.Bubble:
+			new_tower = TOWER_003_WATER_DROP.instantiate()
 	
 	Instance.current_level.add_tower(new_tower)
 	new_tower.global_position = Vector2(

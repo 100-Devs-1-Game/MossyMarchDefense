@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://du6qamxsbmyy6"]
+[gd_scene load_steps=4 format=3 uid="uid://du6qamxsbmyy6"]
 
 [ext_resource type="PackedScene" uid="uid://ctjebd8a8ch54" path="res://game/levels/level_components/towers/attacks/base_attack.tscn" id="1_bw7dv"]
 [ext_resource type="Script" uid="uid://bc5t2n3iqhu3x" path="res://game/levels/level_components/towers/attacks/attack_list/water_attack.gd" id="2_ublph"]
+[ext_resource type="AudioStream" uid="uid://lwc40t2i23re" path="res://assets/Audio/SFX/watercan2.ogg" id="3_fvs8i"]
 
 [node name="WaterAttack" instance=ExtResource("1_bw7dv")]
+z_index = 6
 script = ExtResource("2_ublph")
 water_speed = 170.0
-base_damage = 2
+
+[node name="AttackAudio" parent="." index="0"]
+stream = ExtResource("3_fvs8i")

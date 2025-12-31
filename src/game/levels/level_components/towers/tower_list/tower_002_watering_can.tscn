@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c611k14x2ius6"]
+
+[ext_resource type="PackedScene" uid="uid://ht2s7wyyb24a" path="res://game/levels/level_components/towers/base_tower.tscn" id="1_o5pno"]
+[ext_resource type="SpriteFrames" uid="uid://100p4xh05nkn" path="res://resources/sprite_frames/animated_watering_can.tres" id="2_mxgh2"]
+[ext_resource type="PackedScene" uid="uid://du6qamxsbmyy6" path="res://game/levels/level_components/towers/attacks/attack_list/water_attack.tscn" id="3_jmv2s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmv2s"]
+radius = 512.0
+
+[node name="WateringCan" node_paths=PackedStringArray("attack") instance=ExtResource("1_o5pno")]
+base_damage = 2
+attack = NodePath("WaterAttack")
+
+[node name="TowerSprite" parent="." index="0"]
+sprite_frames = ExtResource("2_mxgh2")
+autoplay = "default"
+
+[node name="AttackSource" parent="." index="1"]
+position = Vector2(-56, -27)
+
+[node name="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_jmv2s")
+
+[node name="WaterAttack" parent="." index="4" instance=ExtResource("3_jmv2s")]
